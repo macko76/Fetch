@@ -6,3 +6,4 @@ public/styles
 .editorconfig
 .DS_store
 .env.example
+.idea/
