@@ -4,7 +4,11 @@
     <% include ./partials/_head %>
   </head>
   <body>
-    <h1><a href="/">Fetch</a></h1>
+    <!-- Top nav bar (fixed) -->
+    <nav id="nav-bar">
+      <div class="header"><a href="/">Fetch</a></div>
+    </nav>
+    
     <h2>Welcome to the registration page!</h2>
     <form action="/register" method="POST" >
       Email: <input type="email" name="email" /><br>
