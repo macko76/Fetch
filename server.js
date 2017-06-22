@@ -40,6 +40,7 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/resources", resourceRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
@@ -47,5 +48,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Fetch is listening on port " + PORT);
 });
