@@ -1,11 +1,35 @@
-"use strict";
+'use strict';
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (knex) => {
 
-// VIEW PROFILE = GET /user/:id
-// UPDATE PROFILE = POST /user/:id
+  //
+  router.get('/user/:id', (request, response) => {
+    knex
+      .select('req.param.id')
+      .from('resources')
+      .then((results) => {
+        res.json(results);
+      });
+  });
+
+  return router;
+  response.render('profile');
+};
+)
+;
+
+// Updates user profile
+router.post('/user/:id', (request, response) => {
+  write;
+  to;
+  database;
 
 }
+})
+;
+
+}
+;
