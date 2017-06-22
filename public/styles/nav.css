@@ -1,6 +1,6 @@
 #nav-bar {
   color: #e8fdff;
-  background-color: #00a087;
+  background-color: skyblue;
   height: 80px;
   font-family: 'Roboto Condensed', sans-serif;
   padding-left: 2em;
@@ -36,7 +36,7 @@
   border: 1px black solid;
   background: white;
   opacity: 0.9;
-  color: #00a087;
+  color: skyblue;
 }
 
 #nav-bar .btn-compose:hover, .btn-compose:active  {
