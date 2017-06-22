@@ -9,20 +9,16 @@ const bodyParser      = require("body-parser");
 const sass            = require("node-sass-middleware");
 const app             = express();
 
-const knexConfig      = require("./knexfile");
-const knex            = require("knex")(knexConfig[ENV]);
-const morgan          = require('morgan');
-const knexLogger      = require('knex-logger');
+const knexConfig  = require("./knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
+const morgan      = require('morgan');
+const knexLogger  = require('knex-logger');
 
+// Seperated Routes for each Resource
+const usersRoutes = require("./routes/users");
 const bcrypt          = require('bcrypt'); // MAB: I added this
-
-const cookieSession   = require('cookie-session'); // MAB: I added this
-
-// Separated Routes for each Resource
-const usersRoutes     = require("./routes/users");
-const authRoutes      = require("./routes/auth");
-const resourceRoutes  = require("./routes/resources");
-const profileRoutes   = require("./routes/profile");
+const resourceRoutes = require("./routes/resources");
+const profileRoutes = require("./routes/profile");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -48,6 +44,7 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex)); // MAB: This URL looks off
+app.use("/api/resources", resourceRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
@@ -55,5 +52,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Fetch is listening on port " + PORT);
 });
