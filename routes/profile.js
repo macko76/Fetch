@@ -5,31 +5,41 @@ const router = express.Router();
 
 module.exports = (knex) => {
 
-  //
-  router.get('/user/:id', (request, response) => {
+  // Queries database for users.id todo: Use a datahelper here?
+  router.get('/:id', (request, response) => {
     knex
-      .select('req.param.id')
-      .from('resources')
+      .select()
+      .from("users")
+      .where({id: req.param.id})
       .then((results) => {
         res.json(results);
       });
+
+    response.render('profile');
   });
 
+  // Intakes form data, updates database, redirects to /profile todo: Use a datahelper here?
+  router.post('/:id', (request, response) => {
+    let first_name = req.body.first_name;
+    let last_name = req.body.last_name;
+    let email = req.body.email;
+    let password = req.body.password;
+    let profile_photo = req.body.profile_photo;
+
+    knex
+      .insert({
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password,
+        profile_photo: profile_photo
+      }).into("users");
+      then((results) => {
+        res.json(results);
+      });
+
+    response.render('profile');
+  };
+
   return router;
-  response.render('profile');
 };
-)
-;
-
-// Updates user profile
-router.post('/user/:id', (request, response) => {
-  write;
-  to;
-  database;
-
-}
-})
-;
-
-}
-;
