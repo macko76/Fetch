@@ -8,4 +8,6 @@ module.exports = (knex) => {
 // VIEW PROFILE = GET /user/:id
 // UPDATE PROFILE = POST /user/:id
 
+// 
+
 }
