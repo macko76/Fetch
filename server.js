@@ -2,23 +2,27 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT            = process.env.PORT || 8080;
+const ENV             = process.env.ENV || "development";
+const express         = require("express");
+const bodyParser      = require("body-parser");
+const sass            = require("node-sass-middleware");
+const app             = express();
 
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const knexLogger  = require('knex-logger');
+const knexConfig      = require("./knexfile");
+const knex            = require("knex")(knexConfig[ENV]);
+const morgan          = require('morgan');
+const knexLogger      = require('knex-logger');
 
-// Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
-const resourceRoutes = require("./routes/resources");
-const profileRoutes = require("./routes/profile");
+const bcrypt          = require('bcrypt'); // MAB: I added this
+
+const cookieSession   = require('cookie-session'); // MAB: I added this
+
+// Separated Routes for each Resource
+const usersRoutes     = require("./routes/users");
+const authRoutes      = require("./routes/auth");
+const resourceRoutes  = require("./routes/resources");
+const profileRoutes   = require("./routes/profile");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -38,8 +42,12 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  secret: 'no secret'
+}));
+
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use("/api/users", usersRoutes(knex)); // MAB: This URL looks off
 
 // Home page
 app.get("/", (req, res) => {
