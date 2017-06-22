@@ -1,10 +1,15 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', function (table) {
-    table.increments();
-    table.string('name');
+  return knex.schema.createTable('users', (table) => {
+    table.increments('id').unsigned().primary();
+    table.string('first_name');
+    table.string('last_name');
+    table.string('email').notNull();
+    table.string('password').notNull();
+    table.string('profile_photo');
+    table.timestamps();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('users');
-};
+    return knex.schema.dropTable('users');
+  };
