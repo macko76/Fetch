@@ -12,6 +12,6 @@ module.exports = (knex) => {
 // EDIT RESOURCE = POST /user/:id/fetch/:id
 
 // RATE RESOURCE = POST /user/:id/fetch/:id/rate, DELETE /user/:id/fetch/:id/rate
-
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
+
 }
