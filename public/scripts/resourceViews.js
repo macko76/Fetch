@@ -1,7 +1,0 @@
-// showAllResources
-
-// showUserResources
-
-// filterResultsByCategory
-
-// filterResultsBySearchTerm
