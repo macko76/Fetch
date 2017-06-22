@@ -10,6 +10,7 @@ function createResourceCard(resource) {
             <img src="${imageURL}">
             <h3>${description}</h3>
           </div>`;
+
 };
 
 // renderResources
@@ -32,3 +33,11 @@ function renderResources(resources) {
 // addRating
 
 // addComment
+
+// showAllResources
+
+// showUserResources
+
+// filterResultsByCategory
+
+// filterResultsBySearchTerm

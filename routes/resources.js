@@ -6,6 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 
 router.get("/", (req, res) => {
+  console.log('inside the resources route');
     knex
       .select("*")
       .from("resources")
