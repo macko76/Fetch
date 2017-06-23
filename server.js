@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/user", (req, res) => {
+app.get("/user", auth, (req, res) => {
   res.render("user-resources");
 });
 
@@ -75,3 +75,4 @@ app.get("/user/profile", auth, (req, res) => {
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);
 });
+

@@ -1,0 +1,28 @@
+$font-stack:    'Roboto Condensed', sans-serif;
+$green: #00A087;
+$light-green: lighten($green, 60%);
+$dark-blue: #244751;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  margin-top: 50px;
+  font-size: 12px;
+  background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {
+	width: auto;
+	background-color: white;
+	align-content: center;
+	margin: 80px;
+	padding: 120px;
+}
+
