@@ -65,12 +65,20 @@ app.get("/", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  res.render("user-resources");
+  var user = req.session.user;
+  res.render("user-resources", {user: user});
 });
 
 app.get("/user/profile", auth, (req, res) => {
   res.render('user-profile');
-})
+});
+
+// -------------------------------- Logout
+app.post("/logout", (req, res) => {
+  req.session = null;
+  console.log("Logout successful");
+  res.redirect("/login");
+});
 
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);

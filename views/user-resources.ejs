@@ -24,7 +24,14 @@
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <div class="header">Fetch</div>
-      <h2>Welcome, USER</h2> 
+      <% if (user) {%>
+        <h2>Hello, <%= user.first_name %></h2>
+        <form action="/logout" method="POST">
+          <input type="submit" value="Logout">
+        </form>
+      <% } else { %>
+        <a href="/login">Login</a> / <a href="/register">Register</a>
+      <% } %>
       <img class="nav-profile-pic" src=""/>
     </nav>
 

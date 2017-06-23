@@ -42,6 +42,7 @@ module.exports = (knex) => {
 				if (!user) {
 					response.status(403).send('Your username or password or both is incorrect.');
 				} else {
+					request.session.user = user; // why do i need this here???
 					request.session.userId = user.id;
 					// should eventually redirect to the user page : response.redirect('/user/ + user.id + '/fetch/');
 					response.redirect('/user');
