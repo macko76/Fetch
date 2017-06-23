@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = (knex) => {
 
   // Queries database for users.id todo: Use a datahelper here?
-  router.get('/:id', (request, response) => {
+  router.get('/user/profile', auth, (request, response) => {
     knex
       .select()
       .from("users")
@@ -19,7 +19,7 @@ module.exports = (knex) => {
   });
 
   // Intakes form data, updates database, redirects to /profile todo: Use a datahelper here?
-  router.post('/:id', (request, response) => {
+  router.post('/user/profile', (request, response) => {
     let first_name = req.body.first_name;
     let last_name = req.body.last_name;
     let email = req.body.email;
