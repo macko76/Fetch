@@ -37,9 +37,12 @@
       <h3>Your easy resource storage system.</h3>
       <% } %>
 
+      
       <p> <%- include partials/_searchAndFilter.ejs %></p>
 
-      <button type="submit" class="add-card"> + Add card</button>
+      <% if (user) {%>
+      <button type="submit" class="add-card"> &#10133; Add card</button>
+      <% } %>
 
       <div class="row">
         <!-- filled in when renderResources function is called in resourceFuncs.js -->
