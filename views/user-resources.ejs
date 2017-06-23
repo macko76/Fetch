@@ -24,23 +24,15 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <div class="header">Fetch</div>
-      <% if (user) {%>
-        <h2>Hello, <%= user.first_name %></h2>
-        <form action="/logout" method="POST">
-          <input type="submit" value="Logout">
-        </form>
-      <% } else { %>
-        <a href="/login">Login</a> / <a href="/register">Register</a>
-      <% } %>
-      <img class="nav-profile-pic" src=""/>
-    </nav>
+ 
    <%- include partials/_navbar.ejs %>
 
     <!-- Page-specific (main) content here -->
     <main>
       
+      <h1>Hi, <%= user.first_name %>!</h1>
+      <h3>Here are your saved resources.</h3>
+
      <%- include partials/_searchAndFilter.ejs %>
 
       <div class="row">
