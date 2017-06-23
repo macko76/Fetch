@@ -2,12 +2,12 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT            = process.env.PORT || 8080;
+const ENV             = process.env.ENV || "development";
+const express         = require("express");
+const bodyParser      = require("body-parser");
+const sass            = require("node-sass-middleware");
+const app             = express();
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -19,6 +19,7 @@ const bcrypt      = require('bcrypt');
 const cookieSession = require('cookie-session'); 
 // Seperated Routes for each Resource
 const authRoutes = require("./routes/auth");
+const bcrypt          = require('bcrypt'); // MAB: I added this
 const resourceRoutes = require("./routes/resources");
 const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");

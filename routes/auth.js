@@ -40,6 +40,7 @@ module.exports = (knex) => {
 		userPromise
 			.then(user => {
 				if (!user) {
+    } else {
 					response.status(403).send('Your username or password or both is incorrect.');
 				} else {
 					request.session.userId = user.id;
@@ -56,4 +57,4 @@ module.exports = (knex) => {
 	// });
 
 	return router;
-}
+};

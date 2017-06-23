@@ -1,5 +1,21 @@
 .cards {
-  padding-top: 10px;
+    border-spacing: 25px 50px;
+}
+
+.cards h1 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.cards img {
+    width: 90%; 
+    display: block;
+    margin: auto;
+}
+
+.cards h3 {
+    padding: 10px;
+    font-size: 1em;
 }
 
 .row
@@ -16,4 +32,6 @@
     background-color: gainsboro;
     border-radius: 5px;
     border: 1px black solid;
+    box-shadow: 2px 2px 2px grey;
 }
+
