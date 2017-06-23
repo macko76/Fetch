@@ -20,6 +20,7 @@ const cookieSession = require('cookie-session');
 // Seperated Routes for each Resource
 const authRoutes = require("./routes/auth");
 const resourceRoutes = require("./routes/resources");
+const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -47,11 +48,16 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use("/api/resources", resourceRoutes(knex));
+app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/user", (req, res) => {
+  res.render("userResources");
 });
 
 app.listen(PORT, () => {

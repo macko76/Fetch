@@ -22,9 +22,12 @@ function renderResources(resources) {
     $resources.prepend($card);
   }
 };
+
 // getURLMetaData
 
 // addNewResource
+
+
 
 // editResource
 
@@ -32,9 +35,16 @@ function renderResources(resources) {
 
 // addComment
 
-// showAllResources
-
 // showUserResources
+
+// function renderUserResources(resources) {
+//   var $resources = $('.cards');
+//   $resources.empty();
+//   for(var i = 0; i < resources.length; i++) {
+//     var $card = createResourceCard(resources[i]);
+//     $resources.prepend($card);
+//   }
+// };
 
 // filterResultsByCategory
 

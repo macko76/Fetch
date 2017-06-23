@@ -5,12 +5,17 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-router.get("/", (req, res) => {
-    knex
+
+
+router.get("/", (request, response) => {   
+  knex
       .select("*")
       .from("resources")
+      .where({
+        id: request.session.userId
+      })
       .then((results) => {
-        res.json(results);
+        response.json(results);
     });
   });
 
@@ -26,3 +31,5 @@ router.get("/", (req, res) => {
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
 
 }
+
+
