@@ -1,9 +1,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('ratings', (table) => {
     table.increments('id').unsigned().primary();
-    table.integer('rating').notNull();
+    table.integer('rating').notNull().defaultTo(0);
     table.integer('resource_id').unsigned().index().references('id').inTable('resources');
-    table.timestamps();
+    table.timestamps(true, true);
   });
 };
 

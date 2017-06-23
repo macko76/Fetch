@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.text('body').notNull();
     table.integer('user_id').unsigned().index().references('id').inTable('users');
     table.integer('resource_id').unsigned().index().references('id').inTable('resources');
-    table.timestamps();
+    table.timestamps(true, true);
   });
 };
 

@@ -1,0 +1,42 @@
+.nav-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 80px;
+  top: 0;
+  background-color: $dusty;
+  font-color: $paper;
+  padding: 0 20px;
+  overflow: auto;
+  z-index: 1;
+
+  .profilePhoto {
+  width: 80px;
+  height: 80px;
+  float: left;
+  padding-right: 10px;
+  }
+
+  .header {
+  color: #fff;
+  font-size: 2em;
+  line-height: 40px;
+  padding: 20px;
+  }
+
+  .nav-menu {
+  padding: 5px;
+  line-height: 10px;
+  float: right;
+  font-color: $paper-light;
+  font-size: 0.5em;
+  background-color: $paper;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  opacity: 0.8;
+  &:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  }
+  }
+}

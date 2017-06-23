@@ -1,7 +1,150 @@
-body {
-  background-color: #EEE;
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+html {
+  box-sizing: border-box;
 }
 
-body h1 {
-  color: #244751;
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin-top: 50px;
+  font-size: 12px;
+  background-color: #f8f9f9;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {
+  width: auto;
+  background-color: white;
+  align-content: center;
+  margin: 80px;
+  padding: 40px 120px;
+}
+
+main .filter {
+  margin-bottom: 0px;
+}
+
+main .search-form {
+  margin-top: 50px;
+}
+
+.nav-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 80px;
+  top: 0;
+  background-color: #212E4E;
+  font-color: #A8ADB0;
+  padding: 0 20px;
+  overflow: auto;
+  z-index: 1;
+}
+
+.nav-bar .profilePhoto {
+  width: 80px;
+  height: 80px;
+  float: left;
+  padding-right: 10px;
+}
+
+.nav-bar .header {
+  color: #fff;
+  font-size: 2em;
+  line-height: 40px;
+  padding: 20px;
+}
+
+.nav-bar .nav-menu {
+  padding: 5px;
+  line-height: 10px;
+  float: right;
+  font-color: #f8f9f9;
+  font-size: 0.5em;
+  background-color: #A8ADB0;
+  border: 1px solid #444E5A;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.nav-bar .nav-menu:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.card {
+  background-color: #f8f9f9;
+  width: auto;
+  padding: 0 15px;
+  border: 1px solid #444E5A;
+  border-radius: 5px;
+  margin: 15px 0px;
+  content: "";
+  display: table;
+  clear: both;
+  /****** Style Star Rating Widget *****/
+  /***** CSS Magic to Highlight Stars on Hover *****/
+  /* hover previous stars in list */
+}
+
+.card h1 {
+  font-size: 1.5em;
+}
+
+.card p {
+  font-size: 1em;
+  padding: 10px 0px;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card .comment {
+  font-color: #60697A;
+  display: inline;
+  font-size: 1.3em;
+}
+
+.card .rating {
+  border: none;
+  float: right;
+  align: center;
+}
+
+.card .rating > input {
+  display: none;
+}
+
+.card .rating > label:before {
+  margin: 1px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.card .rating > label {
+  color: #ddd;
+  float: right;
+}
+
+.card .rating > input:checked ~ label,
+.card .rating:not(:checked) > label:hover,
+.card .rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+.card .rating > input:checked + label:hover,
+.card .rating > input:checked ~ label:hover,
+.card .rating > label:hover ~ input:checked ~ label,
+.card .rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
+
+.loginButtons {
+  display: inline;
 }

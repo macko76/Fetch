@@ -44,7 +44,6 @@ module.exports = (knex) => {
 				} else {
 					request.session.user = user; // why do i need this here???
 					request.session.userId = user.id;
-					// should eventually redirect to the user page : response.redirect('/user/ + user.id + '/fetch/');
 					response.redirect('/user');
 				}
 			});

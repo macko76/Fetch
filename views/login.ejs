@@ -5,32 +5,46 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="/styles/layout.css" type="text/css" />-->
-    <link rel="stylesheet" href="/styles/layout-new.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- Nav CSS -->
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <!-- External Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
 
-    <!-- Cards CSS -->
-    <link rel="stylesheet" href="/styles/cards.css" type="text/css" />
+     <!--Handlebars 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>-->
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/index.js"></script>
     <script type="text/javascript" src="/scripts/resourceFuncs.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    
+
   </head>
+
   <body>
+    <main>
     <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <div class="header"><a href="/">Fetch</a></div>
-    </nav>
+   <%- include partials/_navbar.ejs %>
 
     <h2>Welcome to the login page!</h2>
-    <form action="/login" method="POST">
-      Email: <input type="email" name="email" /><br>
-      Password: <input type="password" name="password" /><br>
-      <input type="submit" value="Login">
-    </form>
+
+
+    <div class="loginButtons">
+      <form action="/login" method="POST">
+        <input value="rebs@rebs.ca" name="email" style="display: none"/>
+        <input value="rebs" name="password" style="display: none"/>
+         <input type="submit" value="Rebecca">
+      </form> <form action="/login" method="POST">
+        <input value="mark@mark.ca" name="email" style="display: none"/>
+        <input value="mark" name="password" style="display: none"/>
+        <input type="submit" value="Mark">
+      </form> <form action="/login" method="POST">
+        <input value="mike@mike.ca" name="email" style="display: none"/>
+        <input value="mike" name="password" style="display: none"/>
+        <input type="submit" value="Mike">
+      </form>
+    </div>
+    </main>
   </body>
 </html>

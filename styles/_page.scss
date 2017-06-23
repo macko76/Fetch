@@ -1,0 +1,39 @@
+$dusty: #212E4E;
+$lavendar: #60697A;
+$grey: #444E5A;
+$light-grey: #DFDFDF;
+$paper: #A8ADB0;
+$paper-light: lighten($paper, 30%);
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  margin-top: 50px;
+  font-size: 12px;
+  background-color: $paper-light;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {
+	width: auto;
+	background-color: white;
+	align-content: center;
+	margin: 80px;
+	padding: 40px 120px;
+
+  .filter {
+    margin-bottom: 0px;
+  }
+
+  .search-form {
+    margin-top: 50px;
+  }
+}
+
