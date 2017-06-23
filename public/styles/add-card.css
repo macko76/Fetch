@@ -1,0 +1,22 @@
+.add-card {
+  font-size: .9em;
+  margin-top: 20px;
+  width: 150px; 
+  height: 150px;
+  float: left;
+  border-radius: 5px;
+  border: 1px black solid;
+  background: white;
+  opacity: 0.9;
+  color: grey;
+  font-size: 2em;
+}
+
+.add-card:hover, .add-card:active  {
+  color: black;
+  transition: .3s all ease-in;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px black;
+}
+
