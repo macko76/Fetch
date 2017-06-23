@@ -26,7 +26,8 @@ module.exports = (knex) => {
     if (cookieSession.userID) {
       alert('You are already logged in!');
     } else {
-      response.render('login');
+		var user = request.session.user;
+      response.render('login', {user});
 		}
   });
 

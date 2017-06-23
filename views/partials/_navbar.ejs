@@ -1,10 +1,20 @@
  <nav class="nav-bar">
-      <div class="header">
+    <div class="header">
         Fetch
         <div class="nav-menu">
-          <a href="/login">Login</a>
+        <% if (user) {%>
+        <div class="nav-pic-container">
+        <a href="/user/profile"><img class="nav-profile-pic" src="<%= user.profile_photo %>"/></a>
         </div>
-      </div>
-    </nav>
+        <% } else { %>
+        <div class="nav-login-container">
+        <a href="/login" class="login-button">Login</a>
+        </div>
+      <% } %>
+        </div>
+    </div>
+</nav>
     
     
+
+            

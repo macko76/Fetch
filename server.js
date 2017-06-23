@@ -61,23 +61,26 @@ app.use("/api/userProfile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  var user = req.session.user;
+  res.render("index", {user});
 });
 
 
 app.get("/user", auth, (req, res) => {
-  res.render("user-resources");
+  var user = req.session.user;
+  res.render("user-resources", {user});
 });
 
 app.get("/user/profile", auth, (req, res) => {
-  res.render('user-profile');
+  var user = req.session.user;
+  res.render('user-profile', {user});
 });
 
 // -------------------------------- Logout
 app.post("/logout", (req, res) => {
   req.session = null;
   console.log("Logout successful");
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
