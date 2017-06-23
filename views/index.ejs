@@ -24,22 +24,14 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav class="nav-bar">
-      <div class="header">Fetch</div>
-      <a href="/login"></a>Login</a>
-    </nav>
+   <%- include partials/_navbar.ejs %>
 
     <!-- Page-specific (main) content here -->
     <main>
-      
+      <h1>Welcome to Fetch.</h1>
+      <h3>Your easy resource storage system.</h3>
 
-      <form action="#####" method="POST">
-        <input id="searchText" type="text" name="searchText" placeholder="Whatchalookinfor???" style="width: 300px"><br>
-        <input type="submit" value="Search">
-      </form>
-      <form action="#####" method="POST">
-        <input type="submit" value="Filter">
-      </form>
+      <p> <%- include partials/_searchAndFilter.ejs %></p>
 
       <div class="row">
         
