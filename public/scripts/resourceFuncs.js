@@ -1,3 +1,12 @@
+
+
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+
 // createResourceCard
 
 function createResourceCard(resource) {
@@ -7,9 +16,9 @@ function createResourceCard(resource) {
 
   return `<div class="col-md-4">
             <div class="card">
-            <h1>${title}</h1>
-            <img src="${imageURL}">
-            <p>${description}</p>
+            <h1>${escape(title)}</h1>
+            <img src="${escape(imageURL)}">
+            <p>${escape(description)}</p>
             <div class="comment">Comment</div><fieldset class="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
               <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
@@ -43,9 +52,9 @@ function renderProfileData(user) {
   var image = user.profile_photo;
 
   return `<div class="user-info">
-            <h1>${first} ${last}</h1><br>
-            <img src="${image}">
-            <h3>${email}</h3>
+            <h1>${escape(first) + " " + escape(last)}</h1><br>
+            <img src="${escape(image)}">
+            <h3>${escape(email)}</h3>
           </div>`;
 
 };
