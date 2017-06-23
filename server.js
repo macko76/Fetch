@@ -19,7 +19,6 @@ const bcrypt      = require('bcrypt');
 const cookieSession = require('cookie-session'); 
 // Seperated Routes for each Resource
 const authRoutes = require("./routes/auth");
-const bcrypt          = require('bcrypt'); // MAB: I added this
 const resourceRoutes = require("./routes/resources");
 const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");

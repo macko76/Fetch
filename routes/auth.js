@@ -40,12 +40,11 @@ module.exports = (knex) => {
 		userPromise
 			.then(user => {
 				if (!user) {
-    } else {
 					response.status(403).send('Your username or password or both is incorrect.');
 				} else {
 					request.session.userId = user.id;
 					// should eventually redirect to the user page : response.redirect('/user/ + user.id + '/fetch/');
-					response.redirect('/');
+					response.redirect('/user');
 				}
 			});
 	});

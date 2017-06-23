@@ -37,9 +37,8 @@ module.exports = (knex) => {
       then((results) => {
         res.json(results);
       });
-
-    response.render('profile');
-  };
+      response.render('profile');
+  });
 
   return router;
 };
