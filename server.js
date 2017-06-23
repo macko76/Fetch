@@ -57,6 +57,7 @@ function auth(req, res, next) {
 app.use("/api/resources", resourceRoutes(knex));
 app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
+app.use("/api/userProfile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

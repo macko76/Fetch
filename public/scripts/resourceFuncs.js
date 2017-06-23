@@ -24,6 +24,32 @@ function renderResources(resources) {
   }
 };
 
+
+
+//  renderProfile data
+
+function renderProfileData(user) {
+  var first = user.first_name;
+  var last = user.last_name;
+  var email = user.email;
+  var image = user.profile_photo;
+
+  return `<div class="user-info">
+            <h1>${first} ${last}</h1><br>
+            <img src="${image}">
+            <h3>${email}</h3>
+          </div>`;
+
+};
+
+function renderProfile(data) {
+  console.log(data);
+  var $profile = $('.user-info');
+  $profile.empty();
+    var $card = renderProfileData(data[0]);
+    $profile.prepend($card);
+};
+
 // getURLMetaData
 
 // addNewResource
