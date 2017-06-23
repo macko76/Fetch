@@ -15,6 +15,7 @@ function createResourceCard(resource) {
   var imageURL = resource.url;
 
   return `<div class="col-md-4">
+            
             <div class="card">
             <h1>${escape(title)}</h1>
             <img src="${escape(imageURL)}">
