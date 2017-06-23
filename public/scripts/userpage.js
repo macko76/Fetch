@@ -13,6 +13,10 @@ $(() => {
   .appendTo($resourceCard);
   };
 
+  $('.add-card').on('click', function(){
+    $('.new-card').toggle();
+    $('.cardUrl').focus();
+  });
 
   // function addEditButton () {
   //   const $resourceCard = $('.card');

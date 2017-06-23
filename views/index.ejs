@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Fetch</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/add-card.css" type="text/css" />
+    <%- include partials/_head.ejs %>
 
-    <!-- External Font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-
-     <!--Handlebars 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>-->
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/scripts/index.js"></script>
-    <script type="text/javascript" src="/scripts/resourceFuncs.js"></script>
-    <script type="text/javascript" src="/scripts/add-card.js"></script>
-
-  </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
@@ -37,15 +18,15 @@
       <h3>Your easy resource storage system.</h3>
       <% } %>
 
+      
       <p> <%- include partials/_searchAndFilter.ejs %></p>
-
-      <button type="submit" class="add-card"> + Add card</button>
 
       <div class="row">
         <!-- filled in when renderResources function is called in resourceFuncs.js -->
       </div>
 
     </main>
-
+    <script type="text/javascript" src="/scripts/index.js"></script>
   </body>
+  
 </html>
