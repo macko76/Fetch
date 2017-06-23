@@ -5,11 +5,12 @@ function createResourceCard(resource) {
   var description = resource.description;
   var imageURL = resource.url;
 
+  return `<div class="column">
+            <h1>${title}</h1><br>
+            <img src="${imageURL}">
+            <h3>${description}</h3>
+          </div>`;
 
-  return `npm<div class="column">
-  <h1>${title}</h1><br>
-  <img src="${imageURL}"><h3>${description}</h3>
-  </div>`;
 };
 
 // renderResources
@@ -22,6 +23,7 @@ function renderResources(resources) {
     $resources.prepend($card);
   }
 };
+
 // getURLMetaData
 
 // addNewResource

@@ -8,33 +8,25 @@
     <!--<link rel="stylesheet" href="/styles/layout.css" type="text/css" />-->
     <link rel="stylesheet" href="/styles/layout-new.css" type="text/css" />
 
-    <!-- External Font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-
     <!-- Nav CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
     <!-- Cards CSS -->
     <link rel="stylesheet" href="/styles/cards.css" type="text/css" />
 
-    <!-- Ratings CSS -->
-    <link rel="stylesheet" href="/styles/ratings.css" type="text/css" />
-
-     <!--Handlebars 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>-->
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/index.js"></script>
     <script type="text/javascript" src="/scripts/resourceFuncs.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+    
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <div class="header">Fetch</div>
-      <button type="submit" class="btn-compose"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Login</button>
+      <h2>Welcome, USER</h2> 
+      <img class="nav-profile-pic" src="test.png"/>
     </nav>
 
     <!-- Page-specific (main) content here -->
@@ -46,18 +38,14 @@
       <form action="#####" method="POST">
         <input type="submit" value="Filter">
       </form>
+    </main>
 
-      <div class="cards">
-
-        <% include ./partials/_ratings %>
-        <!-- filled in when renderResources function is called in resourceFuncs.js -->
-        <form action="#####" method="POST">
-          <input type="text" name="comments" placeholder="Comments???"><br>
-          <input type="submit" value="Submit">
-        </form>
-        
+    <main class="cards">
+      <div class="row">
+        <div class="column">Title 1</div>
+        <div class="column">Title 2</div>
+        <div class="column">Title 3</div>
       </div>
-
     </main>
 
   </body>
