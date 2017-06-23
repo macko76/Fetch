@@ -6,10 +6,10 @@ const router = express.Router();
 module.exports = (knex) => {
 
 
-router.get("/", (request, response) => {   
+router.get('/', (request, response) => {   
   knex
-      .select("*")
-      .from("users")
+      .select('first_name', 'last_name', 'email', 'profile_photo')
+      .from('users')
       .where({
         id: request.session.userId
       })
@@ -35,7 +35,7 @@ router.get("/", (request, response) => {
   // router.get('/user/profile', auth, (request, response) => {
   //   knex
   //     .select()
-  //     .from("users")
+  //     .from('users')
   //     .where({id: req.param.id})
   //     .then((results) => {
   //       res.json(results);
@@ -59,7 +59,7 @@ router.get("/", (request, response) => {
   //       email: email,
   //       password: password,
   //       profile_photo: profile_photo
-  //     }).into("users");
+  //     }).into('users');
   //     then((results) => {
   //       res.json(results);
   //     });
