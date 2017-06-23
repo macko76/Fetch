@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  res.render("userResources");
+  res.render("user-resources");
 });
 
 app.listen(PORT, () => {
