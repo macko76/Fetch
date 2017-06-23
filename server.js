@@ -45,11 +45,19 @@ app.use(cookieSession({
   secret: 'no secret'
 }));
 
+function auth(req, res, next) {
+  if (req.session.userId) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
 
 // Mount all resource routes
 app.use("/api/resources", resourceRoutes(knex));
 app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
+app.use("/api/userProfile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
@@ -59,6 +67,10 @@ app.get("/", (req, res) => {
 app.get("/user", (req, res) => {
   res.render("user-resources");
 });
+
+app.get("/user/profile", auth, (req, res) => {
+  res.render('user-profile');
+})
 
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);
