@@ -75,10 +75,10 @@ main .search-form {
 }
 
 .nav-pic-container {
-  width: 108px;
-  height: 108px;
+  width: 112px;
+  height: 112px;
   z-index: 1;
-  padding: 2px;
+  padding: 4px;
   position: fixed;
   left: 20px;
   top: 10px;
