@@ -1,8 +1,9 @@
-<div class="search-form"><form action="#####" method="POST"></div>
-        <input id="searchText" type="text" name="searchText" placeholder="Whatchalookinfor???" style="width: 300px"><br>
-        <input type="submit" value="Search">
-      </form>
-
- <div class="filter">    <form action="#####" method="POST">
-        <input type="submit" value="Filter">
-      </form></div> 
+<div class="search-filter">
+  <form action="/user/resources/search" method="POST">
+    <input class="form-control" type="text" name="searchText" placeholder="Search for...">
+     <input class='btn' type="submit" value="Search">
+  </form>
+ 
+  <form action="/user/resources/filter" method="POST">
+    <input class='btn' type="submit" value="Filter">
+  </div>

@@ -40,6 +40,9 @@ main {
     font-size: 3em;
     line-height: 40px;
     padding: 20px; }
+  .nav-bar .form-control {
+    display: inline;
+    width: auto; }
 
 .nav-menu {
   position: fixed;
@@ -96,7 +99,7 @@ main {
     color: white;
     text-decoration: none; }
 
-.card {
+.card, .new-card {
   background-color: #f8f9f9;
   width: auto;
   padding: 0 15px;
@@ -109,91 +112,71 @@ main {
   /****** Style Star Rating Widget *****/
   /***** CSS Magic to Highlight Stars on Hover *****/
   /* hover previous stars in list */ }
-  .card h1 {
+  .card h1, .new-card h1 {
     font-size: 1.5em; }
-  .card p {
+  .card p, .new-card p {
     font-size: 1em;
     padding: 10px 0px; }
-  .card img {
+  .card img, .new-card img {
     width: 100%;
     display: block; }
-  .card .edit-button {
+  .card .edit-button, .new-card .edit-button {
     float: right; }
-  .card .comment {
+  .card .comment, .new-card .comment {
     font-color: #60697A;
     display: inline;
     font-size: 1.3em; }
-  .card #comments-container {
+  .card #comments-container, .new-card #comments-container {
     width: 100%;
     font-color: #60697A;
     display: none; }
-  .card .rating {
+  .card .rating, .new-card .rating {
     border: none;
     float: right;
     align: center; }
-  .card .rating > input {
+  .card .rating > input, .new-card .rating > input {
     display: none; }
-  .card .rating > label:before {
+  .card .rating > label:before, .new-card .rating > label:before {
     margin: 1px;
     font-size: 1.25em;
     font-family: FontAwesome;
     display: inline-block;
     content: "★"; }
-  .card .rating > label {
+  .card .rating > label, .new-card .rating > label {
     color: #ddd;
     float: right; }
-  .card .rating > input:checked ~ label,
+  .card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
   .card .rating:not(:checked) > label:hover,
-  .card .rating:not(:checked) > label:hover ~ label {
+  .new-card .rating:not(:checked) > label:hover,
+  .card .rating:not(:checked) > label:hover ~ label,
+  .new-card .rating:not(:checked) > label:hover ~ label {
     color: #FFD700; }
-  .card .rating > input:checked + label:hover,
+  .card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
   .card .rating > input:checked ~ label:hover,
+  .new-card .rating > input:checked ~ label:hover,
   .card .rating > label:hover ~ input:checked ~ label,
-  .card .rating > input:checked ~ label:hover ~ label {
+  .new-card .rating > label:hover ~ input:checked ~ label,
+  .card .rating > input:checked ~ label:hover ~ label,
+  .new-card .rating > input:checked ~ label:hover ~ label {
     color: #FFED85; }
 
-.add-card {
-  background-color: #f8f9f9;
-  width: auto;
-  padding: 0 15px;
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  margin: 15px 0px;
-  font-size: .9em;
-  width: auto;
-  height: 300px;
+.add-new-card, .hide-add-new-card {
   opacity: 0.9;
-  font-size: 2em; }
-
-.add-card:hover, .add-card:active {
-  color: black;
-  transition: .3s all ease-in;
-  opacity: 1;
-  cursor: pointer;
-  box-shadow: 2px 2px 2px black; }
+  font-size: 1.2em;
+  font-color: white; }
+  .add-new-card:hover, .hide-add-new-card:hover, .add-new-card:active, .hide-add-new-card:active {
+    color: #DFDFDF;
+    opacity: 1; }
 
 .new-card {
-  font-size: .9em;
-  width: 300px;
-  height: 400px;
-  float: left;
-  border-radius: 5px;
-  border: 1px black solid;
-  background: white;
-  opacity: 0.9;
-  color: grey;
-  font-size: 2em; }
-  .new-card .cardUrl {
-    width: 250px;
-    margin-left: -130px;
-    margin-top: -2000px;
-    margin-bottom: 10px; }
-    .new-card .cardUrl .cardTitle {
-      margin-left: -130px;
-      margin-bottom: 10px;
-      width: 250px; }
-      .new-card .cardUrl .cardTitle .cardText {
-        margin-left: -130px;
-        width: 250px; }
+  padding: 30px;
+  display: inline-block; }
+  .new-card .form-control {
+    width: 200px; }
+
+.search-filter {
+  padding: 20px 0px; }
+  .search-filter .form-control {
+    width: 300px; }
 
 /*# sourceMappingURL=layout.css.map */

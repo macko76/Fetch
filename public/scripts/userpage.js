@@ -12,14 +12,20 @@ $(() => {
 
   fetchingAndRendering();
 
-  $('.add-card').on('click', function(){
-    $('.add-card').toggle();
-    $('.new-card').toggle();
+  $('.add-new-card').on('click', function(){
+    $('.add-new-card').toggle();
+    $('.hide-add-new-card').toggle();    
+    $('.new-card').slideToggle();
     $('.cardUrl').focus();
   });
 
+   $('.hide-add-new-card').on('click', function(){
+    $('.add-new-card').toggle();
+    $('.hide-add-new-card').toggle();    
+    $('.new-card').slideToggle();
+    $('.cardUrl').focus();
+  });
 
- 
 
   $('form').on('submit', function(e){
     e.preventDefault();

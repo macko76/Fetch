@@ -12,12 +12,13 @@ function escape(str) {
 function createResourceCard(resource) {
   var title = resource.title;
   var description = resource.description;
-  var imageURL = resource.url;
+  var resourceURL = resource.url;
+  var imageURL = resource.image;
 
   return `<div class="col-md-4">
             <div class="card">
             <h1>${escape(title)}</h1>
-            <img src="${escape(imageURL)}">
+            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a>
             <p>${escape(description)}</p>
             <div class="comment">Comment</div><fieldset class="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -61,7 +62,7 @@ function renderResources(resources) {
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
     var $card = createResourceCard(resources[i]);
-    $resources.prepend($card);
+    $resources.append($card);
   }
 };
 
@@ -113,46 +114,46 @@ function renderProfile(data) {
 
 // $(function(){
 
-  function createCardElement(cardObject){
-    console.log(cardObject);
-  }
+//   function createCardElement(cardObject){
+//     console.log(cardObject);
+//   }
 
-  function addNewResource(resource){
-    var $newCard = $('.new-card').empty();
-    resource.forEach(function(div){
-      $newCard.append(createCardElement(div));
-    });
-  };
+//   function addNewResource(resource){
+//     var $newCard = $('.new-card').empty();
+//     resource.forEach(function(div){
+//       $newCard.append(createCardElement(div));
+//     });
+//   };
 
-  function loadCard(){
-    $.ajax({
-      method: "GET",
-      url: "/user"
-    }).done(function(data){
-      addNewResource(data);      
-    });
-  }
+//   function loadCard(){
+//     $.ajax({
+//       method: "GET",
+//       url: "/user"
+//     }).done(function(data){
+//       addNewResource(data);      
+//     });
+//   }
 
-// ----------------------------------------------------- Form submission using Jquery
-  $('.cardCreate').on('submit', function(e){
-    e.preventDefault();
-    var cardUrlLength = $('.cardUrl').val().length;
+// // ----------------------------------------------------- Form submission using Jquery
+//   $('.cardCreate').on('submit', function(e){
+//     e.preventDefault();
+//     var cardUrlLength = $('.cardUrl').val().length;
 
-// ----------------------------------------------------- Validation 1
-    if (cardUrlLength === 0) {
-      showError("You didn't create a link :(");
-      return;
-    }
+// // ----------------------------------------------------- Validation 1
+//     if (cardUrlLength === 0) {
+//       showError("You didn't create a link :(");
+//       return;
+//     }
 
-    $.ajax({
-      method: "POST",
-      url: "/user",
-      data: $(this).serialize()
-    }).done(function(){
-      loadCard();
-    });
+//     $.ajax({
+//       method: "POST",
+//       url: "/user",
+//       data: $(this).serialize()
+//     }).done(function(){
+//       loadCard();
+//     });
 
-  });
+//   });
 
 // });
 
