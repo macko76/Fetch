@@ -6,22 +6,22 @@
     <!-- Top nav bar (fixed) -->
    <%- include partials/_navbar.ejs %>
 
-    <h2>Welcome to the login page!</h2>
+    <h2>Welcome to Fetch! Please login.</h2>
 
 
-    <div class="loginButtons">
+    <div class="login-buttons">
       <form action="/login" method="POST">
         <input value="rebs@rebs.ca" name="email" style="display: none"/>
         <input value="rebs" name="password" style="display: none"/>
-         <input type="submit" value="Rebecca">
+         <input class="btn btn-default form-control" type="submit" value="Rebecca">
       </form> <form action="/login" method="POST">
         <input value="mark@mark.ca" name="email" style="display: none"/>
         <input value="mark" name="password" style="display: none"/>
-        <input type="submit" value="Mark">
+        <input class="btn btn-default form-control" type="submit" value="Mark">
       </form> <form action="/login" method="POST">
         <input value="mike@mike.ca" name="email" style="display: none"/>
         <input value="mike" name="password" style="display: none"/>
-        <input type="submit" value="Mike">
+        <input class="btn btn-default form-control" type="submit" value="Mike">
       </form>
     </div>
     </main>
