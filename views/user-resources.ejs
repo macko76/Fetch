@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="stylesheet" href="/styles/add-card.css" type="text/css" />
   <%- include partials/_head.ejs %>
   <body>
+
     <%- include partials/_navbar.ejs %>
     <main>
-
       <h1>Hi, <%= user.first_name %>!</h1>
       <h3>Here are your saved resources.</h3>
-      <%- include partials/_searchAndFilter.ejs %>
+       <br> 
 
-      <button type="submit" class="add-card"> &#10133; Add card</button>
 
-      <div class="new-card" style="display:none;">
-        <form class="cardCreate" action="/user" name="newcardform" method="POST" style="margin:150px;">
-          <input class="cardUrl" type="text" name="cardUrl" placeholder="http://">
-          <input class="cardTitle" type="text" name="cardTitle" placeholder="Title"><br>
-          <textarea class="cardText" name="cardDescription" placeholder="Description"></textarea>
-          <input class="cardSubmit" type="submit" value="Submit">
-        </form>
+      <div class="row">
+       <div class="col-md-4"><%- include partials/_addCard.ejs %></div>
+       <div class="col-md-4"><%- include partials/_filter.ejs %></div>
+       <div class="col-md-4"><%- include partials/_search.ejs %></div>
       </div>
 
       <div class="row">
+       <div class="user-cards">
+        
+      
+        </div>
       </div>
+    
+           
+          </main>
+          <script type="text/javascript" src="/scripts/userpage.js"></script>
+        </body>
+      </html>
 
-    </main>
-    <script type="text/javascript" src="/scripts/add-card.js"></script>
-    <script type="text/javascript" src="/scripts/userpage.js"></script>
-  </body>
-</html>

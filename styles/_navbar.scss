@@ -18,6 +18,10 @@
   line-height: 40px;
   padding: 20px;
   }
+  .form-control {
+    display: inline;
+    width: auto;
+  }
 }
 
 .nav-menu {
@@ -37,18 +41,23 @@
   }
 
   .nav-pic-container {
+  width: 108px;
+  height: 108px;
   z-index: 1;
   padding: 2px;
   position: fixed;
   left: 20px;
   top: 10px;
+  border: 2px solid $dusty;
   float: left;
   font-size: 0.5em;
   background-color: $paper-light;
-  border: 1px solid $light-grey;
   border-radius: 60px;
   .nav-profile-pic{
     border-radius: 60px;
+    border: none;
+    width: 100px;
+    height: 100px;
     &:hover {
     opacity: 0.9;
     cursor: pointer;
@@ -56,7 +65,7 @@
   }
 }
   .nav-login-container {
-  padding: 5px 10px;
+  padding: 6px 10px;
   color: white;
   position: fixed;
   left: 20px;

@@ -2,6 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('resources', (table) => {
     table.increments('id').unsigned().primary();
     table.string('url').notNull();
+    table.string('image').notNull();
     table.string('title').notNull();
     table.text('description');
     table.timestamps(true, true);

@@ -10,7 +10,8 @@ function escape(str) {
 function createResourceCard(resource) {
   var title = resource.title;
   var description = resource.description;
-  var imageURL = resource.url;
+  var resourceURL = resource.url;
+  var imageURL = resource.image;
 
   return `<div class="col-md-4">
             <div class="card">
@@ -30,13 +31,13 @@ function createResourceCard(resource) {
 };
 
 
-function createUserResourceCard(resource) {
-  var title = resource.title;
-  var description = resource.description;
-  var imageURL = resource.url;
+// function createUserResourceCard(resource) {
+//   var title = resource.title;
+//   var description = resource.description;
+//   var imageURL = resource.url;
 
-  return `<div class="col-md-4">
-            <div class="card">
+//   return `<div class="col-md-4">
+//             <div class="card">
             <div class="row">
               <div class="col-md-10">
                 <p class="card-title">${escape(title)}</p>
@@ -44,17 +45,17 @@ function createUserResourceCard(resource) {
               <div class="col-md-2">
                 <button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
               </div>          
-            <img src="${escape(imageURL)}">
-            <p>${escape(description)}</p>
-            <div class="comment">Comment</div><fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
-             </fieldset>
-             <div id="comments-container"></div>
-             <button type="submit" class="add-card"> &#10133; Add card</button>
+//             <img src="${escape(imageURL)}">
+//             <p>${escape(description)}</p>
+//             <div class="comment">Comment</div><fieldset class="rating">
+//               <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+//               <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+//               <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+//               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+//               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
+//              </fieldset>
+//              <div id="comments-container"></div>
+//           </div></div>`;
 
             <div class="edit-card-button">
               <form action="users/resources/edit" method="POST" style="margin:150px;">
@@ -65,14 +66,12 @@ function createUserResourceCard(resource) {
               </form>
             </div>
             
-          </div></div>`;
-
-};
+// };
 
 // renderResources
 
 function renderResources(resources) {
-  var $resources = $('.row');
+  var $resources = $('.all-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
     var $card = createResourceCard(resources[i]);
@@ -82,10 +81,10 @@ function renderResources(resources) {
 
 
 function renderUserResources(resources) {
-  var $resources = $('.row');
+  var $resources = $('.user-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
-    var $card = createUserResourceCard(resources[i]);
+    var $card = createResourceCard(resources[i]);
     $resources.prepend($card);
   }
 };

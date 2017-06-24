@@ -2,7 +2,7 @@
   background-color: $paper-light;
   width: auto;
   padding: 0 15px;
-  border: 1px solid $grey;
+  border: 1px solid $light-grey;
   border-radius: 5px;
   margin: 15px 0px;
   content: "";
@@ -90,4 +90,36 @@
   .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
   .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
+}
+
+.add-new-card {
+  opacity: 0.9;
+  font-size: 1.2em;
+  font-color: white;
+  &:hover, &:active {
+  color: $light-grey;
+  opacity: 1;
+
+  }
+}
+
+.hide-add-new-card {
+  @extend .add-new-card;
+}
+
+.new-card {
+  @extend .card;
+  padding: 30px;
+  display: inline-block;
+ .form-control {
+    width: 200px;
+  }
+}
+
+.user-cards {
+  margin-top: 70px;
+}
+
+.all-cards {
+  @extend .user-cards;
 }

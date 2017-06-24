@@ -52,6 +52,11 @@ main .search-form {
   padding: 20px;
 }
 
+.nav-bar .form-control {
+  display: inline;
+  width: auto;
+}
+
 .nav-menu {
   position: fixed;
   left: 140px;
@@ -70,20 +75,25 @@ main .search-form {
 }
 
 .nav-pic-container {
+  width: 108px;
+  height: 108px;
   z-index: 1;
   padding: 2px;
   position: fixed;
   left: 20px;
   top: 10px;
+  border: 2px solid #212E4E;
   float: left;
   font-size: 0.5em;
   background-color: #f8f9f9;
-  border: 1px solid #DFDFDF;
   border-radius: 60px;
 }
 
 .nav-pic-container .nav-profile-pic {
   border-radius: 60px;
+  border: none;
+  width: 100px;
+  height: 100px;
 }
 
 .nav-pic-container .nav-profile-pic:hover {
@@ -92,7 +102,7 @@ main .search-form {
 }
 
 .nav-login-container {
-  padding: 5px 10px;
+  padding: 6px 10px;
   color: white;
   position: fixed;
   left: 20px;
@@ -116,11 +126,11 @@ main .search-form {
   text-decoration: none;
 }
 
-.card {
+.card, .new-card {
   background-color: #f8f9f9;
   width: auto;
   padding: 0 15px;
-  border: 1px solid #444E5A;
+  border: 1px solid #DFDFDF;
   border-radius: 5px;
   margin: 15px 0px;
   content: "";
@@ -153,43 +163,43 @@ main .search-form {
   font-size: 20px;
 }
 
-.card p {
+.card p, .new-card p {
   font-size: 1em;
   padding: 10px 0px;
 }
 
-.card img {
+.card img, .new-card img {
   width: 100%;
   display: block;
 }
 
-.card .edit-button {
+.card .edit-button, .new-card .edit-button {
   float: right;
 }
 
-.card .comment {
+.card .comment, .new-card .comment {
   font-color: #60697A;
   display: inline;
   font-size: 1.3em;
 }
 
-.card #comments-container {
+.card #comments-container, .new-card #comments-container {
   width: 100%;
   font-color: #60697A;
   display: none;
 }
 
-.card .rating {
+.card .rating, .new-card .rating {
   border: none;
   float: right;
   align: center;
 }
 
-.card .rating > input {
+.card .rating > input, .new-card .rating > input {
   display: none;
 }
 
-.card .rating > label:before {
+.card .rating > label:before, .new-card .rating > label:before {
   margin: 1px;
   font-size: 1.25em;
   font-family: FontAwesome;
@@ -197,20 +207,57 @@ main .search-form {
   content: "★";
 }
 
-.card .rating > label {
+.card .rating > label, .new-card .rating > label {
   color: #ddd;
   float: right;
 }
 
-.card .rating > input:checked ~ label,
-.card .rating:not(:checked) > label:hover,
-.card .rating:not(:checked) > label:hover ~ label {
+.card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
+.card .rating:not(:checked) > label:hover, .new-card .rating:not(:checked) > label:hover,
+.card .rating:not(:checked) > label:hover ~ label, .new-card .rating:not(:checked) > label:hover ~ label {
   color: #FFD700;
 }
 
-.card .rating > input:checked + label:hover,
-.card .rating > input:checked ~ label:hover,
-.card .rating > label:hover ~ input:checked ~ label,
-.card .rating > input:checked ~ label:hover ~ label {
+.card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
+.card .rating > input:checked ~ label:hover, .new-card .rating > input:checked ~ label:hover,
+.card .rating > label:hover ~ input:checked ~ label, .new-card .rating > label:hover ~ input:checked ~ label,
+.card .rating > input:checked ~ label:hover ~ label, .new-card .rating > input:checked ~ label:hover ~ label {
   color: #FFED85;
+}
+
+.add-new-card, .hide-add-new-card {
+  opacity: 0.9;
+  font-size: 1.2em;
+  font-color: white;
+}
+
+.add-new-card:hover, .hide-add-new-card:hover, .add-new-card:active, .hide-add-new-card:active {
+  color: #DFDFDF;
+  opacity: 1;
+}
+
+.new-card {
+  padding: 30px;
+  display: inline-block;
+}
+
+.new-card .form-control {
+  width: 200px;
+}
+
+.user-cards, .all-cards {
+  margin-top: 70px;
+}
+
+.search-filter {
+  overflow: hidden;
+}
+
+.search-filter .form-control {
+  width: 200px;
+  display: inline;
+}
+
+.search-filter .btn {
+  width: 52px;
 }
