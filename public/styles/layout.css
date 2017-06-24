@@ -126,6 +126,10 @@ main .search-form {
   text-decoration: none;
 }
 
+.btn {
+  display: inline;
+}
+
 .card, .new-card {
   background-color: #f8f9f9;
   width: auto;
@@ -141,8 +145,26 @@ main .search-form {
   /* hover previous stars in list */
 }
 
-.card h1, .new-card h1 {
+.card .card-title, .new-card .card-title {
   font-size: 1.5em;
+}
+
+.card .edit-button, .new-card .edit-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #f8f9f9;
+  margin: 15px 20px 0px 0px;
+}
+
+.card .edit-button:hover, .new-card .edit-button:hover {
+  border: none;
+  border-radius: 5px;
+  background-color: #DFDFDF;
+  margin: 15px 20px 0px 0px;
+}
+
+.card .glyphicon.glyphicon-pencil, .new-card .glyphicon.glyphicon-pencil {
+  font-size: 20px;
 }
 
 .card p, .new-card p {
@@ -242,4 +264,23 @@ main .search-form {
 
 .search-filter .btn {
   width: 52px;
+}
+
+.login-buttons {
+  margin: 50px 20px;
+}
+
+.login-buttons form {
+  display: inline;
+}
+
+.login-buttons .btn-default {
+  width: auto;
+  margin: 5px 5px 5px 0px;
+}
+
+.login-buttons .btn-default:hover {
+  background-color: #212E4E;
+  color: white;
+  border-color: #212E4E;
 }
