@@ -130,8 +130,26 @@ main .search-form {
   /* hover previous stars in list */
 }
 
-.card h1 {
+.card .card-title {
   font-size: 1.5em;
+}
+
+.card .edit-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #f8f9f9;
+  margin: 15px 20px 0px 0px;
+}
+
+.card .edit-button:hover {
+  border: none;
+  border-radius: 5px;
+  background-color: #DFDFDF;
+  margin: 15px 20px 0px 0px;
+}
+
+.card .glyphicon.glyphicon-pencil {
+  font-size: 20px;
 }
 
 .card p {
