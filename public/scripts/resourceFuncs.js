@@ -113,46 +113,46 @@ function renderProfile(data) {
 
 // $(function(){
 
-//   function createCardElement(cardObject){
-//     console.log(cardObject);
-//   }
+  function createCardElement(cardObject){
+    console.log(cardObject);
+  }
 
-//   function addNewResource(resource){
-//     var $newCard = $('.new-card').empty();
-//     resource.forEach(function(div){
-//       $newCard.append(createCardElement(div));
-//     });
-//   };
+  function addNewResource(resource){
+    var $newCard = $('.new-card').empty();
+    resource.forEach(function(div){
+      $newCard.append(createCardElement(div));
+    });
+  };
 
-//   function loadCard(){
-//     $.ajax({
-//       method: "GET",
-//       url: "/user"
-//     }).done(function(data){
-//       addNewResource(data);      
-//     });
-//   }
+  function loadCard(){
+    $.ajax({
+      method: "GET",
+      url: "/user"
+    }).done(function(data){
+      addNewResource(data);      
+    });
+  }
 
-// // ----------------------------------------------------- Form submission using Jquery
-//   $('.cardCreate').on('submit', function(e){
-//     e.preventDefault();
-//     var cardUrlLength = $('.cardUrl').val().length;
+// ----------------------------------------------------- Form submission using Jquery
+  $('.cardCreate').on('submit', function(e){
+    e.preventDefault();
+    var cardUrlLength = $('.cardUrl').val().length;
 
-// // ----------------------------------------------------- Validation 1
-//     if (cardUrlLength === 0) {
-//       showError("You didn't create a link :(");
-//       return;
-//     }
+// ----------------------------------------------------- Validation 1
+    if (cardUrlLength === 0) {
+      showError("You didn't create a link :(");
+      return;
+    }
 
-//     $.ajax({
-//       method: "POST",
-//       url: "/user",
-//       data: $(this).serialize()
-//     }).done(function(){
-//       loadCard();
-//     });
+    $.ajax({
+      method: "POST",
+      url: "/user",
+      data: $(this).serialize()
+    }).done(function(){
+      loadCard();
+    });
 
-//   });
+  });
 
 // });
 

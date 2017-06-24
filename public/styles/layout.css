@@ -100,7 +100,7 @@ main {
   background-color: #f8f9f9;
   width: auto;
   padding: 0 15px;
-  border: 1px solid #444E5A;
+  border: 1px solid #DFDFDF;
   border-radius: 5px;
   margin: 15px 0px;
   content: "";
@@ -151,5 +151,49 @@ main {
   .card .rating > label:hover ~ input:checked ~ label,
   .card .rating > input:checked ~ label:hover ~ label {
     color: #FFED85; }
+
+.add-card {
+  background-color: #f8f9f9;
+  width: auto;
+  padding: 0 15px;
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+  margin: 15px 0px;
+  font-size: .9em;
+  width: auto;
+  height: 300px;
+  opacity: 0.9;
+  font-size: 2em; }
+
+.add-card:hover, .add-card:active {
+  color: black;
+  transition: .3s all ease-in;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px black; }
+
+.new-card {
+  font-size: .9em;
+  width: 300px;
+  height: 400px;
+  float: left;
+  border-radius: 5px;
+  border: 1px black solid;
+  background: white;
+  opacity: 0.9;
+  color: grey;
+  font-size: 2em; }
+  .new-card .cardUrl {
+    width: 250px;
+    margin-left: -130px;
+    margin-top: -2000px;
+    margin-bottom: 10px; }
+    .new-card .cardUrl .cardTitle {
+      margin-left: -130px;
+      margin-bottom: 10px;
+      width: 250px; }
+      .new-card .cardUrl .cardTitle .cardText {
+        margin-left: -130px;
+        width: 250px; }
 
 /*# sourceMappingURL=layout.css.map */
