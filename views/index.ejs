@@ -10,11 +10,17 @@
       <h1>Welcome to Fetch.</h1>
       <h3>Your easy resource storage system.</h3>
       <% } %>
-
-      <p> <%- include partials/_searchAndFilter.ejs %></p>
+      <br><br>
+     <div class="row">
+       <div class="col-md-4"><%- include partials/_filter.ejs %></div>
+       <div class="col-md-4"><%- include partials/_search.ejs %></div>
+      </div>
 
       <div class="row">
-        <!-- filled in when renderResources function is called in resourceFuncs.js -->
+       <div class="all-cards">
+        
+      
+        </div>
       </div>
 
     </main>

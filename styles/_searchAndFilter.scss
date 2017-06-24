@@ -1,9 +1,10 @@
 .search-filter {
-  padding: 20px 0px;
+  overflow: hidden;
   .form-control {
-    width: 300px;
+    width: 200px;
+    display: inline;
   }
   .btn {
-
-  }
+  width: 52px;
+}
 }

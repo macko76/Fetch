@@ -1,7 +1,0 @@
-// createUser
-
-// getUser
-
-// updateUser
-
-// userAuthentication

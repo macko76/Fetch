@@ -2,39 +2,30 @@
 <html lang="en">
   <%- include partials/_head.ejs %>
   <body>
+
     <%- include partials/_navbar.ejs %>
     <main>
       <h1>Hi, <%= user.first_name %>!</h1>
       <h3>Here are your saved resources.</h3>
        <br> 
-      <span class="add-new-card">&#10133; New Card</span>
-      <span class="hide-add-new-card" style="display:none">➖ Hide</span>
-      <br>
 
 
-            <div class="new-card" style="display:none;">
-              <form action="/user" name="newcardform" method="POST">
-                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
-                <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
-                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
-                <textarea class="form-control" name="cardDescription" placeholder="Description"></textarea> <br>
-                <select class="form-control" name="cardCategory"><br>
-                  <option>News</option>
-                  <option>Entertainment</option>
-                  <option>Education</option>
-                  <option>Food</option>
-                  <option>Lifestyle</option>
-                </select> <br>
-              <input class="form-control" type="submit" value="Submit">
-              </form>
-            </div>
+      <div class="row">
+       <div class="col-md-4"><%- include partials/_addCard.ejs %></div>
+       <div class="col-md-4"><%- include partials/_filter.ejs %></div>
+       <div class="col-md-4"><%- include partials/_search.ejs %></div>
+      </div>
+
+      <div class="row">
+       <div class="user-cards">
+        
+      
+        </div>
+      </div>
     
-           <%- include partials/_searchAndFilter.ejs %>
-            <div class="row">
-            </div>
+           
           </main>
           <script type="text/javascript" src="/scripts/userpage.js"></script>
-          <script type="text/javascript" src="/scripts/add-card.js"></script>
         </body>
       </html>
 

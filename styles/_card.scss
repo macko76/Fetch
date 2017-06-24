@@ -97,3 +97,11 @@
     width: 200px;
   }
 }
+
+.user-cards {
+  margin-top: 70px;
+}
+
+.all-cards {
+  @extend .user-cards;
+}
