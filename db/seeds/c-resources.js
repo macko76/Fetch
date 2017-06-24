@@ -10,7 +10,6 @@ var educationId = knex('categories').where({name: 'Education'}).select('id');
 var lifestyleId = knex('categories').where({name: 'Lifestyle'}).select('id');
 var newsId = knex('categories').where({name: 'News'}).select('id');
 
-
   return knex('resources').del()
     .then(function () {
       return Promise.all([
