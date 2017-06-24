@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <%- include partials/_head.ejs %>
-
-
+  <%- include partials/_head.ejs %>
   <body>
-    <!-- Top nav bar (fixed) -->
-
    <%- include partials/_navbar.ejs %>
-
-    <!-- Page-specific (main) content here -->
     <main>
       <% if (user) {%>
       <h1>Welcome back, <%= user.first_name %>!</h1>
@@ -18,7 +11,6 @@
       <h3>Your easy resource storage system.</h3>
       <% } %>
 
-      
       <p> <%- include partials/_searchAndFilter.ejs %></p>
 
       <div class="row">
