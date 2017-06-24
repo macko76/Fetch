@@ -12,7 +12,7 @@ router.get("/", (request, response) => {
   .select("*")
   .from("resources")
   .where({
-    id: request.session.userId
+    user_id: request.session.userId
   })
   .then((results) => {
     response.json(results);
