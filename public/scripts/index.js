@@ -1,3 +1,20 @@
+  const fetchNewComment = function() {
+   $('#comments-container').comments({
+      getComments: function(success, error) {
+        $.ajax({
+            type: 'get',
+            url: '/api/comments/',
+            success: function(commentsArray) {
+                success(commentsArray)
+            },
+            error: error
+        });
+      }
+   });
+}
+
+
+
 $(() => {
 
   $.ajax({
@@ -26,10 +43,9 @@ $(() => {
             type: 'post',
             url: '/api/comments/',
             data: commentJSON,
-            success: function(comment) {
-              console.log("post success", comment);
-              success(comment)
-            },
+            success: function(result){
+           fetchNewComment();
+           },
             error: function(err) {
               console.log("post error", err);
               error(err);
@@ -40,7 +56,7 @@ $(() => {
 
 
     $('.comment').on('click', function() {
-     $(this).nextAll('#comments-container').slideToggle();
+    $('#comments-container').slideToggle('slow');
     });
 
 

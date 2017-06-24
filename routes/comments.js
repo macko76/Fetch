@@ -4,14 +4,10 @@ const express = require('express');
 const router  = express.Router();
 
 
-var lies;
-
-
 module.exports = (knex) => {
 
+
   router.post("/", (request, response) => {
-    console.log(request.body.content);
-  
     knex('comments')
       .insert({body: request.body.content})
       .then((results) => {
@@ -20,26 +16,27 @@ module.exports = (knex) => {
   });
 
   router.get("/", (request, response) => {
-    var dummy_comments = [
-      {
-        id: 1,
-        created: Date.now(),
-        content: 'sick, dude',
-        fullname: 'Dude bro',
-        upvote_count: 2,
-        user_has_upvoted: false
-      },
-      {
-        id: 3,
-        created: Date.now(),
-        content: 'I work really really really hard',
-        fullname: 'Kim K',
-        upvote_count: 5,
-        user_has_upvoted: false
-      }
-    ]
-    response.json(dummy_comments);
-  })
+      var user = request.session.user;
+      knex
+        .select("*")
+        .from("comments")
+        .orderBy('created_at', 'asc')
+        // .where({
+        //   resource_id: 2
+        // })
+        .then((results) => {
+          var commentsArray = [];
+          for (var i = 0; i < results.length; i++) {
+            var commentObj = {
+              id: results[i].id,
+              content: results[i].body,
+              fullName: user.first_name
+            };
+            commentsArray.push(commentObj);
+          }
+          response.json(commentsArray);
+        });
+      });
 
   return router;
   

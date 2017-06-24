@@ -1,3 +1,4 @@
+
 const fetchingAndRendering = function() {
   $.ajax({
     method: "GET",
@@ -6,6 +7,7 @@ const fetchingAndRendering = function() {
     renderUserResources(resources);
   });
 }
+
 
 $(() => {
 
@@ -33,7 +35,6 @@ $(() => {
       data: $(this).serialize(),
       dataType: "json",
       success: function(result){
-        console.log("success!", result);
         fetchingAndRendering();
       },
       error: function(error){

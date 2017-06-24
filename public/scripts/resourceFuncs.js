@@ -36,11 +36,10 @@ function createUserResourceCard(resource) {
   var imageURL = resource.image;
 
   return `<div class="col-md-4">
-
+             <div class="card">
               <div class="row">
-              <div class="card">
-              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div>
-              <div class="col-md-2"><button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>  
+             <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
+              <div class="col-md-2"><button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></div>
               </div>
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -78,6 +77,7 @@ function renderResources(resources) {
 };
 
 function renderUserResources(resources) {
+  console.log(resources);
   var $resources = $('.user-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
@@ -103,7 +103,6 @@ function renderProfileData(user) {
 };
 
 function renderProfile(data) {
-  console.log(data);
   var $profile = $('.user-info');
   $profile.empty();
   var $card = renderProfileData(data[0]);
