@@ -40,7 +40,8 @@ $(() => {
 
 
     $('.comment').on('click', function() {
-     $(this).nextAll('#comments-container').slideToggle();
+    event.preventDefault();
+    $(this).next().next().slideToggle();
     });
 
 

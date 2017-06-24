@@ -9,6 +9,11 @@
   display: table;
   clear: both;
 
+  #comments-container {
+    overflow: visible;
+    display: inline-block;
+  }
+
   .col-md-10 {
     padding: 5px 0px;
   }
