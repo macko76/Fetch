@@ -50,7 +50,8 @@ app.use("/api/resources", resourceRoutes(knex));
 app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
 app.use("/api/userProfile", profileRoutes(knex));
-app.use("/api/comments", commentRoutes(knex));
+app.use("/api/resources/:id/comments", commentRoutes(knex));
+app.use("/api/ratings", ratingsRoutes(knex));
 
 app.post('/user', function(req, res){
   // console.log(req.body);
