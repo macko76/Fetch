@@ -51,11 +51,11 @@ app.use("/login", authRoutes(knex));
 app.use("/api/userProfile", profileRoutes(knex));
 
 app.post('/user', function(req, res){
-  console.log(req.body);
-  var result = {
-    name: "Michael: I am sending some data back to the AJAX Call"
-  }
-  res.json(result); //being sent back to the place where AJAX Call was made
+  // console.log(req.body);
+  // var result = {
+  //   name: "Michael: I am sending some data back to the AJAX Call"
+  // }
+  // res.json(result); //being sent back to the place where AJAX Call was made
 });
 
 app.listen(PORT, () => {
