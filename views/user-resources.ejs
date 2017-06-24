@@ -2,13 +2,10 @@
 <html lang="en">
   <%- include partials/_head.ejs %>
   <body>
-
     <%- include partials/_navbar.ejs %>
     <main>
       <h1>Hi, <%= user.first_name %>!</h1>
       <h3>Here are your saved resources.</h3>
-       <br> 
-
 
       <div class="row">
        <div class="col-md-4"><%- include partials/_addCard.ejs %></div>
@@ -17,15 +14,12 @@
       </div>
 
       <div class="row">
-       <div class="user-cards">
-        
-      
+        <div class="user-cards">
         </div>
       </div>
-    
-           
-          </main>
-          <script type="text/javascript" src="/scripts/userpage.js"></script>
-        </body>
-      </html>
+         
+    </main>
+    <script type="text/javascript" src="/scripts/userpage.js"></script>
+  </body>
+</html>
 

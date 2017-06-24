@@ -1,4 +1,3 @@
-
 const fetchingAndRendering = function() {
   $.ajax({
     method: "GET",
@@ -19,13 +18,12 @@ $(() => {
     $('.cardUrl').focus();
   });
 
-   $('.hide-add-new-card').on('click', function(){
+  $('.hide-add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
     $('.new-card').slideToggle();
     $('.cardUrl').focus();
   });
-
 
   $('form').on('submit', function(e){
     e.preventDefault();
@@ -43,10 +41,6 @@ $(() => {
       }
     });
   });
-
-
-
-
 
 });
 
