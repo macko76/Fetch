@@ -36,6 +36,12 @@ $(() => {
       dataType: "json",
       success: function(result){
         fetchingAndRendering();
+        $('form').each(function(){
+          this.reset();
+        });
+        $('.new-card').slideToggle();
+        $('.hide-add-new-card').toggle();   
+        $('.add-new-card').toggle(); 
       },
       error: function(error){
         console.log(error); 
