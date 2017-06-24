@@ -27,9 +27,13 @@ $(() => {
             url: '/api/comments/',
             data: commentJSON,
             success: function(comment) {
-                success(comment)
+              console.log("post success", comment);
+              success(comment)
             },
-            error: error
+            error: function(err) {
+              console.log("post error", err);
+              error(err);
+            }
         });
     }
   });
