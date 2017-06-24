@@ -29,7 +29,7 @@ $(() => {
     e.preventDefault();
     $.ajax({
       method: "POST",
-      url: "/user",
+      url: "/user/resources/create",
       data: $(this).serialize(),
       dataType: "json",
       success: function(result){
