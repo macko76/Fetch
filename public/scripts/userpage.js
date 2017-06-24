@@ -1,5 +1,4 @@
-
-const fetchingAndRendering = function() {
+  const fetchingAndRendering = function() {
   $.ajax({
     method: "GET",
     url: "/api/user"
@@ -7,6 +6,7 @@ const fetchingAndRendering = function() {
     renderUserResources(resources);
   });
 }
+
 
 $(() => {
 
@@ -35,7 +35,6 @@ $(() => {
       data: $(this).serialize(),
       dataType: "json",
       success: function(result){
-        console.log(result);
         fetchingAndRendering();
       },
       error: function(error){

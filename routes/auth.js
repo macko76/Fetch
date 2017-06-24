@@ -36,7 +36,6 @@ module.exports = (knex) => {
  * true, sets cookie userID to req.body.email and redirects to user/:id/fetch; If userAuthentication returns false, returns 403
 // */
 	router.post('/', (request, response) => {
-		// console.log(request.body);
 		const userPromise = userAuthentication(request.body.email, request.body.password)
 		userPromise
 			.then(user => {

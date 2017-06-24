@@ -105,7 +105,6 @@ function renderProfileData(user) {
 };
 
 function renderProfile(data) {
-  console.log(data);
   var $profile = $('.user-info');
   $profile.empty();
   var $card = renderProfileData(data[0]);
