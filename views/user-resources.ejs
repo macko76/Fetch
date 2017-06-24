@@ -5,22 +5,25 @@
   <body>
     <%- include partials/_navbar.ejs %>
     <main>
+
       <h1>Hi, <%= user.first_name %>!</h1>
       <h3>Here are your saved resources.</h3>
       <%- include partials/_searchAndFilter.ejs %>
+
       <button type="submit" class="add-card"> &#10133; Add card</button>
 
       <div class="new-card" style="display:none;">
-        <form action="/user" method="POST" style="margin:150px;">
+        <form class="cardCreate" action="/user" name="newcardform" method="POST" style="margin:150px;">
           <input class="cardUrl" type="text" name="cardUrl" placeholder="http://">
-          <input class="cardTitle" type="text" name="cardTitle"><br>
-          <textarea class="cardText" name="cardDescription"></textarea>
+          <input class="cardTitle" type="text" name="cardTitle" placeholder="Title"><br>
+          <textarea class="cardText" name="cardDescription" placeholder="Description"></textarea>
           <input class="cardSubmit" type="submit" value="Submit">
         </form>
       </div>
 
       <div class="row">
       </div>
+
     </main>
     <script type="text/javascript" src="/scripts/userpage.js"></script>
     <script type="text/javascript" src="/scripts/add-card.js"></script>
