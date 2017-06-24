@@ -14,6 +14,7 @@ function createResourceCard(resource) {
 
   return `<div class="col-md-4">
             <div class="card">
+            <h1>${escape(title)}</h1>
             <p class="card-title">${escape(title)}</p><img src="${escape(imageURL)}">
             <p>${escape(description)}</p>
             <div class="comment">Comment</div><fieldset class="rating">
@@ -23,6 +24,7 @@ function createResourceCard(resource) {
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
+            <div id="comments-container"></div>
           </div></div>`;
 
 };
@@ -51,7 +53,7 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
-             
+             <div id="comments-container"></div>
              <button type="submit" class="add-card"> &#10133; Add card</button>
 
             <div class="edit-card-button">
@@ -88,7 +90,6 @@ function renderUserResources(resources) {
   }
 };
 
-
 //  renderProfile data
 
 function renderProfileData(user) {
@@ -118,6 +119,59 @@ function renderProfile(data) {
 // addNewResource
 
 
+// ---------------------------------------------------------------------------------------- TESTING ONLY!!!
+
+// // ----------------------------------------------------- Function for error message
+// function showError(message){
+//   alert(message);
+// }
+
+// $(function(){
+
+//   function createCardElement(cardObject){
+//     console.log(cardObject);
+//   }
+
+//   function addNewResource(resource){
+//     var $newCard = $('.new-card').empty();
+//     resource.forEach(function(div){
+//       $newCard.append(createCardElement(div));
+//     });
+//   };
+
+//   function loadCard(){
+//     $.ajax({
+//       method: "GET",
+//       url: "/user"
+//     }).done(function(data){
+//       addNewResource(data);      
+//     });
+//   }
+
+// // ----------------------------------------------------- Form submission using Jquery
+//   $('.cardCreate').on('submit', function(e){
+//     e.preventDefault();
+//     var cardUrlLength = $('.cardUrl').val().length;
+
+// // ----------------------------------------------------- Validation 1
+//     if (cardUrlLength === 0) {
+//       showError("You didn't create a link :(");
+//       return;
+//     }
+
+//     $.ajax({
+//       method: "POST",
+//       url: "/user",
+//       data: $(this).serialize()
+//     }).done(function(){
+//       loadCard();
+//     });
+
+//   });
+
+// });
+
+
 
 // editResource
 
@@ -125,16 +179,9 @@ function renderProfile(data) {
 
 // addComment
 
+
 // showUserResources
 
-// function renderUserResources(resources) {
-//   var $resources = $('.cards');
-//   $resources.empty();
-//   for(var i = 0; i < resources.length; i++) {
-//     var $card = createResourceCard(resources[i]);
-//     $resources.prepend($card);
-//   }
-// };
 
 // filterResultsByCategory
 

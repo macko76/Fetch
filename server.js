@@ -17,15 +17,14 @@ const knexLogger  = require('knex-logger');
 const bcrypt      = require('bcrypt');
 
 const cookieSession = require('cookie-session'); 
-// Seperated Routes for each Resource
+
+const pageRoutes = require("./routes/pages");
 const authRoutes = require("./routes/auth");
 const resourceRoutes = require("./routes/resources");
 const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");
+const commentRoutes = require("./routes/comments");
 
-// Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
@@ -45,45 +44,22 @@ app.use(cookieSession({
   secret: 'no secret'
 }));
 
-function auth(req, res, next) {
-  if (req.session.userId) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
-
 // Mount all resource routes
+app.use("/", pageRoutes(knex));
 app.use("/api/resources", resourceRoutes(knex));
 app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
 app.use("/api/userProfile", profileRoutes(knex));
+app.use("/api/comments", commentRoutes(knex));
 
-// Home page
-app.get("/", (req, res) => {
-  var user = req.session.user;
-  res.render("index", {user});
-});
-
-
-app.get("/user", auth, (req, res) => {
-  var user = req.session.user;
-  res.render("user-resources", {user});
-});
-
-app.get("/user/profile", auth, (req, res) => {
-  var user = req.session.user;
-  res.render('user-profile', {user});
-});
-
-// -------------------------------- Logout
-app.post("/logout", (req, res) => {
-  req.session = null;
-  console.log("Logout successful");
-  res.redirect("/");
+app.post('/user', function(req, res){
+  // console.log(req.body);
+  // var result = {
+  //   name: "Michael: I am sending some data back to the AJAX Call"
+  // }
+  // res.json(result); //being sent back to the place where AJAX Call was made
 });
 
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);
 });
-

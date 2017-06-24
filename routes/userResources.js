@@ -9,17 +9,17 @@ module.exports = (knex) => {
 
 router.get("/", (request, response) => {   
   knex
-      .select("*")
-      .from("resources")
-      .where({
-        id: request.session.userId
-      })
-      .then((results) => {
-        response.json(results);
-    });
+  .select("*")
+  .from("resources")
+  .where({
+    id: request.session.userId
+  })
+  .then((results) => {
+    response.json(results);
   });
+});
 
-  return router;
+return router;
 
 // VIEW USER RESOURCES = GET /user/:id/fetch
 // VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
