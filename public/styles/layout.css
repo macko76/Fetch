@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
 }
@@ -144,10 +145,20 @@ main .search-form {
   display: block;
 }
 
+.card .edit-button {
+  float: right;
+}
+
 .card .comment {
   font-color: #60697A;
   display: inline;
   font-size: 1.3em;
+}
+
+.card #comments-container {
+  width: 100%;
+  font-color: #60697A;
+  display: none;
 }
 
 .card .rating {
@@ -165,7 +176,7 @@ main .search-form {
   font-size: 1.25em;
   font-family: FontAwesome;
   display: inline-block;
-  content: "\f005";
+  content: "★";
 }
 
 .card .rating > label {

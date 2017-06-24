@@ -4,7 +4,7 @@ $(() => {
     method: "GET",
     url: "/api/user"
   }).done((resources) => {
-    renderResources(resources);
+    renderUserResources(resources);
   });;
 
   $('.add-card').on('click', function(){
