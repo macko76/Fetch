@@ -33,7 +33,7 @@ $(() => {
       data: $(this).serialize(),
       dataType: "json",
       success: function(result){
-        console.log(result);
+        console.log("success!", result);
         fetchingAndRendering();
       },
       error: function(error){
