@@ -1,5 +1,3 @@
-
-
 function escape(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -18,7 +16,7 @@ function createResourceCard(resource) {
   return `<div class="col-md-4">
             <div class="card">
             <h1>${escape(title)}</h1>
-            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a>
+            <p class="card-title">${escape(title)}</p><img src="${escape(imageURL)}">
             <p>${escape(description)}</p>
             <div class="comment">Comment</div><fieldset class="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -40,7 +38,13 @@ function createResourceCard(resource) {
 
 //   return `<div class="col-md-4">
 //             <div class="card">
-//             <h1>${escape(title)}<span class="edit-button">V</span></h1>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="card-title">${escape(title)}</p>
+              </div>
+              <div class="col-md-2">
+                <button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+              </div>          
 //             <img src="${escape(imageURL)}">
 //             <p>${escape(description)}</p>
 //             <div class="comment">Comment</div><fieldset class="rating">
@@ -53,6 +57,15 @@ function createResourceCard(resource) {
 //              <div id="comments-container"></div>
 //           </div></div>`;
 
+            <div class="edit-card-button">
+              <form action="users/resources/edit" method="POST" style="margin:150px;">
+                <input class="editCardUrl" type="text" name="editCardUrl" placeholder="${escape(imageURL)}" style="width:300px">
+                <input type="text" name="editCardTitle" style="width:300px" placeholder="${escape(title)}"><br>
+                <textarea name="editCardDescription" placeholder="${escape(description)}"></textarea>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+            
 // };
 
 // renderResources
@@ -96,8 +109,8 @@ function renderProfile(data) {
   console.log(data);
   var $profile = $('.user-info');
   $profile.empty();
-    var $card = renderProfileData(data[0]);
-    $profile.prepend($card);
+  var $card = renderProfileData(data[0]);
+  $profile.prepend($card);
 };
 
 // getURLMetaData
