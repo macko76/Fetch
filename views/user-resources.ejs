@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <link rel="stylesheet" href="/styles/add-card.css" type="text/css" />
-  
-     <%- include partials/_head.ejs %>
-
+  <link rel="stylesheet" href="/styles/add-card.css" type="text/css" />
+  <%- include partials/_head.ejs %>
   <body>
-    <!-- Top nav bar (fixed) -->
- 
-   <%- include partials/_navbar.ejs %>
-
-    <!-- Page-specific (main) content here -->
+    <%- include partials/_navbar.ejs %>
     <main>
-      
       <h1>Hi, <%= user.first_name %>!</h1>
       <h3>Here are your saved resources.</h3>
+      <%- include partials/_searchAndFilter.ejs %>
+      <button type="submit" class="add-card"> &#10133; Add card</button>
 
-    <%- include partials/_searchAndFilter.ejs %>
-
-    <button type="submit" class="add-card"> &#10133; Add card</button>
-
-    <div class="new-card">
-      <form action="/user" method="POST" style="margin:150px;">
-        <input class="cardUrl" type="text" name="cardUrl" placeholder="http://" style="width: 300px">
-        <input type="text" name="cardTitle" style="width: 300px"><br>
-        <textarea name="cardDescription"></textarea>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-
-      <div class="row">
-        <!-- filled in when renderResources function is called in resourceFuncs.js -->
+      <div class="new-card" style="display:none;">
+        <form action="/user" method="POST" style="margin:150px;">
+          <input class="cardUrl" type="text" name="cardUrl" placeholder="http://">
+          <input class="cardTitle" type="text" name="cardTitle"><br>
+          <textarea class="cardText" name="cardDescription"></textarea>
+          <input class="cardSubmit" type="submit" value="Submit">
+        </form>
       </div>
 
+      <div class="row">
+      </div>
     </main>
     <script type="text/javascript" src="/scripts/userpage.js"></script>
     <script type="text/javascript" src="/scripts/add-card.js"></script>

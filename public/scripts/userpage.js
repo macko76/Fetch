@@ -8,6 +8,7 @@ $(() => {
   });;
 
   $('.add-card').on('click', function(){
+    $('.add-card').toggle();
     $('.new-card').toggle();
     $('.cardUrl').focus();
   });
