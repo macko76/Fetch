@@ -23,10 +23,20 @@
     display: block;
   }
 
+  .edit-button {
+    float: right;
+  }
+
   .comment {
     font-color: $lavendar;
     display: inline;
     font-size: 1.3em;
+  }
+
+  #comments-container {
+    width: 100%;
+    font-color: $lavendar;
+    display: none;
   }
 
   /****** Style Star Rating Widget *****/
@@ -43,7 +53,7 @@
     font-size: 1.25em;
     font-family: FontAwesome;
     display: inline-block;
-    content: "\f005";
+    content: "★";
   }
 
   .rating > label { 
