@@ -73,7 +73,7 @@ function createUserResourceCard(resource) {
                   <option value=4>News</option>
                   <option value=5>Lifestyle</option>
                 </select><br>
-              <input class="form-control submit" type="submit" value="Submit" data-resource-id="${resourceID}">
+              <input class="form-control submit" type="submit" value="Submit" data-resourceId="${resourceID}">
               </form>
         </div>
          </div>
@@ -87,19 +87,17 @@ function createUserResourceCard(resource) {
 function addEdit($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-  function reloadCards(success, error) {
-    $.ajax({
-        type: 'get',
-        url: '/user',
-        success: function(commentsArray) {
-            success(commentsArray)
-        },
-        error: error
-    });
-  }
+  // function reloadCards(success, error) {
+  //   $.ajax({
+  //       type: 'get',
+  //       url: '/user',
+  //       success: success
+  //       },
+  //       error: error
+  //   });
+  // }
 
-  $card.find('.submit').on('submit', function(e){
-    console.log("data:" + this.data);
+  $card.find('form').on('submit', function(e){
     var resourceID = resourceID;
     e.preventDefault();
     $.ajax({
@@ -107,8 +105,8 @@ function addEdit($card, resourceID) {
       url: url,
       data: $(this).serialize(),
       dataType: "json",
-      success: function(result){
-        reloadCards();
+      success: function(result, error){
+        renderUserResources(result);
         $('form').each(function(){
           this.reset();
         });

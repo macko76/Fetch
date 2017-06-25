@@ -5,19 +5,18 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-router.get("/", (request, response) => {
+router.get("/", (req, res) => {
     knex
       .select("*")
       .from("resources")
       .then((results) => {
-        response.json(results);
+        res.json(results);
     });
   });
 
 
   router.post("/:resource_id", (request, response) => {
-
-    const resourceID = request.params.resource_id;
+    const resource_id = request.params.resource_id;
     const cardUrl = request.body.cardUrl;
     const cardTitle = request.body.cardTitle;
     const cardImage = request.body.cardImage;
@@ -25,19 +24,17 @@ router.get("/", (request, response) => {
     const cardCategory = request.body.cardCategory;
     const cardUserId = request.session.userId;
 
-    console.log("--------"  + resourceID + "---------");
-
     knex('resources')
-      .update({
-              url: cardUrl, 
+      .where({id: resource_id})
+      .update({url: cardUrl, 
               image: cardImage, 
               title: cardTitle, 
               description: cardDescription,
               category_id: cardCategory,
               user_id: cardUserId})
-      .where ({id: resourceID})
       .then((results) => {
-        response.redirect('/user');
+        console.log("success!");
+        response.json(results);
     });
   });
 
@@ -53,3 +50,4 @@ router.get("/", (request, response) => {
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
 
 }
+
