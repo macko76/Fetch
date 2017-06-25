@@ -156,9 +156,9 @@ function addCommentsToCard($card, resourceID) {
       }
     });
     $card.find('.comment').on('click', function () {
-    console.log('clicked');
     $card.find('.comments-container').slideToggle();
   });
+
 }
 
 // renderResources
@@ -180,17 +180,10 @@ function renderUserResources(resources) {
   for(var i = 0; i < resources.length; i++) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
+    var resourceID = resources[i].id;
     $resources.append($card);
     addEdit($card, resources[i].id);
-// ----------------------------------------------------------------- clicking edit button
-  //   $card.find('.edit-button').on('click', function(){ 
-  //   $('.add-new-card').toggle();
-  //   $('.hide-add-new-card').toggle();
-  //   $('.new-card').slideToggle('slow');  
-  //   $('.cardUrl').focus();
-
-  // });
-
+    addCommentsToCard($card, resourceID);
   }
 };
 
