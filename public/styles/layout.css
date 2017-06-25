@@ -276,6 +276,11 @@ main .col-md-4 {
   width: 52px;
 }
 
+.view-favourites {
+  width: 130px;
+  box-shadow: none;
+}
+
 .login-buttons {
   margin: 50px 20px;
 }
