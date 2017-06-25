@@ -37,6 +37,7 @@ function createUserResourceCard(resource) {
   var description = resource.description;
   var resourceURL = resource.url;
   var imageURL = resource.image;
+  var resourceID = resource.id;
 
   return `<div class="col-md-4">
              <div class="card">
@@ -60,7 +61,7 @@ function createUserResourceCard(resource) {
           <br><br>
 
            <div class="form-toggle">
-              <form action="/api/resources/:resource_id" name="newcardform" method="POST">
+              <form action="/api/resources/${resourceID}" name="newcardform" method="POST">
                 <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
                 <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
                 <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
@@ -72,7 +73,7 @@ function createUserResourceCard(resource) {
                   <option value=4>News</option>
                   <option value=5>Lifestyle</option>
                 </select><br>
-              <input class="form-control submit" type="submit" value="Submit">
+              <input class="form-control submit" type="submit" value="Submit" data-resource-id="${resourceID}">
               </form>
         </div>
          </div>
@@ -98,6 +99,7 @@ function addEdit($card, resourceID) {
   }
 
   $card.find('.submit').on('submit', function(e){
+    console.log("data:" + this.data);
     var resourceID = resourceID;
     e.preventDefault();
     $.ajax({
@@ -185,7 +187,7 @@ function renderUserResources(resources) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
     $resources.prepend($card);
-    editExistingCard($card, resources[i].id);
+    addEdit($card, resources[i].id);
 // ----------------------------------------------------------------- clicking edit button
   //   $card.find('.edit-button').on('click', function(){ 
   //   $('.add-new-card').toggle();
