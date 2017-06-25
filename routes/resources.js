@@ -39,6 +39,20 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- filtering user likes
+  router.get("/user/likes/:filter", (request, response) => {
+    const likesFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("ratings")
+    .where({rating: likesFilter})
+    .andWhere({user_id: request.session.userId})
+    .then((results) => {
+      console.log(results);
+      response.json(results);
+    });
+  });
+
 //---------------------------------------------------------------- add card
   router.post("/create", (request, response) => {
     const cardUrl = request.body.cardUrl;
