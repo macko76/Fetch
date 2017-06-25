@@ -145,7 +145,6 @@ function addEdit($card, resourceID) {
 function addCommentsToCard($card, resourceID) {
   var url = `/api/comments/${resourceID}`;
 
-
   function getComments(success, error) {
     $.ajax({
         type: 'get',
@@ -165,19 +164,22 @@ function addCommentsToCard($card, resourceID) {
               url: url,
               data: commentJSON,
               success: function(result){
-                  getComments(success, error);
-              },
+                $card.find('.comments-container').comments({
+                  getComments: getComments
+                 })
+               },
               error: function(err) {
                 console.log("post error", err);
                 error(err);
               }
           });
       }
-    });
-  $card.find('.comment').on('click', function () {
+  });
+    $card.find('.comment').on('click', function () {
     $card.find('.comments-container').slideToggle();
   });
-
+  
+  
 }
 
 // renderResources
