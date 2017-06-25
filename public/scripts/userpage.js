@@ -49,10 +49,10 @@ $(() => {
     });
   });
 
-//---------------------------------------------------------------- filtering
+//---------------------------------------------------------------- filtering categories
   $('select').change(function(){
     const categoryFilterValue = this.value;
-    if (categoryFilterValue != "") {
+    if (categoryFilterValue != 0) {
       $.ajax({
       method: "GET",
       url: `/api/resources/${categoryFilterValue}`
