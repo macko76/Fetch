@@ -15,8 +15,8 @@ function createResourceCard(resource) {
 
   return  `<div class="col-md-4">
             <div class="card">
-            <p class="card-title">${escape(title)}</p>
-           <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
+            <h3>${escape(title)}</h3>
+           <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
             <p>${escape(description)}</p>
             <div class="comment">Comment</div>
             <fieldset class="rating">
@@ -26,7 +26,7 @@ function createResourceCard(resource) {
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
-            <div class="comments-container"></div>
+            <div class="comments-container" style="display:none"></div>
           </div></div>`;
           
 };
@@ -41,10 +41,9 @@ function createUserResourceCard(resource) {
 
   return `<div class="col-md-4">
              <div class="card">
-             <div class=".card-toggle">
               <div class="row">
              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
-              <div class="col-md-2"><button class='edit-button'>edit</button></div>
+              <div class="col-md-2"><button class='edit-button'>✎</button></div>
               </div>
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -57,7 +56,7 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
             <div class="comments-container"></div>
-        </div>
+        
           
           <br><br>
 
@@ -78,8 +77,7 @@ function createUserResourceCard(resource) {
               </form>
         </div>
          </div>
-          </div>
-        
+        </div>
           `;
  };
 
@@ -90,6 +88,7 @@ function addEdit($card, resourceID) {
 
   $card.find('.edit-button').on('click', function () {
   $card.find('.form-toggle').slideToggle();
+  $card.find('.card-toggle').slideToggle();
   // $card.parent().find('.card-toggle').slideToggle();
   });
 
