@@ -4,6 +4,21 @@ function escape(str) {
   return div.innerHTML;
 }
 
+function createCategoryIcon(categoryID) {
+ if (categoryID == 1) {
+   return "🎥";
+  } else if (categoryID == 2) {
+    return "🥑";
+  } else if (categoryID == 3) {
+    return "📘";
+  } else if (categoryID == 4) {
+    return "📣";
+  } else if (categoryID == 5) {
+    return "🕶";
+  } else {
+    return "☹";
+  }
+};
 
 // createResourceCard
 
@@ -13,12 +28,17 @@ function createResourceCard(resource) {
   var resourceURL = resource.url;
   var imageURL = resource.image;
   var resourceID = resource.id;
+  var category = createCategoryIcon(resource.category_id);
 
   return  `<div class="col-md-4">
           <div class="card">
-          <p class="index-card-title">${escape(title)}</p>
-           <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
-            <p>${escape(description)}</p>
+           <div class="row">
+             <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
+              <div class="col-md-2"><button class='edit-button'>${category}</button></div>
+              </div>
+ 
+            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
+            <p>${escape(description)}</p>             
               
               <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
               <input class='heart' type="submit" value="✗"></form><form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
@@ -145,9 +165,7 @@ function addCommentsToCard($card, resourceID) {
               url: url,
               data: commentJSON,
               success: function(result){
-                $card.find('.comments-container').comments({
-                  getComments: getComments
-                })
+                  getComments(success, error);
               },
               error: function(err) {
                 console.log("post error", err);
@@ -156,7 +174,7 @@ function addCommentsToCard($card, resourceID) {
           });
       }
     });
-    $card.find('.comment').on('click', function () {
+  $card.find('.comment').on('click', function () {
     $card.find('.comments-container').slideToggle();
   });
 
@@ -171,8 +189,8 @@ function renderResources(resources) {
     var card = createResourceCard(resources[i]);
     var $card = $(card);
     $resources.append($card);
-    addCommentsToCard($card, resources[i].id);
     addIndexFavClickHandlers($card, resources[i].id);
+    addCommentsToCard($card, resources[i].id);
   }
 };
     
@@ -187,8 +205,8 @@ function renderUserResources(resources) {
     var resourceID = resources[i].id;
     $resources.append($card);
     addEdit($card, resources[i].id);
-    addCommentsToCard($card, resourceID);
     addUserFavClickHandlers($card, resourceID);
+    addCommentsToCard($card, resourceID);
   }
 };
 
