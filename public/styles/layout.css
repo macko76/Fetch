@@ -1,76 +1,340 @@
-/*
-Error: Invalid CSS after "  width: 112px": expected "{", was ";"
-        on line 45 of styles/_navbar.scss
-        from line 2 of styles/layout.scss
+@charset "UTF-8";
+html {
+  box-sizing: border-box;
+}
 
-40:     }
-41:   }
-42: 
-43:   .nav-pic-container {
-44: <<<<<<< HEAD
-45:   width: 112px;
-46:   height: 112px;
-47: =======
-48:   width: 108px;;
-49:   height: 108px;
-50: >>>>>>> master
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
-Backtrace:
-styles/_navbar.scss:45
-styles/layout.scss:2
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:1207:in `expected'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:1137:in `expected'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:1132:in `tok!'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:665:in `block'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:685:in `block_child'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:674:in `block_contents'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:666:in `block'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:658:in `ruleset'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:684:in `block_child'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:677:in `block_contents'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:125:in `stylesheet'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/scss/parser.rb:41:in `parse'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/engine.rb:406:in `_to_tree'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/engine.rb:312:in `to_tree'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:88:in `block in with_import'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:88:in `with_import'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:79:in `block in with_base'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/stack.rb:79:in `with_base'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `map'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/root_node.rb:36:in `css_tree'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `each'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:331:in `block in watch'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
-/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.24/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"  width: 112px\": expected \"{\", was \";\"\A         on line 45 of styles/_navbar.scss\A         from line 2 of styles/layout.scss\A \A 40:     }\A 41:   }\A 42: \A 43:   .nav-pic-container {\A 44: <<<<<<< HEAD\A 45:   width: 112px;\A 46:   height: 112px;\A 47: =======\A 48:   width: 108px;;\A 49:   height: 108px;\A 50: >>>>>>> master"; }
+body {
+  margin-top: 50px;
+  font-size: 12px;
+  background-color: #f8f9f9;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {
+  width: auto;
+  background-color: white;
+  align-content: center;
+  margin: 80px;
+  padding: 40px 120px;
+}
+
+main .filter {
+  margin-bottom: 0px;
+}
+
+main .search-form {
+  margin-top: 50px;
+}
+
+main .col-md-4 {
+  display: inline-block;
+}
+
+.user-info img {
+  float: right;
+  width: 220px;
+  height: 220px;
+  border-radius: 120px;
+  padding: 5px;
+  border: 4px solid #212E4E;
+  background-color: #f8f9f9;
+}
+
+.nav-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 80px;
+  top: 0;
+  background-color: #212E4E;
+  font-color: #A8ADB0;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.nav-bar .header {
+  position: fixed;
+  right: 50px;
+  top: 5px;
+  color: #fff;
+  font-size: 3em;
+  line-height: 40px;
+  padding: 20px;
+}
+
+.nav-bar .form-control {
+  display: inline;
+  width: auto;
+}
+
+.nav-menu {
+  position: fixed;
+  left: 140px;
+  top: 35px;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  font-size: 0.5em;
+  opacity: 0.8;
+}
+
+.dropdown-toggle:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.nav-pic-container {
+  width: 112px;
+  height: 112px;
+  z-index: 1;
+  padding: 4px;
+  position: fixed;
+  left: 20px;
+  top: 10px;
+  border: 2px solid #212E4E;
+  float: left;
+  font-size: 0.5em;
+  background-color: #f8f9f9;
+  border-radius: 60px;
+}
+
+.nav-pic-container .nav-profile-pic {
+  border-radius: 60px;
+  border: none;
+  width: 100px;
+  height: 100px;
+}
+
+.nav-pic-container .nav-profile-pic:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.nav-login-container {
+  padding: 6px 10px;
+  color: white;
+  position: fixed;
+  left: 20px;
+  top: 15px;
+  float: right;
+  font-color: #f8f9f9;
+  font-size: 0.4em;
+  border: 1px solid #DFDFDF;
+  border-radius: 60px;
+  opacity: 0.7;
+}
+
+.nav-login-container:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.nav-login-container .login-button {
+  display: inline;
+  color: white;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline;
+}
+
+.card, .new-card {
+  background-color: #f8f9f9;
+  width: auto;
+  padding: 0 15px;
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+  margin: 15px 0px;
+  min-height: 100px;
+  min-width: 100px;
+  content: "";
+  display: table;
+  clear: both;
+  /****** Style Star Rating Widget *****/
+  /***** CSS Magic to Highlight Stars on Hover *****/
+  /* hover previous stars in list */
+}
+
+.card .col-md-10, .new-card .col-md-10 {
+  padding: 5px 0px;
+}
+
+.card .col-md-2, .new-card .col-md-2 {
+  padding: 0px;
+}
+
+.card .card-title, .new-card .card-title {
+  padding: 15px 15px 5px;
+  font-size: 1.5em;
+}
+
+.card img, .new-card img {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card .edit-button, .new-card .edit-button {
+  border: none;
+  font-size: 1.5em;
+  background-color: #f8f9f9;
+  margin: 10px 6px;
+  float: right;
+}
+
+.card .edit-button:hover, .new-card .edit-button:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.card .edit-button:focus, .new-card .edit-button:focus {
+  outline: none;
+}
+
+.card .glyphicon.glyphicon-pencil, .new-card .glyphicon.glyphicon-pencil {
+  font-size: 13px;
+}
+
+.card .comment, .new-card .comment {
+  font-color: #60697A;
+  display: inline;
+  font-size: 1.3em;
+}
+
+.card .comments-container, .new-card .comments-container {
+  width: 100%;
+  font-color: #60697A;
+  display: none;
+}
+
+.card .rating, .new-card .rating {
+  border: none;
+  float: right;
+  align: center;
+}
+
+.card .rating > input, .new-card .rating > input {
+  display: none;
+}
+
+.card .rating > label:before, .new-card .rating > label:before {
+  margin: 1px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "★";
+}
+
+.card .rating > label, .new-card .rating > label {
+  color: #ddd;
+  float: right;
+}
+
+.card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
+.card .rating:not(:checked) > label:hover, .new-card .rating:not(:checked) > label:hover,
+.card .rating:not(:checked) > label:hover ~ label, .new-card .rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+.card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
+.card .rating > input:checked ~ label:hover, .new-card .rating > input:checked ~ label:hover,
+.card .rating > label:hover ~ input:checked ~ label, .new-card .rating > label:hover ~ input:checked ~ label,
+.card .rating > input:checked ~ label:hover ~ label, .new-card .rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
+
+.add-new-card, .hide-add-new-card {
+  opacity: 0.9;
+  font-size: 1.2em;
+  font-color: white;
+}
+
+.add-new-card:hover, .hide-add-new-card:hover, .add-new-card:active, .hide-add-new-card:active {
+  color: #DFDFDF;
+  opacity: 1;
+}
+
+.new-card {
+  padding: 30px;
+  display: inline-block;
+}
+
+.new-card .form-control {
+  width: 200px;
+}
+
+.user-cards, .all-cards {
+  margin-top: 70px;
+}
+
+.search-filter {
+  overflow: hidden;
+}
+
+.search-filter .form-control {
+  width: 200px;
+  display: inline;
+}
+
+.search-filter .btn {
+  width: 52px;
+}
+
+.login-buttons {
+  margin: 50px 20px;
+}
+
+.login-buttons form {
+  display: inline;
+}
+
+.login-buttons .btn-default {
+  width: auto;
+  margin: 5px 5px 5px 0px;
+}
+
+.login-buttons .btn-default:hover {
+  background-color: #212E4E;
+  color: white;
+  border-color: #212E4E;
+}
+
+.comments-container {
+  overflow: visible;
+  display: inline-block;
+}
+
+.actions {
+  display: none;
+}
+
+time {
+  display: none;
+}
+
+.navigation-wrapper {
+  display: none;
+}
+
+.textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+.close {
+  margin: 5px;
+}
+
+.send {
+  margin: 5px;
+}
+
+.name {
+  display: none;
+}

@@ -10,14 +10,9 @@ module.exports = (knex) => {
   router.post("/:resource_id", (request, response) => {
     knex('comments')
       .insert({
-<<<<<<< HEAD
-        body: request.body.content
-        resource_id: })
-=======
         body: request.body.content,
         resource_id: request.params.resource_id
       })
->>>>>>> master
       .then((results) => {
         response.json(results);
     });
@@ -30,11 +25,7 @@ module.exports = (knex) => {
         .from("comments")
         .orderBy('created_at', 'asc')
         .where({
-<<<<<<< HEAD
-          resource_id: request.params.id;
-=======
           resource_id: request.params.resource_id
->>>>>>> master
         })
         .then((results) => {
           var commentsArray = [];
