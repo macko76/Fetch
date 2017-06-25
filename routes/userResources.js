@@ -31,5 +31,3 @@ return router;
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
 
 }
-
-

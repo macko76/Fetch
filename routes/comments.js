@@ -7,24 +7,34 @@ const router  = express.Router();
 module.exports = (knex) => {
 
 
-  router.post("/", (request, response) => {
+  router.post("/:resource_id", (request, response) => {
     knex('comments')
       .insert({
+<<<<<<< HEAD
         body: request.body.content
         resource_id: })
+=======
+        body: request.body.content,
+        resource_id: request.params.resource_id
+      })
+>>>>>>> master
       .then((results) => {
         response.json(results);
     });
   });
 
-  router.get("/", (request, response) => {
+  router.get("/:resource_id", (request, response) => {
       var user = request.session.user;
       knex
         .select("*")
         .from("comments")
         .orderBy('created_at', 'asc')
         .where({
+<<<<<<< HEAD
           resource_id: request.params.id;
+=======
+          resource_id: request.params.resource_id
+>>>>>>> master
         })
         .then((results) => {
           var commentsArray = [];

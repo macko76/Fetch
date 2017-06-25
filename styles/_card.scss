@@ -4,14 +4,12 @@
   padding: 0 15px;
   border: 1px solid $light-grey;
   border-radius: 5px;
-  margin: 10px 2px;
+  margin: 15px 0px;
+  min-height: 100px;
+  min-width: 100px;
   content: "";
   display: table;
   clear: both;
-
-  .row {
-    padding: 0 15px;
-  }
 
   .col-md-10 {
     padding: 5px 0px;
@@ -22,9 +20,8 @@
   }
 
   .card-title {
-    margin: 0;
+    padding: 15px 15px 5px;
     font-size: 1.5em;
-    margin: 10px 0px;
   }
 
   img {
@@ -35,9 +32,10 @@
 
   .edit-button {
     border: none;
+    font-size: 1.5em;
     background-color: $paper-light;
+    margin: 10px 6px;
     float: right;
-    margin-top: 10px;
     &:hover {
       opacity: 0.7;
       text-decoration: none;
@@ -57,7 +55,7 @@
     font-size: 1.3em;
   }
 
-  #comments-container {
+  .comments-container {
     width: 100%;
     font-color: $lavendar;
     display: none;
@@ -129,3 +127,4 @@
 .all-cards {
   @extend .user-cards;
 }
+

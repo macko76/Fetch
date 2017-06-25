@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('full_name');
     table.string('email').notNull();
     table.string('password').notNull();
-    table.string('profile_photo');
+    table.string('profile_photo', 1000);
     table.timestamps(true, true);
   });
 };

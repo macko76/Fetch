@@ -5,12 +5,47 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-router.get("/", (req, res) => {
+  router.get("/", (request, response) => {
     knex
-      .select("*")
-      .from("resources")
+    .select("*")
+    .from("resources")
+    .then((results) => {
+      response.json(results);
+    });
+  });
+
+  router.get("/:filter", (request, response) => {
+    const categoryFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("resources")
+    .where({category_id: categoryFilter})
+    .then((results) => {
+      console.log(results);
+    });
+  });
+
+
+  router.post("/:resource_id", (request, response) => {
+    const resource_id = request.params.resource_id;
+    const cardUrl = request.body.cardUrl;
+    const cardTitle = request.body.cardTitle;
+    const cardImage = request.body.cardImage;
+    const cardDescription = request.body.cardDescription;
+    const cardCategory = request.body.cardCategory;
+    const cardUserId = request.session.userId;
+
+    knex('resources')
+      .where({id: resource_id})
+      .update({url: cardUrl, 
+              image: cardImage, 
+              title: cardTitle, 
+              description: cardDescription,
+              user_id: cardUserId,
+              category_id: cardCategory})
       .then((results) => {
-        res.json(results);
+        console.log("success!");
+        response.json(results);
     });
   });
 
@@ -26,3 +61,4 @@ router.get("/", (req, res) => {
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
 
 }
+
