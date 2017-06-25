@@ -203,10 +203,20 @@ function renderProfileData(user) {
   var email = user.email;
   var image = user.profile_photo;
 
-  return `<div class="user-info">
-            <h1>${escape(first) + " " + escape(last)}</h1><br>
-            <img src="${escape(image)}">
-            <h3>${escape(email)}</h3>
+  return `
+          <h1>Your Profile</h1>
+          <br><br>
+          <div class="row">
+          <div class="col-md-4">
+          <img src="${escape(image)}">
+          </div>
+          
+          <div class="col-md-8">
+          <br><br>
+            <h3>👤&nbsp;&nbsp;&nbsp; ${escape(first) + " " + escape(last)}</h3>
+            <h3>✉️&nbsp;&nbsp;&nbsp; ${escape(email)}</h3>
+            <h3>📷&nbsp;&nbsp;&nbsp; ${escape(image)}</h3>
+          </div>
           </div>`;
 
 };
