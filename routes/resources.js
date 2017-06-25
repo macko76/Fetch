@@ -14,6 +14,7 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- filtering index categories
   router.get("/:filter", (request, response) => {
     const categoryFilter = request.params.filter;
     knex
@@ -21,7 +22,20 @@ module.exports = (knex) => {
     .from("resources")
     .where({category_id: categoryFilter})
     .then((results) => {
-      console.log(results);
+      response.json(results);
+    });
+  });
+
+//---------------------------------------------------------------- filtering user categories
+  router.get("/user/:filter", (request, response) => {
+    const categoryFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("resources")
+    .where({category_id: categoryFilter})
+    .andWhere({user_id: request.session.userId})
+    .then((results) => {
+      response.json(results);
     });
   });
 
@@ -44,13 +58,13 @@ module.exports = (knex) => {
               user_id: cardUserId,
               category_id: cardCategory})
       .then((results) => {
-        console.log("success!");
         response.json(results);
     });
   });
 
   return router;
 
+}
 // VIEW USER RESOURCES = GET /user/:id/fetch
 // VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
 // ADD RESOURCE = POST /user/:id/fetch/:id
@@ -58,7 +72,5 @@ module.exports = (knex) => {
 // EDIT RESOURCE = POST /user/:id/fetch/:id
 
 // RATE RESOURCE = POST /user/:id/fetch/:id/rate, DELETE /user/:id/fetch/:id/rate
+
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
-
-}
-
