@@ -178,8 +178,11 @@ function renderResources(resources) {
     var $card = $(card);
     $resources.append($card);
     addCommentsToCard($card, resources[i].id);
+    addIndexFavClickHandlers($card, resources[i].id);
   }
 };
+    
+
 
 function renderUserResources(resources) {
   var $resources = $('.user-cards');
@@ -191,6 +194,7 @@ function renderUserResources(resources) {
     $resources.append($card);
     addEdit($card, resources[i].id);
     addCommentsToCard($card, resourceID);
+    addUserFavClickHandlers($card, resourceID);
   }
 };
 
@@ -236,64 +240,140 @@ function renderProfile(data) {
 
 // addRating
 
-function addUserFavourite($card, resourceID) {
+function addUserFavClickHandlers($card, resourceID) {
+
+  function addUserFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-  function reloadCards() {
-    $.ajax({
-      method: "GET",
-      url: "/api/user"
-    }).done((resources) => {
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/user"
+      }).done((resources) => {
+        });
+      }
 
+    $card.find('.rating-form').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/inc',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
     });
+
+    $card.find('.rating-form').on('click', function () {
+      console.log('Added favourite');
+    });
+
+  };
+
+  function removeUserFavourite($card, resourceID) {
+    var url = `/api/resources/${resourceID}`;
+
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/user"
+      }).done((resources) => {
+      });
     }
 
-  $card.find('.rating-form').on('submit', function(e){
-    var resourceID = resourceID;
-    e.preventDefault();
-    $.ajax({
-      method: "post",
-      url: url + '/inc',
-      success: function(result, error){
-        reloadCards();
-       },
-      error: function(error){
-        console.log(error); 
-      }
+    $card.find('.rating-form').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/dec',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
     });
-  });
-  $card.find('.rating-form').on('click', function () {
-     console.log('Added favourite');
-  });
+
+    $card.find('.rating-form').on('click', function () {
+      console.log('Removed favourite');
+    });
+  };
+
+  addUserFavourite($card, resourceID);
+  removeUserFavourite($card, resourceID);
 };
 
-function removeUserFavourite($card, resourceID) {
+function addIndexFavClickHandlers($card, resourceID) {
+
+  function addIndexFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-  function reloadCards() {
-    $.ajax({
-      method: "GET",
-      url: "/api/user"
-    }).done((resources) => {
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/resources"
+      }).done((resources) => {
+        });
+      }
 
+    $card.find('.rating-form').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/inc',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
     });
+
+    $card.find('.rating-form').on('click', function () {
+      console.log('Added favourite');
+    });
+
+  };
+
+  function removeIndexFavourite($card, resourceID) {
+    var url = `/api/resources/${resourceID}`;
+
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/resources"
+      }).done((resources) => {
+      });
     }
 
-  $card.find('.rating-form').on('submit', function(e){
-    var resourceID = resourceID;
-    e.preventDefault();
-    $.ajax({
-      method: "post",
-      url: url + '/dec',
-      success: function(result, error){
-        reloadCards();
-       },
-      error: function(error){
-        console.log(error); 
-      }
+    $card.find('.rating-form').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/dec',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
     });
-  });
-  $card.find('.rating-form').on('click', function () {
-     console.log('Removed favourite');
-  });
+
+    $card.find('.rating-form').on('click', function () {
+      console.log('Removed favourite');
+    });
+  };
+
+  addIndexFavourite($card, resourceID);
+  removeIndexFavourite($card, resourceID);
 };
