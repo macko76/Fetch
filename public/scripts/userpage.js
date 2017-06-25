@@ -8,11 +8,11 @@ const fetchingAndRendering = function() {
   });
 }
 
-
 $(() => {
 
   fetchingAndRendering();
 
+// ----------------------------------------------------------------- show new card
   $('.add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
@@ -20,6 +20,7 @@ $(() => {
     $('.cardUrl').focus();
   });
 
+// ----------------------------------------------------------------- hide new card
   $('.hide-add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
@@ -63,7 +64,6 @@ $(() => {
       fetchingAndRendering();
     }  
   });
-
 
 
 });

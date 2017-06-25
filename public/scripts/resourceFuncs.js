@@ -4,6 +4,7 @@ function escape(str) {
   return div.innerHTML;
 }
 
+
 // createResourceCard
 
 function createResourceCard(resource) {
@@ -14,8 +15,8 @@ function createResourceCard(resource) {
 
   return  `<div class="col-md-4">
             <div class="card">
-            <p class="card-title">${escape(title)}</p>
-           <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
+            <h3>${escape(title)}</h3>
+           <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
             <p>${escape(description)}</p>
             <div class="comment">Comment</div>
             <fieldset class="rating">
@@ -25,8 +26,9 @@ function createResourceCard(resource) {
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
-            <div class="comments-container"></div>
+            <div class="comments-container" style="display:none"></div>
           </div></div>`;
+          
 };
 
 
@@ -35,12 +37,13 @@ function createUserResourceCard(resource) {
   var description = resource.description;
   var resourceURL = resource.url;
   var imageURL = resource.image;
+  var resourceID = resource.id;
 
   return `<div class="col-md-4">
              <div class="card">
               <div class="row">
              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
-              <div class="col-md-2"><button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></div>
+              <div class="col-md-2"><button class='edit-button'>✎</button></div>
               </div>
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -53,22 +56,74 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
             <div class="comments-container"></div>
-          </div>
-          </div>`;
+        
+          
+          <br><br>
 
-            // <div class="edit-card-button">
-            //   <form action="users/resources/edit" method="POST" style="margin:150px;">
-            //     <input class="editCardUrl" type="text" name="editCardUrl" placeholder="${escape(imageURL)}" style="width:300px">
-            //     <input type="text" name="editCardTitle" style="width:300px" placeholder="${escape(title)}"><br>
-            //     <textarea name="editCardDescription" placeholder="${escape(description)}"></textarea>
-            //     <input type="submit" value="Submit">
-            //   </form>
-            // </div>
+           <div class="form-toggle" style="display:none">
+              <form action="/api/resources/${resourceID}" name="newcardform" method="POST">
+                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
+                <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
+                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
+                <textarea class="form-control" name="cardDescription" placeholder="Description"></textarea> <br>
+                <select class="form-control" name="cardCategory"><br>
+                  <option value=1>Entertainment</option>
+                  <option value=2>Food</option>
+                  <option value=3>Education</option>
+                  <option value=4>News</option>
+                  <option value=5>Lifestyle</option>
+                </select><br>
+              <input class="form-control submit" type="submit" value="Submit" data-resourceId="${resourceID}">
+              </form>
+        </div>
+         </div>
+        </div>
+          `;
  };
 
+// editResource 
+
+function addEdit($card, resourceID) {
+  var url = `/api/resources/${resourceID}`;
+
+  $card.find('.edit-button').on('click', function () {
+  $card.find('.form-toggle').slideToggle();
+  $card.find('.card-toggle').slideToggle();
+  });
+
+  function reloadCards() {
+    $.ajax({
+      method: "GET",
+      url: "/api/user"
+    }).done((resources) => {
+      renderUserResources(resources);
+    });
+    }
+
+  $card.find('form').on('submit', function(e){
+    var resourceID = resourceID;
+    e.preventDefault();
+    $.ajax({
+      method: "post",
+      url: url,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(result, error){
+        $('form').each(function(){ this.reset(); });
+        reloadCards();
+       },
+      error: function(error){
+        console.log(error); 
+      }
+    });
+  });
+};
+
+// ------ add comment to card -------------
 
 function addCommentsToCard($card, resourceID) {
   var url = `/api/comments/${resourceID}`;
+
 
   function getComments(success, error) {
     $.ajax({
@@ -100,10 +155,10 @@ function addCommentsToCard($card, resourceID) {
           });
       }
     });
-
-    $('.comment').on('click', function(e) {
-    $card.find('.comment-container').slideToggle('slow');
-    });
+    $card.find('.comment').on('click', function () {
+    console.log('clicked');
+    $card.find('.comments-container').slideToggle();
+  });
 }
 
 // renderResources
@@ -120,14 +175,25 @@ function renderResources(resources) {
 };
 
 function renderUserResources(resources) {
-  console.log(resources);
   var $resources = $('.user-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
-    var $card = createUserResourceCard(resources[i]);
-    $resources.prepend($card);
+    var card = createUserResourceCard(resources[i]);
+    var $card = $(card);
+    $resources.append($card);
+    addEdit($card, resources[i].id);
+// ----------------------------------------------------------------- clicking edit button
+  //   $card.find('.edit-button').on('click', function(){ 
+  //   $('.add-new-card').toggle();
+  //   $('.hide-add-new-card').toggle();
+  //   $('.new-card').slideToggle('slow');  
+  //   $('.cardUrl').focus();
+
+  // });
+
   }
 };
+
 
 //  renderProfile data
 
@@ -137,10 +203,20 @@ function renderProfileData(user) {
   var email = user.email;
   var image = user.profile_photo;
 
-  return `<div class="user-info">
-            <h1>${escape(first) + " " + escape(last)}</h1><br>
-            <img src="${escape(image)}">
-            <h3>${escape(email)}</h3>
+  return `
+          <h1>Your Profile</h1>
+          <br><br>
+          <div class="row">
+          <div class="col-md-4">
+          <img src="${escape(image)}">
+          </div>
+          
+          <div class="col-md-8">
+          <br><br>
+            <h3>👤&nbsp;&nbsp;&nbsp; ${escape(first) + " " + escape(last)}</h3>
+            <h3>✉️&nbsp;&nbsp;&nbsp; ${escape(email)}</h3>
+            <h3>📷&nbsp;&nbsp;&nbsp; ${escape(image)}</h3>
+          </div>
           </div>`;
 
 };
