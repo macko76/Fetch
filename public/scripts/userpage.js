@@ -29,31 +29,8 @@ $(() => {
   });
 
 
-
-  $('form').on('submit', function(e){
-    e.preventDefault();
-    $.ajax({
-      method: "POST",
-      url: "/user/resources/create",
-      data: $(this).serialize(),
-      dataType: "json",
-      success: function(result){
-        fetchingAndRendering();
-        $('form').each(function(){
-          this.reset();
-        });
-        $('.new-card').slideToggle();
-        $('.hide-add-new-card').toggle();   
-        $('.add-new-card').toggle(); 
-      },
-      error: function(error){
-        console.log(error); 
-      }
-    });
+  $('edit-button').on('click', function(){
+    $(this).find('.form-toggle').slideToggle();
   });
-
-
-
-
-
+  
 });

@@ -55,10 +55,12 @@ function createUserResourceCard(resource) {
              </fieldset>
             <div class="comments-container"></div>
           </div>
-          </div>`;
+          </div>
+          
+          <br><br>
 
-            /*<div class="new-card">
-              <form action="/user" name="newcardform" method="POST">
+           <div class="form-toggle">
+              <form action="/api/resources/:resource_id" name="newcardform" method="POST">
                 <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
                 <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
                 <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
@@ -70,14 +72,60 @@ function createUserResourceCard(resource) {
                   <option value=4>News</option>
                   <option value=5>Lifestyle</option>
                 </select><br>
-              <input class="form-control" type="submit" value="Submit">
+              <input class="form-control submit" type="submit" value="Submit">
               </form>
-            </div>*/
+        </div>
+        
+          `;
  };
 
+// editResource
+
+function editExistingCard($card, resourceID) {
+  var url = `/api/resources/${resourceID}`;
+
+  function reloadCards(success, error) {
+    $.ajax({
+        type: 'get',
+        url: '/user',
+        success: function(commentsArray) {
+            success(commentsArray)
+        },
+        error: error
+    });
+  }
+
+  $card.find('.submit').on('submit', function(e){
+    var resourceID = resourceID;
+    e.preventDefault();
+    $.ajax({
+      method: "update",
+      url: url,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(result){
+        reloadCards();
+        $('form').each(function(){
+          this.reset();
+        });
+
+        // $('.new-card').slideToggle();
+        // $('.hide-add-new-card').toggle();   
+        // $('.add-new-card').toggle(); 
+      },
+      error: function(error){
+        console.log(error); 
+      }
+    });
+  });
+};
+
+// ------ add comment to card -------------
 
 function addCommentsToCard($card, resourceID) {
   var url = `/api/comments/${resourceID}`;
+
+  // console.log(url);
 
   function getComments(success, error) {
     $.ajax({
@@ -129,25 +177,25 @@ function renderResources(resources) {
 };
 
 function renderUserResources(resources) {
-  console.log(resources);
   var $resources = $('.user-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
     $resources.prepend($card);
-
+    editExistingCard($card, resources[i].id);
 // ----------------------------------------------------------------- clicking edit button
-    $card.find('.edit-button').on('click', function(){ 
-    $('.add-new-card').toggle();
-    $('.hide-add-new-card').toggle();
-    $('.new-card').slideToggle('slow');  
-    $('.cardUrl').focus();
+  //   $card.find('.edit-button').on('click', function(){ 
+  //   $('.add-new-card').toggle();
+  //   $('.hide-add-new-card').toggle();
+  //   $('.new-card').slideToggle('slow');  
+  //   $('.cardUrl').focus();
 
-  });
+  // });
 
   }
 };
+
 
 //  renderProfile data
 
