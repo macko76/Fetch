@@ -94,12 +94,13 @@ function renderUserResources(resources) {
     var $card = $(card);
     $resources.prepend($card);
 
+// ----------------------------------------------------------------- clicking edit button
     $card.find('.edit-button').on('click', function(){ 
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();
     $('.new-card').slideToggle('slow');  
     $('.cardUrl').focus();
-    
+
   });
 
   }

@@ -12,13 +12,6 @@ $(() => {
 
   fetchingAndRendering();
 
-  // // ----------------------------------------------------------------- clicking edit button
-  $('col-md-2').on('click', function(){ 
-    $('.add-new-card').toggle();
-    $('.hide-add-new-card').toggle();  
-    $('.cardUrl').focus();
-  });
-
 // ----------------------------------------------------------------- show new card
   $('.add-new-card').on('click', function(){
     $('.add-new-card').toggle();
