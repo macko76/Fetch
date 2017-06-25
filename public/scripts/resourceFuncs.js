@@ -17,14 +17,15 @@ function createResourceCard(resource) {
             <p class="card-title">${escape(title)}</p>
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
-            <div class="comment">Comment</div><fieldset class="rating">
+            <div class="comment">Comment</div>
+            <fieldset class="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
               <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
               <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
-            <div id="comments-container"></div>
+            <div class="comments-container"></div>
           </div></div>`;
           
 };
@@ -52,7 +53,7 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
-            <div id="comments-container"></div>
+            <div class="comments-container"></div>
           </div>
           </div>`;
 
@@ -74,14 +75,56 @@ function createUserResourceCard(resource) {
             </div>*/
  };
 
+
+function addCommentsToCard($card, resourceID) {
+  var url = `/api/comments/${resourceID}`;
+
+  function getComments(success, error) {
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function(commentsArray) {
+            success(commentsArray)
+        },
+        error: error
+    });
+  }
+
+  $card.find('.comments-container').comments({
+      getComments: getComments,
+      postComment: function(commentJSON, success, error) {
+          $.ajax({
+              type: 'post',
+              url: url,
+              data: commentJSON,
+              success: function(result){
+                $card.find('.comments-container').comments({
+                  getComments: getComments
+                })
+              },
+              error: function(err) {
+                console.log("post error", err);
+                error(err);
+              }
+          });
+      }
+    });
+
+    $('.comment').on('click', function(e) {
+    $card.find('.comment-container').slideToggle('slow');
+    });
+}
+
 // renderResources
 
 function renderResources(resources) {
   var $resources = $('.all-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
-    var $card = createResourceCard(resources[i]);
+    var card = createResourceCard(resources[i]);
+    var $card = $(card);
     $resources.append($card);
+    addCommentsToCard($card, resources[i].id);
   }
 };
 
