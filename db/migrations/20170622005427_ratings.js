@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').unsigned().primary();
     table.integer('rating').notNull().defaultTo(0);
     table.integer('resource_id').unsigned().index().references('id').inTable('resources');
+    table.integer('rating_id').unsigned().index().references('id').inTable('rating');
     table.timestamps(true, true);
   });
 };

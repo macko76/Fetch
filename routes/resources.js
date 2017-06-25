@@ -49,6 +49,45 @@ module.exports = (knex) => {
     });
   });
 
+  router.get("/:resource_id/rating", (request, response) => {
+    const user = request.session.userId;
+    const resource = request.params.resource_id;
+      knex
+      .select("rating")
+      .from("ratings")
+      .where({user_id: user})
+      .andWhere({resource_id: resource})
+      .then((results) => {
+        response.json(results);
+      });
+  });
+
+  router.post("/:resource_id/inc", (request, response) => {
+    const resource = request.params.resource_id;
+    const user = request.session.userId;
+    knex('ratings')
+      .where({id: resource})
+      .andWhere({user_id: user})
+      .increment('rating', 1)
+      .then((results) => {
+        console.log("success!");
+        response.json(results);
+    });
+  });
+
+  router.post("/:resource_id/dec", (request, response) => {
+    const resource = request.params.resource_id;
+    const user = request.session.userId;
+    knex('ratings')
+      .where({id: resource})
+      .andWhere({user_id: user})
+      .decrement('rating', 1)
+      .then((results) => {
+        console.log("success!");
+        response.json(results);
+     });
+   });
+
   return router;
 
 // VIEW USER RESOURCES = GET /user/:id/fetch
