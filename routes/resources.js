@@ -50,9 +50,25 @@ module.exports = (knex) => {
     });
   });
 
+  // Search endpoint
+  router.get("/search", (request, response) => {
+    console.log("server reached!");
+    response.send('Hello World!')
+   /* const searchTerm = request.params.searchTerm;
+
+    knex ('resources')
+      .where('url', 'like', `%${searchTerm}%`)
+      .orWhere('title','like', `%${searchTerm}%`)
+      .orWhere('description', 'like', `%${searchTerm}%`)
+      .then((results) => {
+        console.log("success!");
+        response.json(results);
+    });*/
+  });
+
   return router;
 
-}
+};
 // VIEW USER RESOURCES = GET /user/:id/fetch
 // VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
 // ADD RESOURCE = POST /user/:id/fetch/:id

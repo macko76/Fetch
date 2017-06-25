@@ -1,17 +1,13 @@
 $(() => {
 
-  $('#search-form').on('submit', function (e) {
-    var searchTerm = req.params.name;
-    e.preventDefault();
+  $("#search-form").on('submit', function (event) {
+    event.preventDefault();
+    // const searchTerm = request.params;
     $.ajax({
       method: "GET",
-      url: "/user/resources/req.params.name",
-      success: function (result) {
-        console.log("works!");
-        // fetchingAndRendering();
-        // $('#search-form').each(function () {
-        //   this.reset();
-      },
+      url: `/api/resources/search`
+    }).done((resources) => {
+      renderUserResources(resources);
     });
   });
 });
