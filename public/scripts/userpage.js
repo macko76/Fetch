@@ -8,11 +8,18 @@ const fetchingAndRendering = function() {
   });
 }
 
-
 $(() => {
 
   fetchingAndRendering();
 
+  // // ----------------------------------------------------------------- clicking edit button
+  $('col-md-2').on('click', function(){ 
+    $('.add-new-card').toggle();
+    $('.hide-add-new-card').toggle();  
+    $('.cardUrl').focus();
+  });
+
+// ----------------------------------------------------------------- show new card
   $('.add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
@@ -20,12 +27,15 @@ $(() => {
     $('.cardUrl').focus();
   });
 
+// ----------------------------------------------------------------- hide new card
   $('.hide-add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
     $('.new-card').slideToggle();
     $('.cardUrl').focus();
   });
+
+
 
   $('form').on('submit', function(e){
     e.preventDefault();
@@ -48,5 +58,9 @@ $(() => {
       }
     });
   });
+
+
+
+
 
 });

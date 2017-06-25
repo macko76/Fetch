@@ -26,6 +26,7 @@ function createResourceCard(resource) {
              </fieldset>
             <div id="comments-container"></div>
           </div></div>`;
+          
 };
 
 
@@ -55,14 +56,22 @@ function createUserResourceCard(resource) {
           </div>
           </div>`;
 
-            // <div class="edit-card-button">
-            //   <form action="users/resources/edit" method="POST" style="margin:150px;">
-            //     <input class="editCardUrl" type="text" name="editCardUrl" placeholder="${escape(imageURL)}" style="width:300px">
-            //     <input type="text" name="editCardTitle" style="width:300px" placeholder="${escape(title)}"><br>
-            //     <textarea name="editCardDescription" placeholder="${escape(description)}"></textarea>
-            //     <input type="submit" value="Submit">
-            //   </form>
-            // </div>
+            /*<div class="new-card">
+              <form action="/user" name="newcardform" method="POST">
+                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
+                <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
+                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
+                <textarea class="form-control" name="cardDescription" placeholder="Description"></textarea> <br>
+                <select class="form-control" name="cardCategory"><br>
+                  <option value=1>Entertainment</option>
+                  <option value=2>Food</option>
+                  <option value=3>Education</option>
+                  <option value=4>News</option>
+                  <option value=5>Lifestyle</option>
+                </select><br>
+              <input class="form-control" type="submit" value="Submit">
+              </form>
+            </div>*/
  };
 
 // renderResources
@@ -81,8 +90,18 @@ function renderUserResources(resources) {
   var $resources = $('.user-cards');
   $resources.empty();
   for(var i = 0; i < resources.length; i++) {
-    var $card = createUserResourceCard(resources[i]);
+    var card = createUserResourceCard(resources[i]);
+    var $card = $(card);
     $resources.prepend($card);
+
+    $card.find('.edit-button').on('click', function(){ 
+    $('.add-new-card').toggle();
+    $('.hide-add-new-card').toggle();
+    $('.new-card').slideToggle('slow');  
+    $('.cardUrl').focus();
+    
+  });
+
   }
 };
 
