@@ -8,11 +8,11 @@ const fetchingAndRendering = function() {
   });
 }
 
-
 $(() => {
 
   fetchingAndRendering();
 
+// ----------------------------------------------------------------- show new card
   $('.add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
@@ -20,6 +20,7 @@ $(() => {
     $('.cardUrl').focus();
   });
 
+// ----------------------------------------------------------------- hide new card
   $('.hide-add-new-card').on('click', function(){
     $('.add-new-card').toggle();
     $('.hide-add-new-card').toggle();    
@@ -48,5 +49,22 @@ $(() => {
       }
     });
   });
+
+//---------------------------------------------------------------- filtering categories
+  $('select').change(function(){
+    console.log("it works!");
+    const categoryFilterValue = this.value;
+    if (categoryFilterValue != 0) {
+      $.ajax({
+      method: "GET",
+      url: `/api/resources/${categoryFilterValue}`
+      }).done((resources) => {
+        renderUserResources(resources);
+      });
+    } else {
+      fetchingAndRendering();
+    }  
+  });
+
 
 });

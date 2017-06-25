@@ -1,11 +1,13 @@
 <div class="search-filter">
-    <form action="/user/resources/filter" method="POST">
-        <select class="form-control" name="cardCategory">
-            <option>News</option>
-            <option>Entertainment</option>
-            <option>Education</option>
-            <option>Food</option>
-            <option>Lifestyle</option>
-        </select> <input class='btn btn-default form-control input' type="submit" value="Filter">
-    </form>
+  <form action="/user" method="POST">
+    <select class="form-control" name="cardCategory">
+      <option value=0>Show all</option>
+      <option value=1>Entertainment</option>
+      <option value=2>Food</option>
+      <option value=3>Education</option>
+      <option value=4>News</option>
+      <option value=5>Lifestyle</option>
+    </select> 
+    <!--<input class='btn btn-default form-control input' type="submit" value="Filter">-->
+  </form>
 </div>

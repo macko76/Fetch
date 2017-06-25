@@ -30,6 +30,20 @@ main .search-form {
   margin-top: 50px;
 }
 
+main .col-md-4 {
+  display: inline-block;
+}
+
+.user-info img {
+  float: right;
+  width: 220px;
+  height: 220px;
+  border-radius: 120px;
+  padding: 5px;
+  border: 4px solid #212E4E;
+  background-color: #f8f9f9;
+}
+
 .nav-bar {
   position: fixed;
   left: 0;
@@ -136,17 +150,15 @@ main .search-form {
   padding: 0 15px;
   border: 1px solid #DFDFDF;
   border-radius: 5px;
-  margin: 10px 2px;
+  margin: 15px 0px;
+  min-height: 100px;
+  min-width: 100px;
   content: "";
   display: table;
   clear: both;
   /****** Style Star Rating Widget *****/
   /***** CSS Magic to Highlight Stars on Hover *****/
   /* hover previous stars in list */
-}
-
-.card .row, .new-card .row {
-  padding: 0 15px;
 }
 
 .card .col-md-10, .new-card .col-md-10 {
@@ -158,9 +170,8 @@ main .search-form {
 }
 
 .card .card-title, .new-card .card-title {
-  margin: 0;
+  padding: 15px 15px 5px;
   font-size: 1.5em;
-  margin: 10px 0px;
 }
 
 .card img, .new-card img {
@@ -171,9 +182,10 @@ main .search-form {
 
 .card .edit-button, .new-card .edit-button {
   border: none;
+  font-size: 1.5em;
   background-color: #f8f9f9;
+  margin: 10px 6px;
   float: right;
-  margin-top: 10px;
 }
 
 .card .edit-button:hover, .new-card .edit-button:hover {
@@ -195,7 +207,7 @@ main .search-form {
   font-size: 1.3em;
 }
 
-.card #comments-container, .new-card #comments-container {
+.card .comments-container, .new-card .comments-container {
   width: 100%;
   font-color: #60697A;
   display: none;
@@ -293,7 +305,7 @@ main .search-form {
   border-color: #212E4E;
 }
 
-#comments-container {
+.comments-container {
   overflow: visible;
   display: inline-block;
 }

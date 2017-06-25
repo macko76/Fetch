@@ -3,7 +3,7 @@
       getComments: function(success, error) {
         $.ajax({
             type: 'get',
-            url: '/api/comments/',
+            url: '/api/comments',
             success: function(commentsArray) {
                 success(commentsArray)
             },
