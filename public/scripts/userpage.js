@@ -49,21 +49,17 @@ $(() => {
     });
   });
 
-//-------------------------------------------------
-  $('select').change(function(e){
-    e.preventDefault();
+//---------------------------------------------------------------- filtering
+  $('select').change(function(){
+    const categoryFilterValue = this.value;
     $.ajax({
-      method: "POST",
-      url: "/user/resources/create",
-      data: $(this).serialize(),
-      dataType: "json",
-      success: function(result){
-        fetchingAndRendering();
-      },
-      error: function(error){
-        console.log(error); 
-      }
+      method: "GET",
+      url: `/api/resources/${categoryFilterValue}`
+    }).done((resources) => {
+    renderUserResources(resources);
     });
   });
+
+
 
 });
