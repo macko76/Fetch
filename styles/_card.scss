@@ -4,10 +4,14 @@
   padding: 0 15px;
   border: 1px solid $light-grey;
   border-radius: 5px;
-  margin: 15px 0px;
+  margin: 15px;
   content: "";
   display: table;
   clear: both;
+
+  .row {
+    padding: 0 15px;
+  }
 
   .col-md-10 {
     padding: 5px 0px;
@@ -32,8 +36,8 @@
   .edit-button {
     border: none;
     background-color: $paper-light;
-    margin-top: 15px;
     float: right;
+    margin-top: 10px;
     &:hover {
       opacity: 0.7;
       text-decoration: none;

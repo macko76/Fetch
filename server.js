@@ -24,6 +24,7 @@ const resourceRoutes = require("./routes/resources");
 const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");
 const commentRoutes = require("./routes/comments");
+const resourcesModify = require("./routes/resourcesModify");
 
 app.use(morgan('dev'));
 
@@ -51,6 +52,7 @@ app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
 app.use("/api/userProfile", profileRoutes(knex));
 app.use("/api/comments", commentRoutes(knex));
+<<<<<<< HEAD
 // app.use("/api/ratings", ratingsRoutes(knex));
 
 app.post('/user', function(req, res){
@@ -60,6 +62,9 @@ app.post('/user', function(req, res){
   // }
   // res.json(result); //being sent back to the place where AJAX Call was made
 });
+=======
+app.use("/user/resources", resourcesModify(knex));
+>>>>>>> c7494009deddf8d1bb20a0aa574003017651a27a
 
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);

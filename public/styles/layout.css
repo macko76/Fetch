@@ -136,13 +136,17 @@ main .search-form {
   padding: 0 15px;
   border: 1px solid #DFDFDF;
   border-radius: 5px;
-  margin: 15px 0px;
+  margin: 15px;
   content: "";
   display: table;
   clear: both;
   /****** Style Star Rating Widget *****/
   /***** CSS Magic to Highlight Stars on Hover *****/
   /* hover previous stars in list */
+}
+
+.card .row, .new-card .row {
+  padding: 0 15px;
 }
 
 .card .col-md-10, .new-card .col-md-10 {
@@ -168,8 +172,8 @@ main .search-form {
 .card .edit-button, .new-card .edit-button {
   border: none;
   background-color: #f8f9f9;
-  margin-top: 15px;
   float: right;
+  margin-top: 10px;
 }
 
 .card .edit-button:hover, .new-card .edit-button:hover {
