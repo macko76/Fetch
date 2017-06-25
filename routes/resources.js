@@ -14,6 +14,7 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- filtering index categories
   router.get("/:filter", (request, response) => {
     const categoryFilter = request.params.filter;
     knex
@@ -21,7 +22,19 @@ module.exports = (knex) => {
     .from("resources")
     .where({category_id: categoryFilter})
     .then((results) => {
-      console.log(results);
+      response.json(results);
+    });
+  });
+
+//---------------------------------------------------------------- filtering user categories
+  router.get("/user/:filter", (request, response) => {
+    const categoryFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("resources")
+    .where({category_id: categoryFilter})
+    .andWhere({user_id: request.session.userId})
+    .then((results) => {
       response.json(results);
     });
   });
@@ -45,7 +58,6 @@ module.exports = (knex) => {
               user_id: cardUserId,
               category_id: cardCategory})
       .then((results) => {
-        console.log("success!");
         response.json(results);
     });
   });
