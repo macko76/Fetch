@@ -210,24 +210,28 @@ main .col-md-4 {
 }
 
 /****** Style Star Rating Widget *****/
-.rating-form {
+.rating-form-inc, .rating-form-dec {
   float: right;
   align: center;
 }
 
-.rating-form input {
+.rating-form-inc input, .rating-form-dec input {
   background: transparent;
   color: darkred;
   border: none;
 }
 
-.rating-form input:hover {
+.rating-form-inc input:hover, .rating-form-dec input:hover {
   color: #be0000;
 }
 
-.rating-form input:focus {
+.rating-form-inc input:focus, .rating-form-dec input:focus {
   border: none;
   text-decoration: none;
+}
+
+.rating-form-dec {
+  color: blue;
 }
 
 .add-new-card, .hide-add-new-card {

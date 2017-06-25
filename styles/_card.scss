@@ -63,7 +63,7 @@
 }
   /****** Style Star Rating Widget *****/
 
-  .rating-form { 
+  .rating-form-inc { 
     float: right;
     align: center;
     input  {
@@ -78,6 +78,11 @@
       text-decoration: none;
     }
     }
+  }
+
+  .rating-form-dec { 
+    @extend .rating-form-inc;
+      color: blue;
   }
 
 .add-new-card {

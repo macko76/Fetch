@@ -20,11 +20,11 @@ function createResourceCard(resource) {
            <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
             <p>${escape(description)}</p>
               
-              <form class="rating-form" action="/api/resources/${resourceID}/inc" method="POST">
+              <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
               <input class='heart' type="submit" value="♥︎">
               </form>
 
-              <form class="rating-form" action="/api/resources/${resourceID}/dec" method="POST">
+              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
               <input class='heart' type="submit" value="☹">
               </form>
 
@@ -53,11 +53,11 @@ function createUserResourceCard(resource) {
             <p>${escape(description)}</p>
 
                     
-              <form class="rating-form" action="/api/resources/${resourceID}/inc" method="POST">
+             <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
               <input class='heart' type="submit" value="♥︎">
               </form>
 
-               <form class="rating-form" action="/api/resources/${resourceID}/dec" method="POST">
+              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
               <input class='heart' type="submit" value="☹">
               </form>
 
@@ -253,7 +253,7 @@ function addUserFavClickHandlers($card, resourceID) {
         });
       }
 
-    $card.find('.rating-form').on('submit', function(e){
+    $card.find('.rating-form-inc').on('submit', function(e){
       var resourceID = resourceID;
       e.preventDefault();
       $.ajax({
@@ -268,7 +268,7 @@ function addUserFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form').on('click', function () {
+    $card.find('.rating-form-inc').on('click', function () {
       console.log('Added favourite');
     });
 
@@ -285,7 +285,7 @@ function addUserFavClickHandlers($card, resourceID) {
       });
     }
 
-    $card.find('.rating-form').on('submit', function(e){
+    $card.find('.rating-form-dec').on('submit', function(e){
       var resourceID = resourceID;
       e.preventDefault();
       $.ajax({
@@ -300,7 +300,7 @@ function addUserFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form').on('click', function () {
+    $card.find('.rating-form-dec').on('click', function () {
       console.log('Removed favourite');
     });
   };
@@ -322,7 +322,7 @@ function addIndexFavClickHandlers($card, resourceID) {
         });
       }
 
-    $card.find('.rating-form').on('submit', function(e){
+    $card.find('.rating-form-inc').on('submit', function(e){
       var resourceID = resourceID;
       e.preventDefault();
       $.ajax({
@@ -337,7 +337,7 @@ function addIndexFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form').on('click', function () {
+    $card.find('.rating-form-inc').on('click', function () {
       console.log('Added favourite');
     });
 
@@ -354,7 +354,7 @@ function addIndexFavClickHandlers($card, resourceID) {
       });
     }
 
-    $card.find('.rating-form').on('submit', function(e){
+    $card.find('.rating-form-dec').on('submit', function(e){
       var resourceID = resourceID;
       e.preventDefault();
       $.ajax({
@@ -369,7 +369,7 @@ function addIndexFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form').on('click', function () {
+    $card.find('.rating-form-dec').on('click', function () {
       console.log('Removed favourite');
     });
   };

@@ -100,7 +100,7 @@ module.exports = (knex) => {
     const resource = request.params.resource_id;
     const user = request.session.userId;
     knex('ratings')
-      .where({id: resource})
+      .where({resource_id: resource})
       .andWhere({user_id: user})
       .increment('rating', 1)
       .then((results) => {
@@ -113,7 +113,7 @@ module.exports = (knex) => {
     const resource = request.params.resource_id;
     const user = request.session.userId;
     knex('ratings')
-      .where({id: resource})
+      .where({resource_id: resource})
       .andWhere({user_id: user})
       .decrement('rating', 1)
       .then((results) => {
