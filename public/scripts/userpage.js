@@ -49,4 +49,17 @@ $(() => {
     });
   });
 
+//---------------------------------------------------------------- filtering
+  $('select').change(function(){
+    const categoryFilterValue = this.value;
+    $.ajax({
+      method: "GET",
+      url: `/api/resources/${categoryFilterValue}`
+    }).done((resources) => {
+    renderUserResources(resources);
+    });
+  });
+
+
+
 });
