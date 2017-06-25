@@ -49,4 +49,21 @@ $(() => {
     });
   });
 
+//-------------------------------------------------
+  $('select').change(function(e){
+    e.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "/user/resources/create",
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(result){
+        fetchingAndRendering();
+      },
+      error: function(error){
+        console.log(error); 
+      }
+    });
+  });
+
 });
