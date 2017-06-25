@@ -23,6 +23,10 @@
     padding: 15px 15px 5px;
     font-size: 1.5em;
   }
+  .index-card-title {
+    padding: 15px 0px 5px;
+    font-size: 1.5em;
+  }
 
   img {
     width: 100%;
@@ -63,27 +67,27 @@
 }
   /****** Style Star Rating Widget *****/
 
-  .rating-form-inc { 
-    float: right;
-    align: center;
-    input  {
-    background: transparent;
-    color: darkred;
+.rating-form-inc { 
+  float: right;
+  align: center;
+  input  {
+  background: transparent;
+  color: darkred;
+  border: none;
+  &:hover {
+    color:$light-red;
+  }
+  &:focus {
     border: none;
-    &:hover {
-      color:$light-red;
-    }
-    &:focus {
-      border: none;
-      text-decoration: none;
-    }
-    }
+    text-decoration: none;
   }
+  }
+}
 
-  .rating-form-dec { 
-    @extend .rating-form-inc;
-      color: blue;
-  }
+.rating-form-dec { 
+  @extend .rating-form-inc;
+    color: blue;
+}
 
 .add-new-card {
   opacity: 0.9;
