@@ -8,24 +8,24 @@ module.exports = (knex) => {
 
 
   router.post("/:resource_id", (request, response) => {
-     var user = request.session.user.id;
-
-      knex('comments')
-        .insert({
-          body: request.body.content,
-          user_id: user,
-          resource_id: request.params.resource_id
-        })
-        .then((results) => {
-          response.json(results);
-      });
+    knex('comments')
+      .insert({
+        body: request.body.content,
+        resource_id: request.params.resource_id,
+        user_id: request.session.user.id
+      })
+      .then((results) => {
+        response.json(results);
     });
+  });
 
   router.get("/:resource_id", (request, response) => {
+    // console.log("*** request ***", request);
       var user = request.session.user;
       knex
         .select("*")
         .from("comments")
+        .orderBy('created_at', 'asc')
         .where({
           resource_id: request.params.resource_id
         })
@@ -33,8 +33,9 @@ module.exports = (knex) => {
           var commentsArray = [];
           for (var i = 0; i < results.length; i++) {
             var commentObj = {
-              id: results[i].resource_id,
+              id: results[i].id,
               content: results[i].body,
+              fullName: user.first_name
             };
             commentsArray.push(commentObj);
           }
