@@ -4,7 +4,6 @@ function escape(str) {
   return div.innerHTML;
 }
 
-
 // createResourceCard
 
 function createResourceCard(resource) {
@@ -13,7 +12,7 @@ function createResourceCard(resource) {
   var resourceURL = resource.url;
   var imageURL = resource.image;
 
-  return `<div class="col-md-4">
+  return  `<div class="col-md-4">
             <div class="card">
             <p class="card-title">${escape(title)}</p>
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -77,7 +76,6 @@ function renderResources(resources) {
   }
 };
 
-
 function renderUserResources(resources) {
   console.log(resources);
   var $resources = $('.user-cards');
@@ -121,9 +119,7 @@ function renderProfile(data) {
 
 // addComment
 
-
 // showUserResources
-
 
 // filterResultsByCategory
 
