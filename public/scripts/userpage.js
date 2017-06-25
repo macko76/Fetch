@@ -65,5 +65,20 @@ $(() => {
     }  
   });
 
+//---------------------------------------------------------------- filtering user likes
+  $('select').change(function(){
+    const likesFilterValue = this.value;
+    if (likesFilterValue != 0) {
+      $.ajax({
+      method: "GET",
+      url: `/api/resources/user/likes/${likesFilterValue}`
+      }).done((resources) => {
+        renderUserResources(resources);
+      });
+    } else {
+      fetchingAndRendering();
+    }  
+  });
+
 
 });

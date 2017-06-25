@@ -39,6 +39,20 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- filtering user likes
+  router.get("/user/likes/:filter", (request, response) => {
+    const likesFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("ratings")
+    .where({rating: likesFilter})
+    .andWhere({user_id: request.session.userId})
+    .then((results) => {
+      console.log(results);
+      response.json(results);
+    });
+  });
+
 //---------------------------------------------------------------- add card
   router.post("/create", (request, response) => {
     const cardUrl = request.body.cardUrl;
@@ -96,30 +110,74 @@ module.exports = (knex) => {
       });
   });
 
+  function searchRating(resource_id, user_id){
+    return knex('ratings')
+      .where({
+        resource_id,
+        user_id
+      })
+      .limit(1)
+      .select('*')
+      .then(results => results.length)
+  }
+
+  function createRating(resource_id, user_id, rating){
+    return knex('ratings')
+      .insert({
+        resource_id, user_id, rating
+      });
+  }
+  
+  function updateRating(resource_id, user_id, rating){
+    return knex('ratings')
+      .where({
+        resource_id, user_id
+      })
+      .update({
+        rating
+      });
+  }
+
+  function createOrUpdateRating(resource, user, rating){
+    return searchRating(resource, user)
+      .then(rowCount => {
+        if(rowCount === 0){
+          return createRating(resource, user, rating);
+        } else {
+          return updateRating(resource, user, rating);
+        }
+      });
+  }
   router.post("/:resource_id/inc", (request, response) => {
     const resource = request.params.resource_id;
     const user = request.session.userId;
-    knex('ratings')
-      .where({resource_id: resource})
-      .andWhere({user_id: user})
-      .increment('rating', 1)
+
+    createOrUpdateRating(resource, user, 't')
       .then((results) => {
         console.log("success!");
         response.json(results);
-    });
+      });
+
+    // knex('ratings')
+    //   .where({resource_id: resource})
+    //   .andWhere({user_id: user})
+    //   .update('rating', 't')
+    //   .then((results) => {
+    //     console.log("success!");
+    //     response.json(results);
+    // });
   });
 
   router.post("/:resource_id/dec", (request, response) => {
     const resource = request.params.resource_id;
     const user = request.session.userId;
-    knex('ratings')
-      .where({resource_id: resource})
-      .andWhere({user_id: user})
-      .decrement('rating', 1)
+    console.log(resource, user);
+
+    createOrUpdateRating(resource, user, 'f')
       .then((results) => {
         console.log("success!");
         response.json(results);
-     });
+      });
    });
 
   return router;
