@@ -52,6 +52,7 @@ $(() => {
 
 //---------------------------------------------------------------- filtering categories
   $('select').change(function(){
+    console.log("it works!");
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
