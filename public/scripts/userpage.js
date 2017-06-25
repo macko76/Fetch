@@ -27,10 +27,5 @@ $(() => {
     $('.new-card').slideToggle();
     $('.cardUrl').focus();
   });
-
-
-  $('edit-button').on('click', function(){
-    $(this).find('.form-toggle').slideToggle();
-  });
   
 });

@@ -4,6 +4,7 @@ function escape(str) {
   return div.innerHTML;
 }
 
+
 // createResourceCard
 
 function createResourceCard(resource) {
@@ -41,7 +42,7 @@ function createUserResourceCard(resource) {
              <div class="card">
               <div class="row">
              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
-              <div class="col-md-2"><button class="edit-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></div>
+              <div class="col-md-2"><button>edit</button></div>
               </div>
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -54,8 +55,7 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
             <div class="comments-container"></div>
-          </div>
-          </div>
+        
           
           <br><br>
 
@@ -75,13 +75,15 @@ function createUserResourceCard(resource) {
               <input class="form-control submit" type="submit" value="Submit">
               </form>
         </div>
+         </div>
+          </div>
         
           `;
  };
 
 // editResource
 
-function editExistingCard($card, resourceID) {
+function addEdit($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
   function reloadCards(success, error) {
@@ -99,7 +101,7 @@ function editExistingCard($card, resourceID) {
     var resourceID = resourceID;
     e.preventDefault();
     $.ajax({
-      method: "update",
+      method: "post",
       url: url,
       data: $(this).serialize(),
       dataType: "json",
