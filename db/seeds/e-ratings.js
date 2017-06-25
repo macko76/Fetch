@@ -13,11 +13,11 @@ exports.seed = function(knex, Promise) {
   return knex('ratings').del()
     .then(function () {
       return Promise.all([
-        knex('ratings').insert({rating: '0', resource_id: cardOneId, user_id: rebeccaId}),
-        knex('ratings').insert({rating: '1', resource_id: cardTwoId, user_id: rebeccaId}),
-        knex('ratings').insert({rating: '0', resource_id: cardThreeId, user_id: mikeId}),
-        knex('ratings').insert({rating: '1', resource_id: cardFourId, user_id: mikeId}),
-        knex('ratings').insert({rating: '1', resource_id: cardFiveId, user_id: markId}),                                
+        knex('ratings').insert({rating: true, resource_id: cardOneId, user_id: rebeccaId}),
+        knex('ratings').insert({rating: true, resource_id: cardTwoId, user_id: rebeccaId}),
+        knex('ratings').insert({rating: false, resource_id: cardThreeId, user_id: mikeId}),
+        knex('ratings').insert({rating: false, resource_id: cardFourId, user_id: mikeId}),
+        knex('ratings').insert({rating: true, resource_id: cardFiveId, user_id: markId}),                                
       ]);
     });
 };

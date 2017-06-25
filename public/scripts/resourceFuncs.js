@@ -15,21 +15,19 @@ function createResourceCard(resource) {
   var resourceID = resource.id;
 
   return  `<div class="col-md-4">
-            <div class="card">
-            <h3>${escape(title)}</h3>
-           <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
+          <div class="card">
+          <p class="index-card-title">${escape(title)}</p>
+           <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
               
-              <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
+              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
+              <input class='heart' type="submit" value="✗"></form><form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
               <input class='heart' type="submit" value="♥︎">
               </form>
 
-              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
-              <input class='heart' type="submit" value="☹">
-              </form>
-
             <div class="comment">Comment</div>
-            <div class="comments-container" style="display:none"></div>
+            <div class="comments-container"></div>
+             <br><br>
           </div></div>`;
           
 };
@@ -52,13 +50,9 @@ function createUserResourceCard(resource) {
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
 
-                    
-             <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
-              <input class='heart' type="submit" value="♥︎">
-              </form>
-
               <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
-              <input class='heart' type="submit" value="☹">
+              <input class='heart' type="submit" value="✗"></form><form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
+              <input class='heart' type="submit" value="♥︎">
               </form>
 
             <div class="comment">Comment</div>
@@ -245,14 +239,6 @@ function addUserFavClickHandlers($card, resourceID) {
   function addUserFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-    function reloadCards() {
-      $.ajax({
-        method: "GET",
-        url: "/api/user"
-      }).done((resources) => {
-        });
-      }
-
     $card.find('.rating-form-inc').on('submit', function(e){
       var resourceID = resourceID;
       e.preventDefault();
@@ -260,7 +246,6 @@ function addUserFavClickHandlers($card, resourceID) {
         method: "post",
         url: url + '/inc',
         success: function(result, error){
-          reloadCards();
         },
         error: function(error){
           console.log(error); 
@@ -268,22 +253,11 @@ function addUserFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form-inc').on('click', function () {
-      console.log('Added favourite');
-    });
-
   };
 
   function removeUserFavourite($card, resourceID) {
     var url = `/api/resources/${resourceID}`;
 
-    function reloadCards() {
-      $.ajax({
-        method: "GET",
-        url: "/api/user"
-      }).done((resources) => {
-      });
-    }
 
     $card.find('.rating-form-dec').on('submit', function(e){
       var resourceID = resourceID;
@@ -292,16 +266,11 @@ function addUserFavClickHandlers($card, resourceID) {
         method: "post",
         url: url + '/dec',
         success: function(result, error){
-          reloadCards();
         },
         error: function(error){
           console.log(error); 
         }
       });
-    });
-
-    $card.find('.rating-form-dec').on('click', function () {
-      console.log('Removed favourite');
     });
   };
 
@@ -314,13 +283,7 @@ function addIndexFavClickHandlers($card, resourceID) {
   function addIndexFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-    function reloadCards() {
-      $.ajax({
-        method: "GET",
-        url: "/api/resources"
-      }).done((resources) => {
-        });
-      }
+
 
     $card.find('.rating-form-inc').on('submit', function(e){
       var resourceID = resourceID;
@@ -329,7 +292,6 @@ function addIndexFavClickHandlers($card, resourceID) {
         method: "post",
         url: url + '/inc',
         success: function(result, error){
-          reloadCards();
         },
         error: function(error){
           console.log(error); 
@@ -337,22 +299,11 @@ function addIndexFavClickHandlers($card, resourceID) {
       });
     });
 
-    $card.find('.rating-form-inc').on('click', function () {
-      console.log('Added favourite');
-    });
-
   };
 
   function removeIndexFavourite($card, resourceID) {
     var url = `/api/resources/${resourceID}`;
 
-    function reloadCards() {
-      $.ajax({
-        method: "GET",
-        url: "/api/resources"
-      }).done((resources) => {
-      });
-    }
 
     $card.find('.rating-form-dec').on('submit', function(e){
       var resourceID = resourceID;
@@ -361,16 +312,11 @@ function addIndexFavClickHandlers($card, resourceID) {
         method: "post",
         url: url + '/dec',
         success: function(result, error){
-          reloadCards();
         },
         error: function(error){
           console.log(error); 
         }
       });
-    });
-
-    $card.find('.rating-form-dec').on('click', function () {
-      console.log('Removed favourite');
     });
   };
 
