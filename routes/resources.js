@@ -22,11 +22,13 @@ module.exports = (knex) => {
     .where({category_id: categoryFilter})
     .then((results) => {
       console.log(results);
+      response.json(results);
     });
   });
 
   return router;
 
+}
 // VIEW USER RESOURCES = GET /user/:id/fetch
 // VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
 // ADD RESOURCE = POST /user/:id/fetch/:id
@@ -35,5 +37,3 @@ module.exports = (knex) => {
 
 // RATE RESOURCE = POST /user/:id/fetch/:id/rate, DELETE /user/:id/fetch/:id/rate
 // COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment
-
-}

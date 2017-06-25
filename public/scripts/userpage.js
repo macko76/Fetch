@@ -52,12 +52,16 @@ $(() => {
 //---------------------------------------------------------------- filtering
   $('select').change(function(){
     const categoryFilterValue = this.value;
-    $.ajax({
+    if (categoryFilterValue != "") {
+      $.ajax({
       method: "GET",
       url: `/api/resources/${categoryFilterValue}`
-    }).done((resources) => {
-    renderUserResources(resources);
-    });
+      }).done((resources) => {
+        renderUserResources(resources);
+      });
+    } else {
+      fetchingAndRendering();
+    }  
   });
 
 
