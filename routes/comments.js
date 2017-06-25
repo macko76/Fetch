@@ -19,6 +19,10 @@ module.exports = (knex) => {
   });
 
   router.get("/:resource_id", (request, response) => {
+<<<<<<< HEAD
+=======
+    // console.log("*** request ***", request);
+>>>>>>> master
       var user = request.session.user;
       knex
         .select("*")

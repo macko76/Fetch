@@ -5,12 +5,23 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-router.get("/", (req, res) => {
+  router.get("/", (request, response) => {
     knex
-      .select("*")
-      .from("resources")
-      .then((results) => {
-        res.json(results);
+    .select("*")
+    .from("resources")
+    .then((results) => {
+      response.json(results);
+    });
+  });
+
+  router.get("/:filter", (request, response) => {
+    const categoryFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("resources")
+    .where({category_id: categoryFilter})
+    .then((results) => {
+      console.log(results);
     });
   });
 
