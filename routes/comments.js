@@ -31,9 +31,9 @@ module.exports = (knex) => {
           var commentsArray = [];
           for (var i = 0; i < results.length; i++) {
             var commentObj = {
-              id: results[i].id,
+              id: results[i].resource_id,
               content: results[i].body,
-              fullName: user.first_name
+              fullName: user.first_name,
             };
             commentsArray.push(commentObj);
           }

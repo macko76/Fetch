@@ -14,6 +14,7 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- filtering index categories
   router.get("/:filter", (request, response) => {
     const categoryFilter = request.params.filter;
     knex
@@ -21,12 +22,45 @@ module.exports = (knex) => {
     .from("resources")
     .where({category_id: categoryFilter})
     .then((results) => {
-      console.log(results);
       response.json(results);
     });
   });
 
+//---------------------------------------------------------------- filtering user categories
+  router.get("/user/:filter", (request, response) => {
+    const categoryFilter = request.params.filter;
+    knex
+    .select("*")
+    .from("resources")
+    .where({category_id: categoryFilter})
+    .andWhere({user_id: request.session.userId})
+    .then((results) => {
+      response.json(results);
+    });
+  });
 
+//---------------------------------------------------------------- add card
+  router.post("/create", (request, response) => {
+    const cardUrl = request.body.cardUrl;
+    const cardTitle = request.body.cardTitle;
+    const cardImage = request.body.cardImage;
+    const cardDescription = request.body.cardDescription;
+    const cardCategory = request.body.cardCategory;
+    const cardUserId = request.session.userId;
+
+    knex('resources')
+      .insert({url: cardUrl, 
+              image: cardImage, 
+              title: cardTitle, 
+              description: cardDescription,
+              category_id: cardCategory,
+              user_id: cardUserId})
+      .then((results) => {
+        response.json(results);
+    });
+  });
+
+//---------------------------------------------------------------- update card
   router.post("/:resource_id", (request, response) => {
     const resource_id = request.params.resource_id;
     const cardUrl = request.body.cardUrl;
@@ -45,30 +79,52 @@ module.exports = (knex) => {
               user_id: cardUserId,
               category_id: cardCategory})
       .then((results) => {
+        response.json(results);
+    });
+  });
+
+  router.get("/:resource_id/rating", (request, response) => {
+    const user = request.session.userId;
+    const resource = request.params.resource_id;
+      knex
+      .select("rating")
+      .from("ratings")
+      .where({user_id: user})
+      .andWhere({resource_id: resource})
+      .then((results) => {
+        response.json(results);
+      });
+  });
+
+  router.post("/:resource_id/inc", (request, response) => {
+    const resource = request.params.resource_id;
+    const user = request.session.userId;
+    knex('ratings')
+      .where({resource_id: resource})
+      .andWhere({user_id: user})
+      .increment('rating', 1)
+      .then((results) => {
         console.log("success!");
         response.json(results);
     });
   });
 
-  // Search endpoint
-  router.get("/search", (request, response) => {
-    console.log("server reached!");
-    response.send('Hello World!')
-   /* const searchTerm = request.params.searchTerm;
-
-    knex ('resources')
-      .where('url', 'like', `%${searchTerm}%`)
-      .orWhere('title','like', `%${searchTerm}%`)
-      .orWhere('description', 'like', `%${searchTerm}%`)
+  router.post("/:resource_id/dec", (request, response) => {
+    const resource = request.params.resource_id;
+    const user = request.session.userId;
+    knex('ratings')
+      .where({resource_id: resource})
+      .andWhere({user_id: user})
+      .decrement('rating', 1)
       .then((results) => {
         console.log("success!");
         response.json(results);
-    });*/
-  });
+     });
+   });
 
   return router;
 
-};
+}
 // VIEW USER RESOURCES = GET /user/:id/fetch
 // VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
 // ADD RESOURCE = POST /user/:id/fetch/:id

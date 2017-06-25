@@ -438,6 +438,8 @@ http://viima.github.io/jquery-comments/*/
 .jquery-comments ul.main li.comment .name {
 	line-height: 1.4em;
 	font-weight: bold;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .jquery-comments ul.main li.comment .name a {
@@ -464,7 +466,7 @@ http://viima.github.io/jquery-comments/*/
 	color: #fff;
 	font-weight: normal;
 	border-radius: 1em;
-	/*vertical-align: bottom;*/
+	vertical-align: bottom;
 }
 
 .jquery-comments ul.main li.comment .wrapper{

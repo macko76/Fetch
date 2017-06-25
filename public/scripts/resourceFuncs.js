@@ -12,20 +12,23 @@ function createResourceCard(resource) {
   var description = resource.description;
   var resourceURL = resource.url;
   var imageURL = resource.image;
+  var resourceID = resource.id;
 
   return  `<div class="col-md-4">
             <div class="card">
             <h3>${escape(title)}</h3>
            <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
             <p>${escape(description)}</p>
+              
+              <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
+              <input class='heart' type="submit" value="♥︎">
+              </form>
+
+              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
+              <input class='heart' type="submit" value="☹">
+              </form>
+
             <div class="comment">Comment</div>
-            <fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
-             </fieldset>
             <div class="comments-container" style="display:none"></div>
           </div></div>`;
           
@@ -48,13 +51,17 @@ function createUserResourceCard(resource) {
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
-            <div class="comment">Comment</div><fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
-             </fieldset>
+
+                    
+             <form class="rating-form-inc" action="/api/resources/${resourceID}/inc" method="POST">
+              <input class='heart' type="submit" value="♥︎">
+              </form>
+
+              <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
+              <input class='heart' type="submit" value="☹">
+              </form>
+
+            <div class="comment">Comment</div>
             <div class="comments-container"></div>
         
           
@@ -73,7 +80,7 @@ function createUserResourceCard(resource) {
                   <option value=4>News</option>
                   <option value=5>Lifestyle</option>
                 </select><br>
-              <input class="form-control submit" type="submit" value="Submit" data-resourceId="${resourceID}">
+              <input class="form-control" type="submit" value="Submit">
               </form>
         </div>
          </div>
@@ -156,9 +163,9 @@ function addCommentsToCard($card, resourceID) {
       }
     });
     $card.find('.comment').on('click', function () {
-    console.log('clicked');
     $card.find('.comments-container').slideToggle();
   });
+
 }
 
 // renderResources
@@ -171,8 +178,11 @@ function renderResources(resources) {
     var $card = $(card);
     $resources.append($card);
     addCommentsToCard($card, resources[i].id);
+    addIndexFavClickHandlers($card, resources[i].id);
   }
 };
+    
+
 
 function renderUserResources(resources) {
   var $resources = $('.user-cards');
@@ -180,17 +190,11 @@ function renderUserResources(resources) {
   for(var i = 0; i < resources.length; i++) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
+    var resourceID = resources[i].id;
     $resources.append($card);
     addEdit($card, resources[i].id);
-// ----------------------------------------------------------------- clicking edit button
-  //   $card.find('.edit-button').on('click', function(){ 
-  //   $('.add-new-card').toggle();
-  //   $('.hide-add-new-card').toggle();
-  //   $('.new-card').slideToggle('slow');  
-  //   $('.cardUrl').focus();
-
-  // });
-
+    addCommentsToCard($card, resourceID);
+    addUserFavClickHandlers($card, resourceID);
   }
 };
 
@@ -236,10 +240,140 @@ function renderProfile(data) {
 
 // addRating
 
-// addComment
+function addUserFavClickHandlers($card, resourceID) {
 
-// showUserResources
+  function addUserFavourite($card, resourceID) {
+  var url = `/api/resources/${resourceID}`;
 
-// filterResultsByCategory
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/user"
+      }).done((resources) => {
+        });
+      }
 
-// filterResultsBySearchTerm
+    $card.find('.rating-form-inc').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/inc',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
+    });
+
+    $card.find('.rating-form-inc').on('click', function () {
+      console.log('Added favourite');
+    });
+
+  };
+
+  function removeUserFavourite($card, resourceID) {
+    var url = `/api/resources/${resourceID}`;
+
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/user"
+      }).done((resources) => {
+      });
+    }
+
+    $card.find('.rating-form-dec').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/dec',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
+    });
+
+    $card.find('.rating-form-dec').on('click', function () {
+      console.log('Removed favourite');
+    });
+  };
+
+  addUserFavourite($card, resourceID);
+  removeUserFavourite($card, resourceID);
+};
+
+function addIndexFavClickHandlers($card, resourceID) {
+
+  function addIndexFavourite($card, resourceID) {
+  var url = `/api/resources/${resourceID}`;
+
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/resources"
+      }).done((resources) => {
+        });
+      }
+
+    $card.find('.rating-form-inc').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/inc',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
+    });
+
+    $card.find('.rating-form-inc').on('click', function () {
+      console.log('Added favourite');
+    });
+
+  };
+
+  function removeIndexFavourite($card, resourceID) {
+    var url = `/api/resources/${resourceID}`;
+
+    function reloadCards() {
+      $.ajax({
+        method: "GET",
+        url: "/api/resources"
+      }).done((resources) => {
+      });
+    }
+
+    $card.find('.rating-form-dec').on('submit', function(e){
+      var resourceID = resourceID;
+      e.preventDefault();
+      $.ajax({
+        method: "post",
+        url: url + '/dec',
+        success: function(result, error){
+          reloadCards();
+        },
+        error: function(error){
+          console.log(error); 
+        }
+      });
+    });
+
+    $card.find('.rating-form-dec').on('click', function () {
+      console.log('Removed favourite');
+    });
+  };
+
+  addIndexFavourite($card, resourceID);
+  removeIndexFavourite($card, resourceID);
+};

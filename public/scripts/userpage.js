@@ -1,4 +1,3 @@
-
 const fetchingAndRendering = function() {
   $.ajax({
     method: "GET",
@@ -28,11 +27,12 @@ $(() => {
     $('.cardUrl').focus();
   });
 
+// ----------------------------------------------------------------- add card
   $('form').on('submit', function(e){
     e.preventDefault();
     $.ajax({
       method: "POST",
-      url: "/user/resources/create",
+      url: "/api/resources/create",
       data: $(this).serialize(),
       dataType: "json",
       success: function(result){
@@ -50,14 +50,13 @@ $(() => {
     });
   });
 
-//---------------------------------------------------------------- filtering categories
+//---------------------------------------------------------------- filtering user categories
   $('select').change(function(){
-    console.log("it works!");
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
       method: "GET",
-      url: `/api/resources/${categoryFilterValue}`
+      url: `/api/resources/user/${categoryFilterValue}`
       }).done((resources) => {
         renderUserResources(resources);
       });
