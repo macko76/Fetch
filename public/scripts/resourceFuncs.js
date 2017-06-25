@@ -81,7 +81,7 @@ function createUserResourceCard(resource) {
           `;
  };
 
-// editResource
+// editResource $card.find('.comments-container')
 
 function addEdit($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
@@ -92,15 +92,14 @@ function addEdit($card, resourceID) {
   // $card.parent().find('.card-toggle').slideToggle();
   });
 
-  function reloadCards(success, error) {
+  function reloadCards() {
     $.ajax({
-        type: 'GET',
-        url: '/user',
-      })
-      .done((resources) => {
-        renderUserResources(resources);
+      method: "GET",
+      url: "/api/user"
+    }).done((resources) => {
+      renderUserResources(resources);
     });
-  }
+    }
 
   $card.find('form').on('submit', function(e){
     var resourceID = resourceID;
@@ -111,10 +110,8 @@ function addEdit($card, resourceID) {
       data: $(this).serialize(),
       dataType: "json",
       success: function(result, error){
+        $('form').each(function(){ this.reset(); });
         reloadCards();
-        $('form').each(function(){
-          this.reset();
-        });
        },
       error: function(error){
         console.log(error); 
