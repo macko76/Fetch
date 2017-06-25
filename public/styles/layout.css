@@ -1,28 +1,38 @@
 @charset "UTF-8";
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 body {
   margin-top: 50px;
   font-size: 12px;
   background-color: #f8f9f9;
-  font-family: 'Roboto Condensed', sans-serif; }
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
 main {
   width: auto;
   background-color: white;
   align-content: center;
   margin: 80px;
-  padding: 40px 120px; }
-  main .filter {
-    margin-bottom: 0px; }
-  main .search-form {
-    margin-top: 50px; }
-  main .col-md-4 {
-    display: inline-block; }
+  padding: 40px 120px;
+}
+
+main .filter {
+  margin-bottom: 0px;
+}
+
+main .search-form {
+  margin-top: 50px;
+}
+
+main .col-md-4 {
+  display: inline-block;
+}
 
 .nav-bar {
   position: fixed;
@@ -33,31 +43,40 @@ main {
   background-color: #212E4E;
   font-color: #A8ADB0;
   padding: 0 20px;
-  z-index: 1; }
-  .nav-bar .header {
-    position: fixed;
-    right: 50px;
-    top: 5px;
-    color: #fff;
-    font-size: 3em;
-    line-height: 40px;
-    padding: 20px; }
-  .nav-bar .form-control {
-    display: inline;
-    width: auto; }
+  z-index: 1;
+}
+
+.nav-bar .header {
+  position: fixed;
+  right: 50px;
+  top: 5px;
+  color: #fff;
+  font-size: 3em;
+  line-height: 40px;
+  padding: 20px;
+}
+
+.nav-bar .form-control {
+  display: inline;
+  width: auto;
+}
 
 .nav-menu {
   position: fixed;
   left: 140px;
-  top: 35px; }
+  top: 35px;
+}
 
 .dropdown-toggle {
   background-color: transparent;
   font-size: 0.5em;
-  opacity: 0.8; }
-  .dropdown-toggle:hover {
-    opacity: 1;
-    cursor: pointer; }
+  opacity: 0.8;
+}
+
+.dropdown-toggle:hover {
+  opacity: 1;
+  cursor: pointer;
+}
 
 .nav-pic-container {
   width: 108px;
@@ -71,15 +90,20 @@ main {
   float: left;
   font-size: 0.5em;
   background-color: #f8f9f9;
-  border-radius: 60px; }
-  .nav-pic-container .nav-profile-pic {
-    border-radius: 60px;
-    border: none;
-    width: 100px;
-    height: 100px; }
-    .nav-pic-container .nav-profile-pic:hover {
-      opacity: 0.9;
-      cursor: pointer; }
+  border-radius: 60px;
+}
+
+.nav-pic-container .nav-profile-pic {
+  border-radius: 60px;
+  border: none;
+  width: 100px;
+  height: 100px;
+}
+
+.nav-pic-container .nav-profile-pic:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
 
 .nav-login-container {
   padding: 6px 10px;
@@ -92,17 +116,23 @@ main {
   font-size: 0.4em;
   border: 1px solid #DFDFDF;
   border-radius: 60px;
-  opacity: 0.7; }
-  .nav-login-container:hover {
-    opacity: 0.9;
-    cursor: pointer; }
-  .nav-login-container .login-button {
-    display: inline;
-    color: white;
-    text-decoration: none; }
+  opacity: 0.7;
+}
+
+.nav-login-container:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.nav-login-container .login-button {
+  display: inline;
+  color: white;
+  text-decoration: none;
+}
 
 .btn {
-  display: inline; }
+  display: inline;
+}
 
 .card, .new-card {
   background-color: #f8f9f9;
@@ -116,132 +146,187 @@ main {
   clear: both;
   /****** Style Star Rating Widget *****/
   /***** CSS Magic to Highlight Stars on Hover *****/
-  /* hover previous stars in list */ }
-  .card .row, .new-card .row {
-    padding: 0 15px; }
-  .card .col-md-10, .new-card .col-md-10 {
-    padding: 5px 0px; }
-  .card .col-md-2, .new-card .col-md-2 {
-    padding: 0px; }
-  .card .card-title, .new-card .card-title {
-    margin: 0;
-    font-size: 1.5em;
-    margin: 10px 0px; }
-  .card img, .new-card img {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px; }
-  .card .edit-button, .new-card .edit-button {
-    border: none;
-    background-color: #f8f9f9;
-    float: right;
-    margin-top: 10px; }
-    .card .edit-button:hover, .new-card .edit-button:hover {
-      opacity: 0.7;
-      text-decoration: none; }
-    .card .edit-button:focus, .new-card .edit-button:focus {
-      outline: none; }
-  .card .glyphicon.glyphicon-pencil, .new-card .glyphicon.glyphicon-pencil {
-    font-size: 13px; }
-  .card .comment, .new-card .comment {
-    font-color: #60697A;
-    display: inline;
-    font-size: 1.3em; }
-  .card #comments-container, .new-card #comments-container {
-    width: 100%;
-    font-color: #60697A;
-    display: none; }
-  .card .rating, .new-card .rating {
-    border: none;
-    float: right;
-    align: center; }
-  .card .rating > input, .new-card .rating > input {
-    display: none; }
-  .card .rating > label:before, .new-card .rating > label:before {
-    margin: 1px;
-    font-size: 1.25em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "★"; }
-  .card .rating > label, .new-card .rating > label {
-    color: #ddd;
-    float: right; }
-  .card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
-  .card .rating:not(:checked) > label:hover,
-  .new-card .rating:not(:checked) > label:hover,
-  .card .rating:not(:checked) > label:hover ~ label,
-  .new-card .rating:not(:checked) > label:hover ~ label {
-    color: #FFD700; }
-  .card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
-  .card .rating > input:checked ~ label:hover,
-  .new-card .rating > input:checked ~ label:hover,
-  .card .rating > label:hover ~ input:checked ~ label,
-  .new-card .rating > label:hover ~ input:checked ~ label,
-  .card .rating > input:checked ~ label:hover ~ label,
-  .new-card .rating > input:checked ~ label:hover ~ label {
-    color: #FFED85; }
+  /* hover previous stars in list */
+}
+
+.card .row, .new-card .row {
+  padding: 0 15px;
+}
+
+.card .col-md-10, .new-card .col-md-10 {
+  padding: 5px 0px;
+}
+
+.card .col-md-2, .new-card .col-md-2 {
+  padding: 0px;
+}
+
+.card .card-title, .new-card .card-title {
+  margin: 0;
+  font-size: 1.5em;
+  margin: 10px 0px;
+}
+
+.card img, .new-card img {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card .edit-button, .new-card .edit-button {
+  border: none;
+  background-color: #f8f9f9;
+  float: right;
+  margin-top: 10px;
+}
+
+.card .edit-button:hover, .new-card .edit-button:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.card .edit-button:focus, .new-card .edit-button:focus {
+  outline: none;
+}
+
+.card .glyphicon.glyphicon-pencil, .new-card .glyphicon.glyphicon-pencil {
+  font-size: 13px;
+}
+
+.card .comment, .new-card .comment {
+  font-color: #60697A;
+  display: inline;
+  font-size: 1.3em;
+}
+
+.card #comments-container, .new-card #comments-container {
+  width: 100%;
+  font-color: #60697A;
+  display: none;
+}
+
+.card .rating, .new-card .rating {
+  border: none;
+  float: right;
+  align: center;
+}
+
+.card .rating > input, .new-card .rating > input {
+  display: none;
+}
+
+.card .rating > label:before, .new-card .rating > label:before {
+  margin: 1px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "★";
+}
+
+.card .rating > label, .new-card .rating > label {
+  color: #ddd;
+  float: right;
+}
+
+.card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
+.card .rating:not(:checked) > label:hover, .new-card .rating:not(:checked) > label:hover,
+.card .rating:not(:checked) > label:hover ~ label, .new-card .rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+.card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
+.card .rating > input:checked ~ label:hover, .new-card .rating > input:checked ~ label:hover,
+.card .rating > label:hover ~ input:checked ~ label, .new-card .rating > label:hover ~ input:checked ~ label,
+.card .rating > input:checked ~ label:hover ~ label, .new-card .rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
 
 .add-new-card, .hide-add-new-card {
   opacity: 0.9;
   font-size: 1.2em;
-  font-color: white; }
-  .add-new-card:hover, .hide-add-new-card:hover, .add-new-card:active, .hide-add-new-card:active {
-    color: #DFDFDF;
-    opacity: 1; }
+  font-color: white;
+}
+
+.add-new-card:hover, .hide-add-new-card:hover, .add-new-card:active, .hide-add-new-card:active {
+  color: #DFDFDF;
+  opacity: 1;
+}
 
 .new-card {
   padding: 30px;
-  display: inline-block; }
-  .new-card .form-control {
-    width: 200px; }
+  display: inline-block;
+}
+
+.new-card .form-control {
+  width: 200px;
+}
 
 .user-cards, .all-cards {
-  margin-top: 70px; }
+  margin-top: 70px;
+}
 
 .search-filter {
-  overflow: hidden; }
-  .search-filter .form-control {
-    width: 200px;
-    display: inline; }
-  .search-filter .btn {
-    width: 52px; }
+  overflow: hidden;
+}
+
+.search-filter .form-control {
+  width: 200px;
+  display: inline;
+}
+
+.search-filter .btn {
+  width: 52px;
+}
 
 .login-buttons {
-  margin: 50px 20px; }
-  .login-buttons form {
-    display: inline; }
-  .login-buttons .btn-default {
-    width: auto;
-    margin: 5px 5px 5px 0px; }
-    .login-buttons .btn-default:hover {
-      background-color: #212E4E;
-      color: white;
-      border-color: #212E4E; }
+  margin: 50px 20px;
+}
+
+.login-buttons form {
+  display: inline;
+}
+
+.login-buttons .btn-default {
+  width: auto;
+  margin: 5px 5px 5px 0px;
+}
+
+.login-buttons .btn-default:hover {
+  background-color: #212E4E;
+  color: white;
+  border-color: #212E4E;
+}
 
 #comments-container {
   overflow: visible;
-  display: inline-block; }
+  display: inline-block;
+}
 
 .actions {
-  display: none; }
+  display: none;
+}
 
 time {
-  display: none; }
+  display: none;
+}
 
 .navigation-wrapper {
-  display: none; }
+  display: none;
+}
 
 .textarea {
   width: 100%;
-  padding: 5px; }
+  padding: 5px;
+}
 
 .close {
-  margin: 5px; }
+  margin: 5px;
+}
 
 .send {
-  margin: 5px; }
+  margin: 5px;
+}
 
 .name {
-  display: none; }
-
-/*# sourceMappingURL=layout.css.map */
+  display: none;
+}

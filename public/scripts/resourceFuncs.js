@@ -41,9 +41,10 @@ function createUserResourceCard(resource) {
 
   return `<div class="col-md-4">
              <div class="card">
+             <div class=".card-toggle">
               <div class="row">
              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
-              <div class="col-md-2"><button>edit</button></div>
+              <div class="col-md-2"><button class='edit-button'>edit</button></div>
               </div>
 
            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -56,11 +57,11 @@ function createUserResourceCard(resource) {
               <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label><br><br>
              </fieldset>
             <div class="comments-container"></div>
-        
+        </div>
           
           <br><br>
 
-           <div class="form-toggle">
+           <div class="form-toggle" style="display:none">
               <form action="/api/resources/${resourceID}" name="newcardform" method="POST">
                 <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
                 <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
@@ -87,15 +88,20 @@ function createUserResourceCard(resource) {
 function addEdit($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
-  // function reloadCards(success, error) {
-  //   $.ajax({
-  //       type: 'get',
-  //       url: '/user',
-  //       success: success
-  //       },
-  //       error: error
-  //   });
-  // }
+  $card.find('.edit-button').on('click', function () {
+  $card.find('.form-toggle').slideToggle();
+  // $card.parent().find('.card-toggle').slideToggle();
+  });
+
+  function reloadCards(success, error) {
+    $.ajax({
+        type: 'GET',
+        url: '/user',
+      })
+      .done((resources) => {
+        renderUserResources(resources);
+    });
+  }
 
   $card.find('form').on('submit', function(e){
     var resourceID = resourceID;
@@ -106,15 +112,11 @@ function addEdit($card, resourceID) {
       data: $(this).serialize(),
       dataType: "json",
       success: function(result, error){
-        renderUserResources(result);
+        reloadCards();
         $('form').each(function(){
           this.reset();
         });
-
-        // $('.new-card').slideToggle();
-        // $('.hide-add-new-card').toggle();   
-        // $('.add-new-card').toggle(); 
-      },
+       },
       error: function(error){
         console.log(error); 
       }
@@ -126,8 +128,6 @@ function addEdit($card, resourceID) {
 
 function addCommentsToCard($card, resourceID) {
   var url = `/api/comments/${resourceID}`;
-
-  // console.log(url);
 
   function getComments(success, error) {
     $.ajax({
@@ -159,10 +159,6 @@ function addCommentsToCard($card, resourceID) {
           });
       }
     });
-
-    $('.comment').on('click', function(e) {
-    $card.find('.comment-container').slideToggle('slow');
-    });
 }
 
 // renderResources
@@ -184,7 +180,7 @@ function renderUserResources(resources) {
   for(var i = 0; i < resources.length; i++) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
-    $resources.prepend($card);
+    $resources.append($card);
     addEdit($card, resources[i].id);
 // ----------------------------------------------------------------- clicking edit button
   //   $card.find('.edit-button').on('click', function(){ 

@@ -41,8 +41,8 @@ module.exports = (knex) => {
               image: cardImage, 
               title: cardTitle, 
               description: cardDescription,
-              category_id: cardCategory,
-              user_id: cardUserId})
+              user_id: cardUserId,
+              category_id: cardCategory})
       .then((results) => {
         console.log("success!");
         response.json(results);
