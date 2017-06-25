@@ -39,7 +39,28 @@ module.exports = (knex) => {
     });
   });
 
+//---------------------------------------------------------------- add card
+  router.post("/create", (request, response) => {
+    const cardUrl = request.body.cardUrl;
+    const cardTitle = request.body.cardTitle;
+    const cardImage = request.body.cardImage;
+    const cardDescription = request.body.cardDescription;
+    const cardCategory = request.body.cardCategory;
+    const cardUserId = request.session.userId;
 
+    knex('resources')
+      .insert({url: cardUrl, 
+              image: cardImage, 
+              title: cardTitle, 
+              description: cardDescription,
+              category_id: cardCategory,
+              user_id: cardUserId})
+      .then((results) => {
+        response.json(results);
+    });
+  });
+
+//---------------------------------------------------------------- update card
   router.post("/:resource_id", (request, response) => {
     const resource_id = request.params.resource_id;
     const cardUrl = request.body.cardUrl;
@@ -61,6 +82,8 @@ module.exports = (knex) => {
         response.json(results);
     });
   });
+
+
 
   return router;
 
