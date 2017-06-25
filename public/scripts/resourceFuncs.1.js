@@ -12,19 +12,18 @@ function createResourceCard(resource) {
   var description = resource.description;
   var resourceURL = resource.url;
   var imageURL = resource.image;
-  var resourceID = resource.id;
 
   return  `<div class="col-md-4">
             <div class="card">
             <h3>${escape(title)}</h3>
-           <p><a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a></p>
+            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
-              
+
+                    
               <form class="rating-form" action="/api/resources/${resourceID}/inc" method="POST">
               <input class='heart' type="submit" value="♥︎">
               </form>
-
-              <form class="rating-form" action="/api/resources/${resourceID}/dec" method="POST">
+               <form class="rating-form" action="/api/resources/${resourceID}/dec" method="POST">
               <input class='heart' type="submit" value="☹">
               </form>
 
@@ -236,7 +235,7 @@ function renderProfile(data) {
 
 // addRating
 
-function addUserFavourite($card, resourceID) {
+function addFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
   function reloadCards() {
@@ -267,7 +266,7 @@ function addUserFavourite($card, resourceID) {
   });
 };
 
-function removeUserFavourite($card, resourceID) {
+function removeFavourite($card, resourceID) {
   var url = `/api/resources/${resourceID}`;
 
   function reloadCards() {

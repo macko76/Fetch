@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').unsigned().primary();
     table.integer('rating').notNull().defaultTo(0);
     table.integer('resource_id').unsigned().index().references('id').inTable('resources');
-    table.integer('rating_id').unsigned().index().references('id').inTable('rating');
+    table.integer('user_id').unsigned().index().references('id').inTable('users');
     table.timestamps(true, true);
   });
 };
@@ -11,3 +11,4 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
     return knex.schema.dropTable('ratings');
   };
+

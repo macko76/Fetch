@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   box-sizing: border-box;
 }
@@ -156,9 +155,6 @@ main .col-md-4 {
   content: "";
   display: table;
   clear: both;
-  /****** Style Star Rating Widget *****/
-  /***** CSS Magic to Highlight Stars on Hover *****/
-  /* hover previous stars in list */
 }
 
 .card .col-md-10, .new-card .col-md-10 {
@@ -213,40 +209,25 @@ main .col-md-4 {
   display: none;
 }
 
-.card .rating, .new-card .rating {
-  border: none;
+/****** Style Star Rating Widget *****/
+.rating-form {
   float: right;
   align: center;
 }
 
-.card .rating > input, .new-card .rating > input {
-  display: none;
+.rating-form input {
+  background: transparent;
+  color: darkred;
+  border: none;
 }
 
-.card .rating > label:before, .new-card .rating > label:before {
-  margin: 1px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "★";
+.rating-form input:hover {
+  color: #be0000;
 }
 
-.card .rating > label, .new-card .rating > label {
-  color: #ddd;
-  float: right;
-}
-
-.card .rating > input:checked ~ label, .new-card .rating > input:checked ~ label,
-.card .rating:not(:checked) > label:hover, .new-card .rating:not(:checked) > label:hover,
-.card .rating:not(:checked) > label:hover ~ label, .new-card .rating:not(:checked) > label:hover ~ label {
-  color: #FFD700;
-}
-
-.card .rating > input:checked + label:hover, .new-card .rating > input:checked + label:hover,
-.card .rating > input:checked ~ label:hover, .new-card .rating > input:checked ~ label:hover,
-.card .rating > label:hover ~ input:checked ~ label, .new-card .rating > label:hover ~ input:checked ~ label,
-.card .rating > input:checked ~ label:hover ~ label, .new-card .rating > input:checked ~ label:hover ~ label {
-  color: #FFED85;
+.rating-form input:focus {
+  border: none;
+  text-decoration: none;
 }
 
 .add-new-card, .hide-add-new-card {
