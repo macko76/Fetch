@@ -41,6 +41,21 @@ $(() => {
     }  
   });
 
+//---------------------------------------------------------------- filtering likes
+  $('select').change(function(){
+    const likesFilterValue = this.value;
+    if (likesFilterValue != 0) {
+      $.ajax({
+      method: "GET",
+      url: `/api/resources/${categoryFilterValue}`
+      }).done((resources) => {
+        renderResources(resources);
+      });
+    } else {
+      fetchingAndRenderingIndex();
+    }  
+  });
+
   
 
 });
