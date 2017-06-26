@@ -1,4 +1,23 @@
-# Node Skeleton
+# Fetch (Midterm Group Project)
+
+Fetch makes easy resource storage happen. It allows learners to save learning resources like tutorials and blogs in a central place that is publicly available to any user. Enjoy :)
+
+## Final Product
+
+Home page
+!["Screenshot of home page"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/landing-page.png)
+!["Screenshot of filter by categories"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/landing-page-menu.png)
+!["Screenshot of search"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/register-page.png)
+
+User page
+!["Screenshot of comments on resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-new.png)
+!["Screenshot of edit on resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
+!["Screenshot of add resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
+!["Screenshot of added resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
+!["Screenshot of favourited resources"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-edit.png)
+
+Profile page
+!["Screenshot of profile page"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show-edited.png)
 
 ## Project Setup
 
