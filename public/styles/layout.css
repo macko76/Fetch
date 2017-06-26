@@ -282,6 +282,10 @@ main .col-md-4 {
   padding-left: 10px;
 }
 
+.search-filter #filter {
+  background-color: white;
+}
+
 .search-filter .form-control {
   width: 180px;
   display: inline;
