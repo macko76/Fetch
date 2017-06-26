@@ -83,10 +83,10 @@ function createUserResourceCard(resource) {
 
            <div class="form-toggle" style="display:none">
               <form action="/api/resources/${resourceID}" name="newcardform" method="POST">
-                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
-                <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
-                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
-                <textarea class="form-control" name="cardDescription" placeholder="Description"></textarea> <br>
+                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL" value="${resourceURL}"><br>
+                <input class="form-control" type="text" name="cardImage" placeholder="Image" value="${imageURL}"><br>
+                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title" value="${title}"><br>
+                <textarea class="form-control" name="cardDescription" placeholder="Description" value="${description}"></textarea> <br>
                 <select class="form-control" name="cardCategory"><br>
                   <option value=1>Entertainment</option>
                   <option value=2>Food</option>
