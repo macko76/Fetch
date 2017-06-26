@@ -261,7 +261,7 @@ main .col-md-4 {
 }
 
 .user-cards, .all-cards {
-  margin-top: 70px;
+  margin-top: 30px;
   display: inline-block;
 }
 
@@ -279,6 +279,7 @@ main .col-md-4 {
 
 .search-filter {
   overflow: hidden;
+  padding-left: 10px;
 }
 
 .search-filter .form-control {

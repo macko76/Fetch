@@ -57,7 +57,7 @@ $(() => {
   });
 
 //---------------------------------------------------------------- filtering user categories
-  $('#filter').on('change', (function(){
+ $('.form-control.card').change(function(){
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
@@ -79,7 +79,8 @@ $(() => {
       $.ajax({
       method: "GET",
       url: `/api/resources/user/likes/${likesFilterValue}`
-      }).done((resources) => {
+    }).done((resources) => {
+      console.log(resources);
         renderUserResources(resources);
       });
     } else {
