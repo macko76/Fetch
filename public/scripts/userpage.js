@@ -68,6 +68,7 @@ $(() => {
 //---------------------------------------------------------------- filtering user likes
   $('.form-control.like').change(function(){
     const likesFilterValue = this.value;
+    console.log(likesFilterValue);
     if (likesFilterValue != 0) {
       $.ajax({
       method: "GET",
