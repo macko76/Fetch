@@ -26,7 +26,6 @@ const profileRoutes = require("./routes/profile");
 const commentRoutes = require("./routes/comments");
 const searchRoutes = require("./routes/search");
 
-
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well

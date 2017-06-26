@@ -65,15 +65,15 @@
   }
 }
   .nav-login-container {
-  padding: 6px 10px;
+  padding: 6px 11px;
   color: white;
   position: fixed;
   left: 20px;
-  top: 15px;
+  top: 12px;
   float: right;
   font-color: $paper-light;
   font-size: 0.4em;
-  border: 1px solid $light-grey;
+  border: 2px solid $light-grey;
   border-radius: 60px;
   opacity: 0.7;
   &:hover {

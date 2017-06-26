@@ -24,10 +24,15 @@ const fetchingAndRenderingIndex = function(){
 
 $(() => {
 
-  fetchingAndRenderingIndex();
+  $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer'
+});
+
+fetchingAndRenderingIndex();
 
 //---------------------------------------------------------------- filtering index categories
-  $('select').change(function(){
+  $('.form-control.card').change(function(){
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
@@ -40,7 +45,6 @@ $(() => {
       fetchingAndRenderingIndex();
     }  
   });
-
 
 });
 

@@ -8,17 +8,21 @@
       <h3>Here are your saved resources.</h3>
 
       <div class="row">
-       <div class="col-md-4"><%- include partials/_addCard.ejs %></div>
-       <div class="col-md-4"><%- include partials/_filterLikes.ejs %></div>
-       <div class="col-md-4"><%- include partials/_filter.ejs %></div>
+        <br>
+               <!--<div class="col-md-4"><%- include partials/_addCard.ejs %> <%- include partials/_filterLikes.ejs %></div>-->
+       <div class="col-md-2"> <%- include partials/_addCard.ejs %></div>
+      <div class="col-md-3"><%- include partials/_filterLikes.ejs %></div>
+       <div class="col-md-3"><%- include partials/_filter.ejs %></div>
        <div class="col-md-4"><%- include partials/_search-user.ejs %></div>
       </div>
       <br><br>
 
-      <div class="row">
-        <div class="user-cards">
+       <div class="user-cards">
+       <div class="grid">
+        
+      
         </div>
-      </div>
+        </div>
          
     </main>
     <script type="text/javascript" src="/scripts/userpage.js"></script>

@@ -7,13 +7,13 @@ function escape(str) {
 function createCategoryIcon(categoryID) {
  if (categoryID == 1) {
    return "🎥";
-  } else if (categoryID == 2) {
+  } else if (categoryID === 2) {
     return "🥑";
-  } else if (categoryID == 3) {
+  } else if (categoryID === 3) {
     return "📘";
-  } else if (categoryID == 4) {
+  } else if (categoryID === 5) {
     return "📣";
-  } else if (categoryID == 5) {
+  } else if (categoryID === 4) {
     return "🕶";
   } else {
     return "☹";
@@ -30,11 +30,12 @@ function createResourceCard(resource) {
   var resourceID = resource.id;
   var category = createCategoryIcon(resource.category_id);
 
-  return  `<div class="col-md-4">
+  return  `<div class="grid-item">
           <div class="card">
+            <div class="grid-sizer"></div>
            <div class="row">
-             <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
-              <div class="col-md-2"><button class='edit-button'>${category}</button></div>
+             <div class="col-md-11"><p class="card-title">${escape(title)}</p></div> 
+              <div class="col-md-1"><button class='edit-button'>${category}</button></div>
               </div>
  
             <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
@@ -48,7 +49,8 @@ function createResourceCard(resource) {
             <div class="comment">Comment</div>
             <div class="comments-container"></div>
              <br><br>
-          </div></div>`;
+          </div></div>
+          </div>`;
           
 };
 
@@ -60,8 +62,9 @@ function createUserResourceCard(resource) {
   var imageURL = resource.image;
   var resourceID = resource.id;
 
-  return `<div class="col-md-4">
-             <div class="card">
+  return `<div class="grid-item">
+          <div class="card">
+            <div class="grid-sizer"></div>
               <div class="row">
              <div class="col-md-10"><p class="card-title">${escape(title)}</p></div> 
               <div class="col-md-2"><button class='edit-button'>✎</button></div>
@@ -83,10 +86,10 @@ function createUserResourceCard(resource) {
 
            <div class="form-toggle" style="display:none">
               <form action="/api/resources/${resourceID}" name="newcardform" method="POST">
-                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL"><br>
-                <input class="form-control" type="text" name="cardImage" placeholder="Image"><br>
-                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title"><br>
-                <textarea class="form-control" name="cardDescription" placeholder="Description"></textarea> <br>
+                <input class="form-control" type="text" name="cardUrl" placeholder="Resource URL" value="${resourceURL}"><br>
+                <input class="form-control" type="text" name="cardImage" placeholder="Image" value="${imageURL}"><br>
+                <input class="cardTitle form-control" type="text" name="cardTitle" placeholder="Title" value="${title}"><br>
+                <textarea class="form-control" name="cardDescription" placeholder="Description" value="${description}"></textarea> <br>
                 <select class="form-control" name="cardCategory"><br>
                   <option value=1>Entertainment</option>
                   <option value=2>Food</option>
@@ -98,6 +101,7 @@ function createUserResourceCard(resource) {
               </form>
         </div>
          </div>
+        </div>
         </div>
           `;
  };
@@ -190,7 +194,7 @@ function renderResources(resources) {
   for(var i = 0; i < resources.length; i++) {
     var card = createResourceCard(resources[i]);
     var $card = $(card);
-    $resources.append($card);
+    $resources.prepend($card);
     addIndexFavClickHandlers($card, resources[i].id);
     addCommentsToCard($card, resources[i].id);
   }
@@ -205,7 +209,7 @@ function renderUserResources(resources) {
     var card = createUserResourceCard(resources[i]);
     var $card = $(card);
     var resourceID = resources[i].id;
-    $resources.append($card);
+    $resources.prepend($card);
     addEdit($card, resources[i].id);
     addUserFavClickHandlers($card, resourceID);
     addCommentsToCard($card, resourceID);

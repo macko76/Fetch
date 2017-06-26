@@ -9,6 +9,12 @@ const fetchingAndRendering = function() {
 
 $(() => {
 
+  $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer'
+  });
+
+
   fetchingAndRendering();
 
 // ----------------------------------------------------------------- show new card
@@ -51,7 +57,7 @@ $(() => {
   });
 
 //---------------------------------------------------------------- filtering user categories
-  $('select').change(function(){
+  $('.form-control.card').change(function(){
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
@@ -66,7 +72,7 @@ $(() => {
   });
 
 //---------------------------------------------------------------- filtering user likes
-  $('select').change(function(){
+  $('.form-control.like').change(function(){
     const likesFilterValue = this.value;
     if (likesFilterValue != 0) {
       $.ajax({
