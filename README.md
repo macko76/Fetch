@@ -1,23 +1,25 @@
 # Fetch (Midterm Group Project)
 
-Fetch makes easy resource storage happen. It allows learners to save learning resources like tutorials and blogs in a central place that is publicly available to any user. Enjoy :)
+Fetch is an app that makes easy resource storage happen. It allows learners to save learning resources like tutorials and blogs in a central place that is publicly available to any user. Enjoy :)
+
+Created by Rebecca Haliburton, Mark Bickford, Michael Shin
 
 ## Final Product
 
 Home page
-!["Screenshot of home page"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/landing-page.png)
-!["Screenshot of filter by categories"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/landing-page-menu.png)
-!["Screenshot of search"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/register-page.png)
+!["Screenshot of home page"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-home.png)
+!["Screenshot of filter by categories"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-filter-categories.png)
+!["Screenshot of search"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-search.png)
 
 User page
-!["Screenshot of comments on resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-new.png)
-!["Screenshot of edit on resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
-!["Screenshot of add resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
-!["Screenshot of added resource"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show.png)
-!["Screenshot of favourited resources"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-edit.png)
+!["Screenshot of comments on resource"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-comments.png)
+!["Screenshot of edit on resource"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-edit.png)
+!["Screenshot of add resource"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-add.png)
+!["Screenshot of added resource"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-added.png)
+!["Screenshot of favourited resources"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-favourites.png)
 
 Profile page
-!["Screenshot of profile page"](https://github.com/shinmike/tiny-app2-1/blob/master/docs/urls-show-edited.png)
+!["Screenshot of profile page"](https://github.com/drhaliburton/Fetch/blob/master/docs/fetch-profile.png)
 
 ## Project Setup
 
