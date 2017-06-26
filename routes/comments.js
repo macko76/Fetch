@@ -13,6 +13,7 @@ function auth(req, res, next) {
 
 module.exports = (knex) => {
 
+// Posts new comment to database
 
   router.post("/:resource_id", auth, (request, response) => {
     knex('comments')
@@ -26,8 +27,9 @@ module.exports = (knex) => {
     });
   });
 
+// Renders all card comments
+
   router.get("/:resource_id", auth, (request, response) => {
-    // console.log("*** request ***", request);
       var user = request.session.user;
       knex
         .select("*")
