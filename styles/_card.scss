@@ -90,13 +90,13 @@
 }
 
 .add-new-card {
+  line-height: 30px;
   opacity: 0.9;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-color: white;
   &:hover, &:active {
   color: $light-grey;
   opacity: 1;
-
   }
 }
 

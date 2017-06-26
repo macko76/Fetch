@@ -241,8 +241,9 @@ main .col-md-4 {
 }
 
 .add-new-card, .hide-add-new-card {
+  line-height: 30px;
   opacity: 0.9;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-color: white;
 }
 
@@ -278,8 +279,7 @@ main .col-md-4 {
 }
 
 .view-favourites {
-  width: 130px;
-  box-shadow: none;
+  width: 140px;
 }
 
 .login-buttons {
