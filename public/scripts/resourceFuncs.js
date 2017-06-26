@@ -7,13 +7,13 @@ function escape(str) {
 function createCategoryIcon(categoryID) {
  if (categoryID == 1) {
    return "🎥";
-  } else if (categoryID == 2) {
+  } else if (categoryID === 2) {
     return "🥑";
-  } else if (categoryID == 3) {
+  } else if (categoryID === 3) {
     return "📘";
-  } else if (categoryID == 4) {
+  } else if (categoryID === 5) {
     return "📣";
-  } else if (categoryID == 5) {
+  } else if (categoryID === 4) {
     return "🕶";
   } else {
     return "☹";
