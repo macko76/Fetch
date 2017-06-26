@@ -24,6 +24,7 @@ const resourceRoutes = require("./routes/resources");
 const userResourceRoutes = require("./routes/userResources");
 const profileRoutes = require("./routes/profile");
 const commentRoutes = require("./routes/comments");
+const searchRoutes = require("./routes/search");
 
 
 app.use(morgan('dev'));
@@ -52,6 +53,7 @@ app.use("/api/user", userResourceRoutes(knex));
 app.use("/login", authRoutes(knex));
 app.use("/api/userProfile", profileRoutes(knex));
 app.use("/api/comments", commentRoutes(knex));
+app.use("/api/search", searchRoutes(knex));
 
 app.listen(PORT, () => {
   console.log("Fetch is listening on port " + PORT);
