@@ -57,7 +57,7 @@ $(() => {
   });
 
 //---------------------------------------------------------------- filtering user categories
-  $('.form-control.card').change(function(){
+  $('#filter').on('change', (function(){
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({
@@ -74,6 +74,7 @@ $(() => {
 //---------------------------------------------------------------- filtering user likes
   $('.form-control.like').change(function(){
     const likesFilterValue = this.value;
+    console.log(likesFilterValue);
     if (likesFilterValue != 0) {
       $.ajax({
       method: "GET",
