@@ -46,10 +46,16 @@ module.exports = (knex) => {
     knex
     .select("*")
     .from("ratings")
-    .where({rating: likesFilter})
-    .andWhere({user_id: request.session.userId})
+    .innerJoin("resources", "resources.user_id", "ratings.user_id")
+
+    
+
+    // .select("*")
+    // .from("ratings")
+    // .where({rating: likesFilter})
+    // .andWhere({user_id: request.session.userId})
     .then((results) => {
-      console.log(results);
+      console.log("BLAHHHHHHHH", results);
       response.json(results);
     });
   });
