@@ -14,7 +14,7 @@ router.get("/", (request, response) => {
   .where({
     user_id: request.session.userId
   })
-  .orderBy('created_at', 'desc')
+  .orderBy('created_at', 'asc')
   .then((results) => {
     response.json(results);
   });
