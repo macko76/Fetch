@@ -1,14 +1,15 @@
 $(() => {
 
-  $("#search-form").on('submit', function () {
-    const searchText = this;
-    console.log(searchText);
+  $("#search-form").on("submit", function (event) {
+    event.preventDefault();
     $.ajax({
-      method: "GET",
-      url: `/api/search/${searchText}`
-    }).done((resources) => {
-      renderUserResources(resources);
-    });
+      url: "/api/search",
+      data: $(this).serialize(),
+    })
+      .done((resources) => {
+        renderResources(resources);
+        // renderUserResources(resources);
+      });
   });
 
 });
