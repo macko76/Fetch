@@ -32,7 +32,7 @@ module.exports = (knex) => {
       knex
         .select("*")
         .from("comments")
-        .orderBy('created_at', 'asc')
+        .orderBy('created_at', 'desc')
         .where({
           resource_id: request.params.resource_id
         })

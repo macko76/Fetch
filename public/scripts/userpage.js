@@ -9,6 +9,12 @@ const fetchingAndRendering = function() {
 
 $(() => {
 
+  $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer'
+  });
+
+
   fetchingAndRendering();
 
 // ----------------------------------------------------------------- show new card

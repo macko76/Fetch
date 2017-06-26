@@ -15,7 +15,7 @@ body {
 
 main {
   width: auto;
-  height: 700px;
+  height: auto;
   background-color: white;
   align-content: center;
   margin: 80px;
@@ -146,11 +146,10 @@ main .col-md-4 {
 
 .card, .new-card {
   background-color: #f8f9f9;
-  width: auto;
-  padding: 0 15px;
+  width: 250px;
+  padding: 0 15px 10px;
   border: 1px solid #DFDFDF;
   border-radius: 5px;
-  margin: 15px 0px;
   min-height: 100px;
   min-width: 100px;
   content: "";
@@ -158,22 +157,22 @@ main .col-md-4 {
   clear: both;
 }
 
-.card .col-md-10, .new-card .col-md-10 {
+.card .col-md-11, .new-card .col-md-11 {
   padding: 5px 0px;
 }
 
-.card .col-md-2, .new-card .col-md-2 {
+.card .col-md-1, .new-card .col-md-1 {
   padding: 0px;
 }
 
 .card .card-title, .new-card .card-title {
   padding: 10px 15px 0px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .card .index-card-title, .new-card .index-card-title {
   padding: 15px 0px 0px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .card img, .new-card img {
@@ -184,7 +183,7 @@ main .col-md-4 {
 
 .card .edit-button, .new-card .edit-button {
   border: none;
-  font-size: 1.5em;
+  font-size: 1em;
   background-color: #f8f9f9;
   margin: 10px 6px;
   float: right;
@@ -263,6 +262,19 @@ main .col-md-4 {
 
 .user-cards, .all-cards {
   margin-top: 70px;
+  display: inline-block;
+}
+
+.user-cards .grid-item, .all-cards .grid-item {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 10px;
+}
+
+.all-cards .grid-item {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 10px;
 }
 
 .search-filter {
@@ -270,8 +282,9 @@ main .col-md-4 {
 }
 
 .search-filter .form-control {
-  width: 200px;
+  width: 180px;
   display: inline;
+  vertical-align: top;
 }
 
 .search-filter .btn {

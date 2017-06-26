@@ -9,6 +9,7 @@ module.exports = (knex) => {
     knex
     .select("*")
     .from("resources")
+    .orderBy('created_at', 'asc')
     .then((results) => {
       response.json(results);
     });

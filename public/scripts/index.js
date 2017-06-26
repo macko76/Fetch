@@ -24,7 +24,12 @@ const fetchingAndRenderingIndex = function(){
 
 $(() => {
 
-  fetchingAndRenderingIndex();
+  $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer'
+});
+
+fetchingAndRenderingIndex();
 
 //---------------------------------------------------------------- filtering index categories
   $('.form-control.card').change(function(){
