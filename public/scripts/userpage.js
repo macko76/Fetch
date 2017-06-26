@@ -57,7 +57,7 @@ $(() => {
   });
 
 //---------------------------------------------------------------- filtering user categories
-  $('.form-control.card').change(function(){
+  $('#filter').on('change', (function(){
     const categoryFilterValue = this.value;
     if (categoryFilterValue != 0) {
       $.ajax({

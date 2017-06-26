@@ -38,7 +38,7 @@ function createResourceCard(resource) {
               <div class="col-md-1"><button class='edit-button'>${category}</button></div>
               </div>
  
-            <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
+            <a href="${escape(resourceURL)}" target="_blank"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>             
               
               <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
@@ -70,7 +70,7 @@ function createUserResourceCard(resource) {
               <div class="col-md-2"><button class='edit-button'>✎</button></div>
               </div>
 
-           <a href="${escape(resourceURL)}"><img src="${escape(imageURL)}"></a> 
+           <a href="${escape(resourceURL)}" target="_blank"><img src="${escape(imageURL)}"></a> 
             <p>${escape(description)}</p>
 
               <form class="rating-form-dec" action="/api/resources/${resourceID}/dec" method="POST">
