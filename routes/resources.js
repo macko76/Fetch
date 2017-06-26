@@ -44,18 +44,18 @@ module.exports = (knex) => {
   router.get("/user/likes/:filter", (request, response) => {
     const likesFilter = request.params.filter;
     knex
-    .select("*")
-    .from("ratings")
-    .innerJoin("resources", "resources.user_id", "ratings.user_id")
+    // .select("*")
+    // .from("ratings")
+    // .innerJoin("resources", "resources.user_id", "ratings.user_id")
 
     
 
-    // .select("*")
-    // .from("ratings")
-    // .where({rating: likesFilter})
-    // .andWhere({user_id: request.session.userId})
+    .select("*")
+    .from("ratings")
+    .where({rating: likesFilter})
+    .andWhere({user_id: request.session.userId})
     .then((results) => {
-      console.log("BLAHHHHHHHH", results);
+      console.log("USER FILTERRRRR!", results);
       response.json(results);
     });
   });
