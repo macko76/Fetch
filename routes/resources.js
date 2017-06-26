@@ -100,6 +100,8 @@ module.exports = (knex) => {
     });
   });
 
+  // Adding to removing a rating ("like/heart/favourite") from a resource
+
   router.get("/:resource_id/rating", (request, response) => {
     const user = request.session.userId;
     const resource = request.params.resource_id;
@@ -160,15 +162,6 @@ module.exports = (knex) => {
         console.log("success!");
         response.json(results);
       });
-
-    // knex('ratings')
-    //   .where({resource_id: resource})
-    //   .andWhere({user_id: user})
-    //   .update('rating', 't')
-    //   .then((results) => {
-    //     console.log("success!");
-    //     response.json(results);
-    // });
   });
 
   router.post("/:resource_id/dec", (request, response) => {
@@ -186,12 +179,3 @@ module.exports = (knex) => {
   return router;
 
 }
-// VIEW USER RESOURCES = GET /user/:id/fetch
-// VIEW SPECIFIC RESOURCE = /GET /user/:id/fetch/:id
-// ADD RESOURCE = POST /user/:id/fetch/:id
-// DELETE RESOURCE = DELETE /user/:id/fetch/:id
-// EDIT RESOURCE = POST /user/:id/fetch/:id
-
-// RATE RESOURCE = POST /user/:id/fetch/:id/rate, DELETE /user/:id/fetch/:id/rate
-
-// COMMENT ON RESOURCE = POST /user/:id/fetch/:id/comment, DELETE /user/:id/fetch/:id/comment

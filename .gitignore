@@ -2,6 +2,6 @@ node_modules/
 *.log
 *.sqlite3
 .DS_store
-.env.example
+.env
 .idea/
 *.orig
